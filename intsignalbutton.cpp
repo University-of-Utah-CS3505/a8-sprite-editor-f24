@@ -11,4 +11,8 @@ void IntSignalButton::pushed(){
     emit sendSelfValue(value);
 }
 
+void IntSignalButton::setValue(int val){
+    value = val;
+}
+
 

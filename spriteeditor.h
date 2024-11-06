@@ -7,6 +7,7 @@
 #include "canvaslabel.h"
 #include <QPushButton>
 #include <QHBoxLayout>
+#include "intsignalbutton.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -19,7 +20,7 @@ class SpriteEditor : public QMainWindow
 {
     Q_OBJECT
     int frameIndex = -1;
-    QList<QPushButton*> frameSelectorButtonList;
+    QList<IntSignalButton*> frameSelectorButtonList;
     QWidget *frameOverviewContainer;
     QHBoxLayout *frameOverviewLayout;
 public:
@@ -30,7 +31,7 @@ public slots:
     void addFrame();
     void deleteFrame();
     void cloneFrame();
-    void updateSequenceSequence(const QImage& image);
+    void updateFrameSequence(const QImage& image);
     void display(const QImage& image, float scale, const QPointF& offset);
 
 private:

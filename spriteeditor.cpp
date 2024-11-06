@@ -6,7 +6,7 @@
 #include <QGraphicsScene>
 #include <QImage>
 #include <QGraphicsPixmapItem>
-#include "intsignalbutton.h"
+
 
 SpriteEditor::SpriteEditor(class Model& model, QWidget *parent)
     : QMainWindow(parent)
@@ -78,6 +78,10 @@ void SpriteEditor::addFrame(){
     }
 
     frameIndex++;
+    for(int i = frameIndex+1; i < frameSelectorButtonList.size(); i++){
+        frameSelectorButtonList[i]->setValue(i);
+    }
+    //TODO emit index, connect
 
 
 
@@ -86,14 +90,21 @@ void SpriteEditor::addFrame(){
 }
 
 void SpriteEditor::deleteFrame(){
-
+    if(frameSelectorButtonList.size() < 2) return;
+    frameOverviewLayout->removeWidget(frameSelectorButtonList[frameIndex]);
+    frameSelectorButtonList.removeAt(frameIndex);
+    frameIndex = std::max(0, --frameIndex);
+    //TODO emit index, connect
+    for(int i = frameIndex+1; i < frameSelectorButtonList.size(); i++){
+        frameSelectorButtonList[i]->setValue(i);
+    }
 }
 
 void SpriteEditor::cloneFrame(){
 
 }
 
-void SpriteEditor::updateSequenceSequence(const QImage& image){
+void SpriteEditor::updateFrameSequence(const QImage& image){
 
 }
 
