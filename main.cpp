@@ -5,7 +5,8 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    SpriteEditor w;
-    w.show();
+    Model model;
+    SpriteEditor view(model);
+    view.show();
     return a.exec();
 }

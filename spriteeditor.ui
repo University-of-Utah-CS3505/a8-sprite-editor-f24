@@ -14,7 +14,7 @@
    <string>SpriteEditor</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="CustomLabel" name="canvasLabel">
+   <widget class="CanvasLabel" name="canvasLabel">
     <property name="geometry">
      <rect>
       <x>330</x>
@@ -308,9 +308,9 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>CustomLabel</class>
+   <class>CanvasLabel</class>
    <extends>QLabel</extends>
-   <header>CustomLabel.h</header>
+   <header>CanvasLabel.h</header>
   </customwidget>
  </customwidgets>
  <resources/>
