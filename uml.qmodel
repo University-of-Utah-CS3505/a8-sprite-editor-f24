@@ -1448,28 +1448,28 @@
                  <qlist>
                   <item>
                    <MClassMember>
-                    <uid>{3c67624a-7faf-4e24-90f6-5194eeab61da}</uid>
+                    <uid>{64313937-53c3-40ba-8c90-e5b1cb2ac263}</uid>
                     <type>1</type>
                     <declaration>-Buffer : QImage</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{7bb2058b-b398-4417-8204-c7265619e0d8}</uid>
+                    <uid>{32139ae3-f63a-44a4-a1de-f910dbf78cd0}</uid>
                     <type>2</type>
                     <declaration>+paint(QImage&amp; image, const MouseButton&amp; input, const Shape&amp; shape, const float canvasScale, const QPointF&amp; offset)</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{5304a848-9db8-43b7-976e-a6338e56fb4c}</uid>
+                    <uid>{74bcfc8c-c3e8-4db2-9dae-1b428877b843}</uid>
                     <type>2</type>
                     <declaration>+dragShape(QImage&amp; image, const MouseButton&amp; input, const Shape&amp; shape, const float canvasScale, const QPointF&amp; offset)</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{1eeb718e-d987-4074-88ce-e439770d78e7}</uid>
+                    <uid>{67c12e3f-8fec-488c-bfd1-3ce22005dcef}</uid>
                     <type>2</type>
                     <declaration>+erase(QImage&amp; image, const MouseButton&amp; input, const Shape&amp; shape, const float canvasScale, const QPointF&amp; offset)</declaration>
                    </MClassMember>

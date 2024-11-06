@@ -19,6 +19,7 @@ class BrushTool
     /// \param painter set color of painter
     ///
     void drawShapeOnImage(const MouseButton& input, const Shape& shape, const float canvasScale, const QPointF& offset, QPainter& painter);
+
 public:
     BrushTool();
     ///
