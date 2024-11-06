@@ -18,9 +18,9 @@ class MouseButton
     int amount;
 public:
     MouseButton(enum buttonType btn, QPointF pos, int amount);
-    const enum buttonType& getButtonType();
-    int getAmount();
-    QPointF getPos();
+    const enum buttonType& getButtonType() const;
+    int getAmount() const;
+    QPointF getPos() const;
 };
 
 #endif // MOUSEBUTTON_H

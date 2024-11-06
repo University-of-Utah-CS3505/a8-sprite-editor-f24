@@ -6,14 +6,14 @@ MouseButton::MouseButton(enum buttonType btn, QPointF pos, int amount)
 
 }
 
-const enum buttonType& MouseButton::getButtonType(){
+const enum buttonType& MouseButton::getButtonType() const{
     return buttonType;
 }
 
-int MouseButton::getAmount(){
+int MouseButton::getAmount const(){
     return amount;
 }
 
-QPointF MouseButton::getPos(){
+QPointF MouseButton::getPos const(){
     return pos;
 }

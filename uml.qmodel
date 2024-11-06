@@ -351,145 +351,13 @@
                          </base-DElement>
                          <object>{c37b5b76-5658-41f1-b329-4407143aa6e5}</object>
                          <name>BrushTool</name>
-                         <pos>x:-295;y:580</pos>
-                         <rect>x:-205;y:-45;w:410;h:90</rect>
+                         <pos>x:-515;y:590</pos>
+                         <rect>x:-350;y:-60;w:700;h:120</rect>
                          <visual-role>0</visual-role>
                         </DObject>
                        </base-DObject>
                        <show-all-members>true</show-all-members>
                       </DClass>
-                     </instance>
-                    </item>
-                    <item>
-                     <instance type="DClass">
-                      <DClass>
-                       <base-DObject>
-                        <DObject>
-                         <base-DElement>
-                          <DElement>
-                           <uid>{7eba7529-44bb-4cb7-8bc3-a9945da9abe1}</uid>
-                          </DElement>
-                         </base-DElement>
-                         <object>{129997c7-7bca-4795-8b53-5f6c0055033a}</object>
-                         <name>Paint</name>
-                         <pos>x:-890;y:485</pos>
-                         <rect>x:-205;y:-35;w:410;h:70</rect>
-                         <visual-role>0</visual-role>
-                        </DObject>
-                       </base-DObject>
-                       <show-all-members>true</show-all-members>
-                      </DClass>
-                     </instance>
-                    </item>
-                    <item>
-                     <instance type="DInheritance">
-                      <DInheritance>
-                       <base-DRelation>
-                        <DRelation>
-                         <base-DElement>
-                          <DElement>
-                           <uid>{801c5e94-b066-4826-85a6-67b7a861df13}</uid>
-                          </DElement>
-                         </base-DElement>
-                         <object>{21c4c92b-bce7-4542-92a7-a87a047e914d}</object>
-                         <a>{7eba7529-44bb-4cb7-8bc3-a9945da9abe1}</a>
-                         <b>{10d7a94f-cb72-44c4-b554-28c3db99340f}</b>
-                        </DRelation>
-                       </base-DRelation>
-                      </DInheritance>
-                     </instance>
-                    </item>
-                    <item>
-                     <instance type="DClass">
-                      <DClass>
-                       <base-DObject>
-                        <DObject>
-                         <base-DElement>
-                          <DElement>
-                           <uid>{8d8c0fc0-e045-4498-af04-95ed30b1d8d7}</uid>
-                          </DElement>
-                         </base-DElement>
-                         <object>{496f708e-234a-4083-b3aa-2802cdd7e8d5}</object>
-                         <name>DragShape</name>
-                         <pos>x:-870;y:580</pos>
-                         <rect>x:-205;y:-35;w:410;h:70</rect>
-                         <visual-role>0</visual-role>
-                        </DObject>
-                       </base-DObject>
-                       <show-all-members>true</show-all-members>
-                      </DClass>
-                     </instance>
-                    </item>
-                    <item>
-                     <instance type="DAnnotation">
-                      <DAnnotation>
-                       <base-DElement>
-                        <DElement>
-                         <uid>{c9cb9f24-9048-499b-8cd5-b71b7deab4ad}</uid>
-                        </DElement>
-                       </base-DElement>
-                       <text>Brush Tool vetitual method</text>
-                       <pos>x:-500;y:630</pos>
-                       <rect>x:0;y:0;w:176;h:30</rect>
-                       <auto-sized>false</auto-sized>
-                      </DAnnotation>
-                     </instance>
-                    </item>
-                    <item>
-                     <instance type="DInheritance">
-                      <DInheritance>
-                       <base-DRelation>
-                        <DRelation>
-                         <base-DElement>
-                          <DElement>
-                           <uid>{7ca5a7c8-717d-4155-bc05-4fd1a82795ca}</uid>
-                          </DElement>
-                         </base-DElement>
-                         <object>{66a4216b-01f2-44c7-bc84-b58b82063d9c}</object>
-                         <a>{8d8c0fc0-e045-4498-af04-95ed30b1d8d7}</a>
-                         <b>{10d7a94f-cb72-44c4-b554-28c3db99340f}</b>
-                        </DRelation>
-                       </base-DRelation>
-                      </DInheritance>
-                     </instance>
-                    </item>
-                    <item>
-                     <instance type="DClass">
-                      <DClass>
-                       <base-DObject>
-                        <DObject>
-                         <base-DElement>
-                          <DElement>
-                           <uid>{c16809de-3d5f-464f-8a56-f1802bbecdd8}</uid>
-                          </DElement>
-                         </base-DElement>
-                         <object>{d4a96ef6-8bb3-4d58-af02-69774ece8f32}</object>
-                         <name>Erase</name>
-                         <pos>x:-870;y:675</pos>
-                         <rect>x:-205;y:-35;w:410;h:70</rect>
-                         <visual-role>0</visual-role>
-                        </DObject>
-                       </base-DObject>
-                       <show-all-members>true</show-all-members>
-                      </DClass>
-                     </instance>
-                    </item>
-                    <item>
-                     <instance type="DInheritance">
-                      <DInheritance>
-                       <base-DRelation>
-                        <DRelation>
-                         <base-DElement>
-                          <DElement>
-                           <uid>{d5bd2a2f-009b-43e6-9456-fcc76dca105f}</uid>
-                          </DElement>
-                         </base-DElement>
-                         <object>{55169a59-cb99-42d3-8b22-232adb883f78}</object>
-                         <a>{c16809de-3d5f-464f-8a56-f1802bbecdd8}</a>
-                         <b>{10d7a94f-cb72-44c4-b554-28c3db99340f}</b>
-                        </DRelation>
-                       </base-DRelation>
-                      </DInheritance>
                      </instance>
                     </item>
                     <item>
@@ -504,8 +372,8 @@
                          </base-DElement>
                          <object>{62980fa1-f51a-4c69-ad0e-792992a67f54}</object>
                          <name>Shape</name>
-                         <pos>x:600;y:325</pos>
-                         <rect>x:-65;y:-45;w:130;h:90</rect>
+                         <pos>x:620;y:390</pos>
+                         <rect>x:-65;y:-50;w:130;h:100</rect>
                          <visual-role>0</visual-role>
                         </DObject>
                        </base-DObject>
@@ -586,7 +454,7 @@
                     </item>
                    </qlist>
                   </elements>
-                  <last-modified>1730769461224</last-modified>
+                  <last-modified>1730874503408</last-modified>
                   <toolbarid>General</toolbarid>
                  </MDiagram>
                 </base-MDiagram>
@@ -1580,16 +1448,30 @@
                  <qlist>
                   <item>
                    <MClassMember>
-                    <uid>{b72bec9f-e5f6-45d7-9b6a-da5b717ae7a7}</uid>
+                    <uid>{3c67624a-7faf-4e24-90f6-5194eeab61da}</uid>
                     <type>1</type>
-                    <declaration>-Temp : QImage</declaration>
+                    <declaration>-Buffer : QImage</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{a2e7013f-9c8c-4bb9-95b8-927f7fc79f62}</uid>
+                    <uid>{7bb2058b-b398-4417-8204-c7265619e0d8}</uid>
                     <type>2</type>
-                    <declaration>+apply(QImage&amp; image, const MouseButton&amp; input, const Shape shape)</declaration>
+                    <declaration>+paint(QImage&amp; image, const MouseButton&amp; input, const Shape&amp; shape, const float canvasScale, const QPointF&amp; offset)</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{5304a848-9db8-43b7-976e-a6338e56fb4c}</uid>
+                    <type>2</type>
+                    <declaration>+dragShape(QImage&amp; image, const MouseButton&amp; input, const Shape&amp; shape, const float canvasScale, const QPointF&amp; offset)</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{1eeb718e-d987-4074-88ce-e439770d78e7}</uid>
+                    <type>2</type>
+                    <declaration>+erase(QImage&amp; image, const MouseButton&amp; input, const Shape&amp; shape, const float canvasScale, const QPointF&amp; offset)</declaration>
                    </MClassMember>
                   </item>
                  </qlist>
@@ -1649,7 +1531,7 @@
                  <qlist>
                   <item>
                    <MClassMember>
-                    <uid>{da728213-faf2-411b-9c2e-146e8801af4e}</uid>
+                    <uid>{1c58a2be-a082-4fdc-b931-cd5324888415}</uid>
                     <type>2</type>
                     <declaration>+apply(QImage&amp; image, const MouseButton&amp; input, const Shape shape)</declaration>
                    </MClassMember>
@@ -1711,7 +1593,7 @@
                  <qlist>
                   <item>
                    <MClassMember>
-                    <uid>{0cfaab1f-6da7-4fa0-9891-81bc7baa2689}</uid>
+                    <uid>{cfe494de-a97d-4b80-ae49-5e4cb57ec1a3}</uid>
                     <type>2</type>
                     <declaration>+apply(QImage&amp; image, const MouseButton&amp; input, const Shape shape)</declaration>
                    </MClassMember>
@@ -1826,16 +1708,23 @@
                  <qlist>
                   <item>
                    <MClassMember>
-                    <uid>{4ec3bacd-2507-46bc-ba84-178cb42316f8}</uid>
+                    <uid>{1ac06bda-5b3a-4cfd-9788-bc8d9413bf76}</uid>
                     <type>1</type>
-                    <declaration>-shapeSize : QPointF</declaration>
+                    <declaration>-shapeSize : float</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{28c75152-c521-44a9-b2ae-b57bd08295f0}</uid>
+                    <uid>{0610b3ee-131c-478c-aa97-0d451e7f8eae}</uid>
                     <type>1</type>
                     <declaration>-shapeColor : QColor</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{739628ad-f2f1-4691-ab82-0bde8314b2f4}</uid>
+                    <type>1</type>
+                    <declaration>-shapeType : enum</declaration>
                    </MClassMember>
                   </item>
                  </qlist>
