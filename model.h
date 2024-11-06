@@ -16,9 +16,14 @@ public:
 
 public slots:
     void receiveMouseEvent(MouseButton button);
+    void selectFrame(int frameIndex);
+    void addNewFrameAtCurrentFrame();
+    void removeCurrentFrame();
+    void cloneCurrentFrame();
 
 signals:
     void display(float scale, const QImage& image, const QPointF& offset);
+
 
 };
 

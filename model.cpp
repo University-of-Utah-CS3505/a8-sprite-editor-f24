@@ -8,3 +8,20 @@ Model::Model(QObject *parent)
 void Model::receiveMouseEvent(MouseButton button){
 
 }
+
+void Model::selectFrame(int frameIndex){
+
+}
+
+void Model::addNewFrameAtCurrentFrame(){
+
+}
+
+void Model::removeCurrentFrame(){
+
+}
+
+void Model::cloneCurrentFrame(){
+
+}
+

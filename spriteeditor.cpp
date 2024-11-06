@@ -14,10 +14,21 @@ SpriteEditor::SpriteEditor(class Model& model, QWidget *parent)
 {
     ui->setupUi(this);
 
-    connect(ui->canvasLabel, &CanvasLabel::sendMouseEvent, &model, &Model::receiveMouseEvent);
-    //connect(&model, &Model::display, this, &SpriteEditor::display);
 
+    //Connect ui singal to model slot
+    connect(ui->canvasLabel, &CanvasLabel::sendMouseEvent, &model, &Model::receiveMouseEvent);
+    connect(ui->addFrameButton, &QPushButton::pressed, &model, &Model::addNewFrameAtCurrentFrame);
+    connect(ui->removeFrameButton, &QPushButton::pressed, &model, &Model::removeCurrentFrame);
+    connect(ui->cloneFrameButton, &QPushButton::pressed, &model, &Model::cloneCurrentFrame);
+
+
+    //Connect ui signal to self slot
     connect(ui->addFrameButton, &QPushButton::pressed, this, &SpriteEditor::addFrame);
+    connect(ui->removeFrameButton, &QPushButton::pressed, this, &SpriteEditor::removeFrame);
+    connect(ui->cloneFrameButton, &QPushButton::pressed, this, &SpriteEditor::cloneFrame);
+
+    //Connect model signal to ui slot
+    //connect(&model, &Model::display, this, &SpriteEditor::display);
 
     // setup the scroll area
     frameOverviewContainer = new QWidget;
@@ -29,8 +40,12 @@ SpriteEditor::SpriteEditor(class Model& model, QWidget *parent)
     ui->scrollArea->setWidget(frameOverviewContainer);
 
     //add a frame
-    addFrame();
-
+    IntSignalButton *button = new IntSignalButton(0);
+    setFrameButtonSelected(button);
+    button->setFixedSize(75,75);
+    frameSelectorButtonList.push_back(button);
+    frameOverviewLayout->addWidget(button);
+    connect(frameSelectorButtonList[0], &IntSignalButton::sendSelfValue, this, &SpriteEditor::selectFrame);
 
 }
 
@@ -54,59 +69,88 @@ void SpriteEditor::display(const QImage& image, float scale, const QPointF& offs
 
 
 void SpriteEditor::addFrame(){
-    IntSignalButton *button = new IntSignalButton(frameIndex+1);
-    button->setStyleSheet("QPushButton {"
-                          "  border: 2px solid blue;"  // 设置2像素宽的黑色描边
-                          "  border-radius: 5px;"       // 圆角半径，可选
-                          "  padding: 5px;"             // 内容与边框之间的间距
-                          "}");
+    //select
+    frameIndex++;
 
+    IntSignalButton *button = new IntSignalButton(frameIndex);
+    setFrameButtonSelected(button);
     button->setFixedSize(75,75);
 
     if(frameIndex >= frameSelectorButtonList.size() || frameIndex < 0){
         frameSelectorButtonList.push_back(button);
         frameOverviewLayout->addWidget(button);
     }else{
-        frameSelectorButtonList.insert(frameIndex + 1, button);
-        frameOverviewLayout->insertWidget(frameIndex + 1, button);
+        frameSelectorButtonList.insert(frameIndex, button);
+        frameOverviewLayout->insertWidget(frameIndex, button);
     }
 
-    if(frameSelectorButtonList.size() != 1){
-        frameSelectorButtonList[frameIndex]->setStyleSheet("QPushButton {"
-                                                           "  padding: 5px;"             // 内容与边框之间的间距
-                                                           "}");
-    }
 
-    frameIndex++;
-    for(int i = frameIndex+1; i < frameSelectorButtonList.size(); i++){
-        frameSelectorButtonList[i]->setValue(i);
-    }
-    //TODO emit index, connect
+    setFrameButtonUnselected(frameSelectorButtonList[frameIndex-1]);
 
+    updateAllChangedFrameButton();
 
+    selectFrame(frameIndex);
 
     frameOverviewContainer->adjustSize();  // adjust button to center
-
 }
 
-void SpriteEditor::deleteFrame(){
+void SpriteEditor::removeFrame(){
     if(frameSelectorButtonList.size() < 2) return;
-    frameOverviewLayout->removeWidget(frameSelectorButtonList[frameIndex]);
+
+    //Start to remove the button
+    IntSignalButton *buttonToRemove = frameSelectorButtonList[frameIndex];
+    frameOverviewLayout->removeWidget(buttonToRemove); //Note: this will only remove the button in lay out, need use delete later method to remove it
+    buttonToRemove->deleteLater();
     frameSelectorButtonList.removeAt(frameIndex);
+
     frameIndex = std::max(0, --frameIndex);
-    //TODO emit index, connect
-    for(int i = frameIndex+1; i < frameSelectorButtonList.size(); i++){
-        frameSelectorButtonList[i]->setValue(i);
-    }
+    updateAllChangedFrameButton();
+    selectFrame(frameIndex);
+    frameOverviewContainer->adjustSize();
+
+
+    update();
 }
 
 void SpriteEditor::cloneFrame(){
+    addFrame();
+    frameSelectorButtonList[frameIndex]->setIcon(frameSelectorButtonList[frameIndex-1]->icon());
+}
 
+void SpriteEditor::updateAllChangedFrameButton(){
+    for(int i = frameIndex; i < frameSelectorButtonList.size(); i++){
+        frameSelectorButtonList[i]->setValue(i);
+        connect(frameSelectorButtonList[i], &IntSignalButton::sendSelfValue, this, &SpriteEditor::selectFrame);
+    }
+}
+
+void SpriteEditor::selectFrame(int newFrameIndex){
+    setFrameButtonUnselected(frameSelectorButtonList[this->frameIndex]);
+    setFrameButtonSelected(frameSelectorButtonList[newFrameIndex]);
+
+    this->frameIndex = newFrameIndex;
+    emit(sendSelectedFrameIndex(newFrameIndex));
 }
 
 void SpriteEditor::updateFrameSequence(const QImage& image){
 
 }
+
+void SpriteEditor::setFrameButtonSelected(IntSignalButton* button){
+    button->setStyleSheet("QPushButton {"
+                          "  border: 2px solid blue;"  // 设置2像素宽的黑色描边
+                          "  border-radius: 5px;"       // 圆角半径，可选
+                          "  padding: 5px;"             // 内容与边框之间的间距
+                          "}");
+    button->setEnabled(false);
+}
+void SpriteEditor::setFrameButtonUnselected(IntSignalButton* button){
+    button->setStyleSheet("QPushButton {"
+                          "  padding: 5px;"             // 内容与边框之间的间距
+                          "}");
+    button->setEnabled(true);
+}
+
 
 
 SpriteEditor::~SpriteEditor()

@@ -12,7 +12,7 @@ public:
 
 public slots:
     void pushed();
-    void setValue(int val)
+    void setValue(int val);
 
 signals:
     void sendSelfValue(int value);

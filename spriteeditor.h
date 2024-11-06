@@ -19,20 +19,28 @@ QT_END_NAMESPACE
 class SpriteEditor : public QMainWindow
 {
     Q_OBJECT
-    int frameIndex = -1;
+    int frameIndex = 0;
     QList<IntSignalButton*> frameSelectorButtonList;
     QWidget *frameOverviewContainer;
     QHBoxLayout *frameOverviewLayout;
+
+    void setFrameButtonSelected(IntSignalButton* button);
+    void setFrameButtonUnselected(IntSignalButton* button);
+    void updateAllChangedFrameButton();
 public:
     SpriteEditor(Model& m, QWidget *parent = nullptr);
     ~SpriteEditor();
 
 public slots:
+    void selectFrame(int frameIndex);
     void addFrame();
-    void deleteFrame();
+    void removeFrame();
     void cloneFrame();
     void updateFrameSequence(const QImage& image);
     void display(const QImage& image, float scale, const QPointF& offset);
+
+signals:
+    void sendSelectedFrameIndex(int index);
 
 private:
     Ui::SpriteEditor *ui;
