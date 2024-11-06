@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <qmt>
  <project>
-  <uid>{ad4c7641-7d1e-434c-aebe-aae0f254286c}</uid>
+  <uid>{6100f778-5585-45c4-b14b-aaf12f9c22ef}</uid>
   <root-package>
    <instance>
     <MPackage>
@@ -9,17 +9,17 @@
       <MObject>
        <base-MElement>
         <MElement>
-         <uid>{eefa9159-eb24-4426-b0eb-2433f7b9898f}</uid>
+         <uid>{7c868b8a-ff0e-4dad-9db1-60ffcc570fdd}</uid>
         </MElement>
        </base-MElement>
-       <name>UML</name>
+       <name>structure</name>
        <children>
         <handles>
          <handles>
           <qlist>
            <item>
             <handle>
-             <uid>{77c943ce-bed4-4095-8567-a792c364fc37}</uid>
+             <uid>{4f16fd7b-c253-4e97-892f-7a568b8cf944}</uid>
              <target>
               <instance type="MCanvasDiagram">
                <MCanvasDiagram>
@@ -29,35 +29,14 @@
                    <MObject>
                     <base-MElement>
                      <MElement>
-                      <uid>{77c943ce-bed4-4095-8567-a792c364fc37}</uid>
+                      <uid>{4f16fd7b-c253-4e97-892f-7a568b8cf944}</uid>
                      </MElement>
                     </base-MElement>
-                    <name>UML</name>
+                    <name>structure</name>
                    </MObject>
                   </base-MObject>
                   <elements>
                    <qlist>
-                    <item>
-                     <instance type="DClass">
-                      <DClass>
-                       <base-DObject>
-                        <DObject>
-                         <base-DElement>
-                          <DElement>
-                           <uid>{10d7a94f-cb72-44c4-b554-28c3db99340f}</uid>
-                          </DElement>
-                         </base-DElement>
-                         <object>{c37b5b76-5658-41f1-b329-4407143aa6e5}</object>
-                         <name>BrushTool</name>
-                         <pos>x:-295;y:580</pos>
-                         <rect>x:-205;y:-45;w:410;h:90</rect>
-                         <visual-role>0</visual-role>
-                        </DObject>
-                       </base-DObject>
-                       <show-all-members>true</show-all-members>
-                      </DClass>
-                     </instance>
-                    </item>
                     <item>
                      <instance type="DClass">
                       <DClass>
@@ -73,174 +52,6 @@
                          <pos>x:300;y:385</pos>
                          <rect>x:-205;y:-220;w:410;h:440</rect>
                          <auto-sized>false</auto-sized>
-                         <visual-role>0</visual-role>
-                        </DObject>
-                       </base-DObject>
-                       <show-all-members>true</show-all-members>
-                      </DClass>
-                     </instance>
-                    </item>
-                    <item>
-                     <instance type="DClass">
-                      <DClass>
-                       <base-DObject>
-                        <DObject>
-                         <base-DElement>
-                          <DElement>
-                           <uid>{7eba7529-44bb-4cb7-8bc3-a9945da9abe1}</uid>
-                          </DElement>
-                         </base-DElement>
-                         <object>{129997c7-7bca-4795-8b53-5f6c0055033a}</object>
-                         <name>Paint</name>
-                         <pos>x:-890;y:485</pos>
-                         <rect>x:-205;y:-35;w:410;h:70</rect>
-                         <visual-role>0</visual-role>
-                        </DObject>
-                       </base-DObject>
-                       <show-all-members>true</show-all-members>
-                      </DClass>
-                     </instance>
-                    </item>
-                    <item>
-                     <instance type="DClass">
-                      <DClass>
-                       <base-DObject>
-                        <DObject>
-                         <base-DElement>
-                          <DElement>
-                           <uid>{38bb7e23-335d-4906-8c56-4bab66a1e3d8}</uid>
-                          </DElement>
-                         </base-DElement>
-                         <object>{0ea7c548-7cbe-4229-9afb-4f096f378886}</object>
-                         <name>Canvas</name>
-                         <pos>x:-145;y:-90</pos>
-                         <rect>x:-125;y:-95;w:250;h:190</rect>
-                         <visual-role>0</visual-role>
-                        </DObject>
-                       </base-DObject>
-                       <show-all-members>true</show-all-members>
-                      </DClass>
-                     </instance>
-                    </item>
-                    <item>
-                     <instance type="DClass">
-                      <DClass>
-                       <base-DObject>
-                        <DObject>
-                         <base-DElement>
-                          <DElement>
-                           <uid>{8185b5fd-973b-47fd-9191-c72976647f0f}</uid>
-                          </DElement>
-                         </base-DElement>
-                         <object>{6f66d2d8-1634-4185-b1d1-58f75b49f37a}</object>
-                         <name>MouseButton</name>
-                         <pos>x:-555;y:-85</pos>
-                         <rect>x:-180;y:-80;w:360;h:160</rect>
-                         <visual-role>0</visual-role>
-                        </DObject>
-                       </base-DObject>
-                       <show-all-members>true</show-all-members>
-                      </DClass>
-                     </instance>
-                    </item>
-                    <item>
-                     <instance type="DClass">
-                      <DClass>
-                       <base-DObject>
-                        <DObject>
-                         <base-DElement>
-                          <DElement>
-                           <uid>{cbee5b3b-2706-4198-88fa-6af6f9a587cc}</uid>
-                          </DElement>
-                         </base-DElement>
-                         <object>{3f8136fe-13c1-4b7c-83f4-ec4086c7c223}</object>
-                         <name>RotateImageTool</name>
-                         <pos>x:-825;y:235</pos>
-                         <rect>x:-75;y:-35;w:150;h:70</rect>
-                         <visual-role>0</visual-role>
-                        </DObject>
-                       </base-DObject>
-                       <show-all-members>true</show-all-members>
-                      </DClass>
-                     </instance>
-                    </item>
-                    <item>
-                     <instance type="DClass">
-                      <DClass>
-                       <base-DObject>
-                        <DObject>
-                         <base-DElement>
-                          <DElement>
-                           <uid>{71c0bb13-e545-4de9-88ee-110a86c7aef1}</uid>
-                          </DElement>
-                         </base-DElement>
-                         <object>{c0abbf92-2b12-4596-887b-49551a6d3e84}</object>
-                         <name>FlipImageTool</name>
-                         <pos>x:-825;y:110</pos>
-                         <rect>x:-75;y:-35;w:150;h:70</rect>
-                         <visual-role>0</visual-role>
-                        </DObject>
-                       </base-DObject>
-                       <show-all-members>true</show-all-members>
-                      </DClass>
-                     </instance>
-                    </item>
-                    <item>
-                     <instance type="DClass">
-                      <DClass>
-                       <base-DObject>
-                        <DObject>
-                         <base-DElement>
-                          <DElement>
-                           <uid>{92a283d1-9649-4dc7-ba03-f20973b19ef6}</uid>
-                          </DElement>
-                         </base-DElement>
-                         <object>{62980fa1-f51a-4c69-ad0e-792992a67f54}</object>
-                         <name>Shape</name>
-                         <pos>x:600;y:325</pos>
-                         <rect>x:-65;y:-45;w:130;h:90</rect>
-                         <visual-role>0</visual-role>
-                        </DObject>
-                       </base-DObject>
-                       <show-all-members>true</show-all-members>
-                      </DClass>
-                     </instance>
-                    </item>
-                    <item>
-                     <instance type="DClass">
-                      <DClass>
-                       <base-DObject>
-                        <DObject>
-                         <base-DElement>
-                          <DElement>
-                           <uid>{8d8c0fc0-e045-4498-af04-95ed30b1d8d7}</uid>
-                          </DElement>
-                         </base-DElement>
-                         <object>{496f708e-234a-4083-b3aa-2802cdd7e8d5}</object>
-                         <name>DragShape</name>
-                         <pos>x:-870;y:580</pos>
-                         <rect>x:-205;y:-35;w:410;h:70</rect>
-                         <visual-role>0</visual-role>
-                        </DObject>
-                       </base-DObject>
-                       <show-all-members>true</show-all-members>
-                      </DClass>
-                     </instance>
-                    </item>
-                    <item>
-                     <instance type="DClass">
-                      <DClass>
-                       <base-DObject>
-                        <DObject>
-                         <base-DElement>
-                          <DElement>
-                           <uid>{203a87fe-9f57-4486-a797-ff2b963945da}</uid>
-                          </DElement>
-                         </base-DElement>
-                         <object>{24b16e5b-e835-4f28-91ff-f835f06e0d34}</object>
-                         <name>ImageTool</name>
-                         <pos>x:-460;y:170</pos>
-                         <rect>x:-75;y:-35;w:150;h:70</rect>
                          <visual-role>0</visual-role>
                         </DObject>
                        </base-DObject>
@@ -277,12 +88,330 @@
                         <DObject>
                          <base-DElement>
                           <DElement>
-                           <uid>{c16809de-3d5f-464f-8a56-f1802bbecdd8}</uid>
+                           <uid>{38bb7e23-335d-4906-8c56-4bab66a1e3d8}</uid>
                           </DElement>
                          </base-DElement>
-                         <object>{d4a96ef6-8bb3-4d58-af02-69774ece8f32}</object>
-                         <name>Erase</name>
-                         <pos>x:-870;y:675</pos>
+                         <object>{0ea7c548-7cbe-4229-9afb-4f096f378886}</object>
+                         <name>Canvas</name>
+                         <pos>x:-145;y:-90</pos>
+                         <rect>x:-125;y:-95;w:250;h:190</rect>
+                         <visual-role>0</visual-role>
+                        </DObject>
+                       </base-DObject>
+                       <show-all-members>true</show-all-members>
+                      </DClass>
+                     </instance>
+                    </item>
+                    <item>
+                     <instance type="DAssociation">
+                      <DAssociation>
+                       <base-DRelation>
+                        <DRelation>
+                         <base-DElement>
+                          <DElement>
+                           <uid>{13e6613c-43aa-45dd-8ed5-068a6d103b02}</uid>
+                          </DElement>
+                         </base-DElement>
+                         <object>{748447c2-2f81-4137-8284-429fff37b3a8}</object>
+                         <a>{9f365000-4310-413a-8b79-7c55e16e63eb}</a>
+                         <b>{38bb7e23-335d-4906-8c56-4bab66a1e3d8}</b>
+                        </DRelation>
+                       </base-DRelation>
+                       <a>
+                        <DAssociationEnd>
+                         <cradinality>1</cradinality>
+                         <navigable>true</navigable>
+                         <kind>2</kind>
+                        </DAssociationEnd>
+                       </a>
+                      </DAssociation>
+                     </instance>
+                    </item>
+                    <item>
+                     <instance type="DClass">
+                      <DClass>
+                       <base-DObject>
+                        <DObject>
+                         <base-DElement>
+                          <DElement>
+                           <uid>{8185b5fd-973b-47fd-9191-c72976647f0f}</uid>
+                          </DElement>
+                         </base-DElement>
+                         <object>{6f66d2d8-1634-4185-b1d1-58f75b49f37a}</object>
+                         <name>MouseButton</name>
+                         <pos>x:-555;y:-85</pos>
+                         <rect>x:-180;y:-80;w:360;h:160</rect>
+                         <visual-role>0</visual-role>
+                        </DObject>
+                       </base-DObject>
+                       <show-all-members>true</show-all-members>
+                      </DClass>
+                     </instance>
+                    </item>
+                    <item>
+                     <instance type="DAssociation">
+                      <DAssociation>
+                       <base-DRelation>
+                        <DRelation>
+                         <base-DElement>
+                          <DElement>
+                           <uid>{69cfdce2-1699-45c7-89e5-60015e76c9d0}</uid>
+                          </DElement>
+                         </base-DElement>
+                         <object>{ed7bbac3-30f4-4e40-b41c-6ee8b93568da}</object>
+                         <a>{38bb7e23-335d-4906-8c56-4bab66a1e3d8}</a>
+                         <b>{8185b5fd-973b-47fd-9191-c72976647f0f}</b>
+                        </DRelation>
+                       </base-DRelation>
+                       <a>
+                        <DAssociationEnd>
+                         <navigable>true</navigable>
+                        </DAssociationEnd>
+                       </a>
+                      </DAssociation>
+                     </instance>
+                    </item>
+                    <item>
+                     <instance type="DAssociation">
+                      <DAssociation>
+                       <base-DRelation>
+                        <DRelation>
+                         <base-DElement>
+                          <DElement>
+                           <uid>{9c3898c3-e2b6-41b5-a721-1033f15297e3}</uid>
+                          </DElement>
+                         </base-DElement>
+                         <object>{614adac1-425f-46c1-8026-dac104471941}</object>
+                         <a>{45967437-129d-490d-8d61-c143a5c369b7}</a>
+                         <b>{9f365000-4310-413a-8b79-7c55e16e63eb}</b>
+                        </DRelation>
+                       </base-DRelation>
+                       <a>
+                        <DAssociationEnd>
+                         <navigable>true</navigable>
+                        </DAssociationEnd>
+                       </a>
+                      </DAssociation>
+                     </instance>
+                    </item>
+                    <item>
+                     <instance type="DAssociation">
+                      <DAssociation>
+                       <base-DRelation>
+                        <DRelation>
+                         <base-DElement>
+                          <DElement>
+                           <uid>{75b2ff97-2801-42c0-9891-c048a1cb0fc3}</uid>
+                          </DElement>
+                         </base-DElement>
+                         <object>{2cb01e3a-af22-4101-b06f-33a90bbf6786}</object>
+                         <a>{9f365000-4310-413a-8b79-7c55e16e63eb}</a>
+                         <b>{45967437-129d-490d-8d61-c143a5c369b7}</b>
+                        </DRelation>
+                       </base-DRelation>
+                       <a>
+                        <DAssociationEnd>
+                         <navigable>true</navigable>
+                        </DAssociationEnd>
+                       </a>
+                      </DAssociation>
+                     </instance>
+                    </item>
+                    <item>
+                     <instance type="DAssociation">
+                      <DAssociation>
+                       <base-DRelation>
+                        <DRelation>
+                         <base-DElement>
+                          <DElement>
+                           <uid>{70fa77a9-72ca-4786-badb-ddcb9f4ee1e5}</uid>
+                          </DElement>
+                         </base-DElement>
+                         <object>{4a068b41-fadb-4491-977d-361e52bd6c23}</object>
+                         <a>{45967437-129d-490d-8d61-c143a5c369b7}</a>
+                         <b>{38bb7e23-335d-4906-8c56-4bab66a1e3d8}</b>
+                        </DRelation>
+                       </base-DRelation>
+                       <a>
+                        <DAssociationEnd>
+                         <navigable>true</navigable>
+                        </DAssociationEnd>
+                       </a>
+                      </DAssociation>
+                     </instance>
+                    </item>
+                    <item>
+                     <instance type="DClass">
+                      <DClass>
+                       <base-DObject>
+                        <DObject>
+                         <base-DElement>
+                          <DElement>
+                           <uid>{203a87fe-9f57-4486-a797-ff2b963945da}</uid>
+                          </DElement>
+                         </base-DElement>
+                         <object>{24b16e5b-e835-4f28-91ff-f835f06e0d34}</object>
+                         <name>ImageTool</name>
+                         <pos>x:-460;y:170</pos>
+                         <rect>x:-75;y:-35;w:150;h:70</rect>
+                         <visual-role>0</visual-role>
+                        </DObject>
+                       </base-DObject>
+                       <show-all-members>true</show-all-members>
+                      </DClass>
+                     </instance>
+                    </item>
+                    <item>
+                     <instance type="DClass">
+                      <DClass>
+                       <base-DObject>
+                        <DObject>
+                         <base-DElement>
+                          <DElement>
+                           <uid>{71c0bb13-e545-4de9-88ee-110a86c7aef1}</uid>
+                          </DElement>
+                         </base-DElement>
+                         <object>{c0abbf92-2b12-4596-887b-49551a6d3e84}</object>
+                         <name>FlipImageTool</name>
+                         <pos>x:-825;y:110</pos>
+                         <rect>x:-75;y:-35;w:150;h:70</rect>
+                         <visual-role>0</visual-role>
+                        </DObject>
+                       </base-DObject>
+                       <show-all-members>true</show-all-members>
+                      </DClass>
+                     </instance>
+                    </item>
+                    <item>
+                     <instance type="DInheritance">
+                      <DInheritance>
+                       <base-DRelation>
+                        <DRelation>
+                         <base-DElement>
+                          <DElement>
+                           <uid>{adf5ce85-86b2-4633-8658-89dbdac3e3b5}</uid>
+                          </DElement>
+                         </base-DElement>
+                         <object>{90364b67-9e93-43f9-a53b-6adc13b8133e}</object>
+                         <a>{71c0bb13-e545-4de9-88ee-110a86c7aef1}</a>
+                         <b>{203a87fe-9f57-4486-a797-ff2b963945da}</b>
+                        </DRelation>
+                       </base-DRelation>
+                      </DInheritance>
+                     </instance>
+                    </item>
+                    <item>
+                     <instance type="DClass">
+                      <DClass>
+                       <base-DObject>
+                        <DObject>
+                         <base-DElement>
+                          <DElement>
+                           <uid>{cbee5b3b-2706-4198-88fa-6af6f9a587cc}</uid>
+                          </DElement>
+                         </base-DElement>
+                         <object>{3f8136fe-13c1-4b7c-83f4-ec4086c7c223}</object>
+                         <name>RotateImageTool</name>
+                         <pos>x:-825;y:235</pos>
+                         <rect>x:-75;y:-35;w:150;h:70</rect>
+                         <visual-role>0</visual-role>
+                        </DObject>
+                       </base-DObject>
+                       <show-all-members>true</show-all-members>
+                      </DClass>
+                     </instance>
+                    </item>
+                    <item>
+                     <instance type="DInheritance">
+                      <DInheritance>
+                       <base-DRelation>
+                        <DRelation>
+                         <base-DElement>
+                          <DElement>
+                           <uid>{d384fa26-72e9-4a8d-8313-329cb7c8787f}</uid>
+                          </DElement>
+                         </base-DElement>
+                         <object>{0b83c540-4c77-4658-9f50-63c71cbc3073}</object>
+                         <a>{cbee5b3b-2706-4198-88fa-6af6f9a587cc}</a>
+                         <b>{203a87fe-9f57-4486-a797-ff2b963945da}</b>
+                        </DRelation>
+                       </base-DRelation>
+                      </DInheritance>
+                     </instance>
+                    </item>
+                    <item>
+                     <instance type="DClass">
+                      <DClass>
+                       <base-DObject>
+                        <DObject>
+                         <base-DElement>
+                          <DElement>
+                           <uid>{10d7a94f-cb72-44c4-b554-28c3db99340f}</uid>
+                          </DElement>
+                         </base-DElement>
+                         <object>{c37b5b76-5658-41f1-b329-4407143aa6e5}</object>
+                         <name>BrushTool</name>
+                         <pos>x:-295;y:580</pos>
+                         <rect>x:-205;y:-45;w:410;h:90</rect>
+                         <visual-role>0</visual-role>
+                        </DObject>
+                       </base-DObject>
+                       <show-all-members>true</show-all-members>
+                      </DClass>
+                     </instance>
+                    </item>
+                    <item>
+                     <instance type="DClass">
+                      <DClass>
+                       <base-DObject>
+                        <DObject>
+                         <base-DElement>
+                          <DElement>
+                           <uid>{7eba7529-44bb-4cb7-8bc3-a9945da9abe1}</uid>
+                          </DElement>
+                         </base-DElement>
+                         <object>{129997c7-7bca-4795-8b53-5f6c0055033a}</object>
+                         <name>Paint</name>
+                         <pos>x:-890;y:485</pos>
+                         <rect>x:-205;y:-35;w:410;h:70</rect>
+                         <visual-role>0</visual-role>
+                        </DObject>
+                       </base-DObject>
+                       <show-all-members>true</show-all-members>
+                      </DClass>
+                     </instance>
+                    </item>
+                    <item>
+                     <instance type="DInheritance">
+                      <DInheritance>
+                       <base-DRelation>
+                        <DRelation>
+                         <base-DElement>
+                          <DElement>
+                           <uid>{801c5e94-b066-4826-85a6-67b7a861df13}</uid>
+                          </DElement>
+                         </base-DElement>
+                         <object>{21c4c92b-bce7-4542-92a7-a87a047e914d}</object>
+                         <a>{7eba7529-44bb-4cb7-8bc3-a9945da9abe1}</a>
+                         <b>{10d7a94f-cb72-44c4-b554-28c3db99340f}</b>
+                        </DRelation>
+                       </base-DRelation>
+                      </DInheritance>
+                     </instance>
+                    </item>
+                    <item>
+                     <instance type="DClass">
+                      <DClass>
+                       <base-DObject>
+                        <DObject>
+                         <base-DElement>
+                          <DElement>
+                           <uid>{8d8c0fc0-e045-4498-af04-95ed30b1d8d7}</uid>
+                          </DElement>
+                         </base-DElement>
+                         <object>{496f708e-234a-4083-b3aa-2802cdd7e8d5}</object>
+                         <name>DragShape</name>
+                         <pos>x:-870;y:580</pos>
                          <rect>x:-205;y:-35;w:410;h:70</rect>
                          <visual-role>0</visual-role>
                         </DObject>
@@ -307,28 +436,81 @@
                      </instance>
                     </item>
                     <item>
-                     <instance type="DAssociation">
-                      <DAssociation>
+                     <instance type="DInheritance">
+                      <DInheritance>
                        <base-DRelation>
                         <DRelation>
                          <base-DElement>
                           <DElement>
-                           <uid>{b4236855-22bb-465a-9ddd-a648e8fa5c6f}</uid>
+                           <uid>{7ca5a7c8-717d-4155-bc05-4fd1a82795ca}</uid>
                           </DElement>
                          </base-DElement>
-                         <object>{8d6e1a54-06e6-492b-a713-9b4662915fec}</object>
-                         <a>{45967437-129d-490d-8d61-c143a5c369b7}</a>
-                         <b>{92a283d1-9649-4dc7-ba03-f20973b19ef6}</b>
+                         <object>{66a4216b-01f2-44c7-bc84-b58b82063d9c}</object>
+                         <a>{8d8c0fc0-e045-4498-af04-95ed30b1d8d7}</a>
+                         <b>{10d7a94f-cb72-44c4-b554-28c3db99340f}</b>
                         </DRelation>
                        </base-DRelation>
-                       <a>
-                        <DAssociationEnd>
-                         <cradinality>1</cradinality>
-                         <navigable>true</navigable>
-                         <kind>2</kind>
-                        </DAssociationEnd>
-                       </a>
-                      </DAssociation>
+                      </DInheritance>
+                     </instance>
+                    </item>
+                    <item>
+                     <instance type="DClass">
+                      <DClass>
+                       <base-DObject>
+                        <DObject>
+                         <base-DElement>
+                          <DElement>
+                           <uid>{c16809de-3d5f-464f-8a56-f1802bbecdd8}</uid>
+                          </DElement>
+                         </base-DElement>
+                         <object>{d4a96ef6-8bb3-4d58-af02-69774ece8f32}</object>
+                         <name>Erase</name>
+                         <pos>x:-870;y:675</pos>
+                         <rect>x:-205;y:-35;w:410;h:70</rect>
+                         <visual-role>0</visual-role>
+                        </DObject>
+                       </base-DObject>
+                       <show-all-members>true</show-all-members>
+                      </DClass>
+                     </instance>
+                    </item>
+                    <item>
+                     <instance type="DInheritance">
+                      <DInheritance>
+                       <base-DRelation>
+                        <DRelation>
+                         <base-DElement>
+                          <DElement>
+                           <uid>{d5bd2a2f-009b-43e6-9456-fcc76dca105f}</uid>
+                          </DElement>
+                         </base-DElement>
+                         <object>{55169a59-cb99-42d3-8b22-232adb883f78}</object>
+                         <a>{c16809de-3d5f-464f-8a56-f1802bbecdd8}</a>
+                         <b>{10d7a94f-cb72-44c4-b554-28c3db99340f}</b>
+                        </DRelation>
+                       </base-DRelation>
+                      </DInheritance>
+                     </instance>
+                    </item>
+                    <item>
+                     <instance type="DClass">
+                      <DClass>
+                       <base-DObject>
+                        <DObject>
+                         <base-DElement>
+                          <DElement>
+                           <uid>{92a283d1-9649-4dc7-ba03-f20973b19ef6}</uid>
+                          </DElement>
+                         </base-DElement>
+                         <object>{62980fa1-f51a-4c69-ad0e-792992a67f54}</object>
+                         <name>Shape</name>
+                         <pos>x:600;y:325</pos>
+                         <rect>x:-65;y:-45;w:130;h:90</rect>
+                         <visual-role>0</visual-role>
+                        </DObject>
+                       </base-DObject>
+                       <show-all-members>true</show-all-members>
+                      </DClass>
                      </instance>
                     </item>
                     <item>
@@ -338,12 +520,12 @@
                         <DRelation>
                          <base-DElement>
                           <DElement>
-                           <uid>{69cfdce2-1699-45c7-89e5-60015e76c9d0}</uid>
+                           <uid>{7b80ba07-9ee5-412a-8c5a-2c6d4394311f}</uid>
                           </DElement>
                          </base-DElement>
-                         <object>{ed7bbac3-30f4-4e40-b41c-6ee8b93568da}</object>
-                         <a>{38bb7e23-335d-4906-8c56-4bab66a1e3d8}</a>
-                         <b>{8185b5fd-973b-47fd-9191-c72976647f0f}</b>
+                         <object>{1292368c-851c-4151-875b-fbde80968f7b}</object>
+                         <a>{45967437-129d-490d-8d61-c143a5c369b7}</a>
+                         <b>{203a87fe-9f57-4486-a797-ff2b963945da}</b>
                         </DRelation>
                        </base-DRelation>
                        <a>
@@ -378,95 +560,18 @@
                      </instance>
                     </item>
                     <item>
-                     <instance type="DInheritance">
-                      <DInheritance>
-                       <base-DRelation>
-                        <DRelation>
-                         <base-DElement>
-                          <DElement>
-                           <uid>{d384fa26-72e9-4a8d-8313-329cb7c8787f}</uid>
-                          </DElement>
-                         </base-DElement>
-                         <object>{0b83c540-4c77-4658-9f50-63c71cbc3073}</object>
-                         <a>{cbee5b3b-2706-4198-88fa-6af6f9a587cc}</a>
-                         <b>{203a87fe-9f57-4486-a797-ff2b963945da}</b>
-                        </DRelation>
-                       </base-DRelation>
-                      </DInheritance>
-                     </instance>
-                    </item>
-                    <item>
-                     <instance type="DInheritance">
-                      <DInheritance>
-                       <base-DRelation>
-                        <DRelation>
-                         <base-DElement>
-                          <DElement>
-                           <uid>{801c5e94-b066-4826-85a6-67b7a861df13}</uid>
-                          </DElement>
-                         </base-DElement>
-                         <object>{21c4c92b-bce7-4542-92a7-a87a047e914d}</object>
-                         <a>{7eba7529-44bb-4cb7-8bc3-a9945da9abe1}</a>
-                         <b>{10d7a94f-cb72-44c4-b554-28c3db99340f}</b>
-                        </DRelation>
-                       </base-DRelation>
-                      </DInheritance>
-                     </instance>
-                    </item>
-                    <item>
-                     <instance type="DInheritance">
-                      <DInheritance>
-                       <base-DRelation>
-                        <DRelation>
-                         <base-DElement>
-                          <DElement>
-                           <uid>{d5bd2a2f-009b-43e6-9456-fcc76dca105f}</uid>
-                          </DElement>
-                         </base-DElement>
-                         <object>{55169a59-cb99-42d3-8b22-232adb883f78}</object>
-                         <a>{c16809de-3d5f-464f-8a56-f1802bbecdd8}</a>
-                         <b>{10d7a94f-cb72-44c4-b554-28c3db99340f}</b>
-                        </DRelation>
-                       </base-DRelation>
-                      </DInheritance>
-                     </instance>
-                    </item>
-                    <item>
                      <instance type="DAssociation">
                       <DAssociation>
                        <base-DRelation>
                         <DRelation>
                          <base-DElement>
                           <DElement>
-                           <uid>{7b80ba07-9ee5-412a-8c5a-2c6d4394311f}</uid>
+                           <uid>{b4236855-22bb-465a-9ddd-a648e8fa5c6f}</uid>
                           </DElement>
                          </base-DElement>
-                         <object>{1292368c-851c-4151-875b-fbde80968f7b}</object>
+                         <object>{8d6e1a54-06e6-492b-a713-9b4662915fec}</object>
                          <a>{45967437-129d-490d-8d61-c143a5c369b7}</a>
-                         <b>{203a87fe-9f57-4486-a797-ff2b963945da}</b>
-                        </DRelation>
-                       </base-DRelation>
-                       <a>
-                        <DAssociationEnd>
-                         <navigable>true</navigable>
-                        </DAssociationEnd>
-                       </a>
-                      </DAssociation>
-                     </instance>
-                    </item>
-                    <item>
-                     <instance type="DAssociation">
-                      <DAssociation>
-                       <base-DRelation>
-                        <DRelation>
-                         <base-DElement>
-                          <DElement>
-                           <uid>{13e6613c-43aa-45dd-8ed5-068a6d103b02}</uid>
-                          </DElement>
-                         </base-DElement>
-                         <object>{748447c2-2f81-4137-8284-429fff37b3a8}</object>
-                         <a>{9f365000-4310-413a-8b79-7c55e16e63eb}</a>
-                         <b>{38bb7e23-335d-4906-8c56-4bab66a1e3d8}</b>
+                         <b>{92a283d1-9649-4dc7-ba03-f20973b19ef6}</b>
                         </DRelation>
                        </base-DRelation>
                        <a>
@@ -479,118 +584,1263 @@
                       </DAssociation>
                      </instance>
                     </item>
-                    <item>
-                     <instance type="DInheritance">
-                      <DInheritance>
-                       <base-DRelation>
-                        <DRelation>
-                         <base-DElement>
-                          <DElement>
-                           <uid>{adf5ce85-86b2-4633-8658-89dbdac3e3b5}</uid>
-                          </DElement>
-                         </base-DElement>
-                         <object>{90364b67-9e93-43f9-a53b-6adc13b8133e}</object>
-                         <a>{71c0bb13-e545-4de9-88ee-110a86c7aef1}</a>
-                         <b>{203a87fe-9f57-4486-a797-ff2b963945da}</b>
-                        </DRelation>
-                       </base-DRelation>
-                      </DInheritance>
-                     </instance>
-                    </item>
-                    <item>
-                     <instance type="DAssociation">
-                      <DAssociation>
-                       <base-DRelation>
-                        <DRelation>
-                         <base-DElement>
-                          <DElement>
-                           <uid>{9c3898c3-e2b6-41b5-a721-1033f15297e3}</uid>
-                          </DElement>
-                         </base-DElement>
-                         <object>{614adac1-425f-46c1-8026-dac104471941}</object>
-                         <a>{45967437-129d-490d-8d61-c143a5c369b7}</a>
-                         <b>{9f365000-4310-413a-8b79-7c55e16e63eb}</b>
-                        </DRelation>
-                       </base-DRelation>
-                       <a>
-                        <DAssociationEnd>
-                         <navigable>true</navigable>
-                        </DAssociationEnd>
-                       </a>
-                      </DAssociation>
-                     </instance>
-                    </item>
-                    <item>
-                     <instance type="DInheritance">
-                      <DInheritance>
-                       <base-DRelation>
-                        <DRelation>
-                         <base-DElement>
-                          <DElement>
-                           <uid>{7ca5a7c8-717d-4155-bc05-4fd1a82795ca}</uid>
-                          </DElement>
-                         </base-DElement>
-                         <object>{66a4216b-01f2-44c7-bc84-b58b82063d9c}</object>
-                         <a>{8d8c0fc0-e045-4498-af04-95ed30b1d8d7}</a>
-                         <b>{10d7a94f-cb72-44c4-b554-28c3db99340f}</b>
-                        </DRelation>
-                       </base-DRelation>
-                      </DInheritance>
-                     </instance>
-                    </item>
-                    <item>
-                     <instance type="DAssociation">
-                      <DAssociation>
-                       <base-DRelation>
-                        <DRelation>
-                         <base-DElement>
-                          <DElement>
-                           <uid>{70fa77a9-72ca-4786-badb-ddcb9f4ee1e5}</uid>
-                          </DElement>
-                         </base-DElement>
-                         <object>{4a068b41-fadb-4491-977d-361e52bd6c23}</object>
-                         <a>{45967437-129d-490d-8d61-c143a5c369b7}</a>
-                         <b>{38bb7e23-335d-4906-8c56-4bab66a1e3d8}</b>
-                        </DRelation>
-                       </base-DRelation>
-                       <a>
-                        <DAssociationEnd>
-                         <navigable>true</navigable>
-                        </DAssociationEnd>
-                       </a>
-                      </DAssociation>
-                     </instance>
-                    </item>
-                    <item>
-                     <instance type="DAssociation">
-                      <DAssociation>
-                       <base-DRelation>
-                        <DRelation>
-                         <base-DElement>
-                          <DElement>
-                           <uid>{75b2ff97-2801-42c0-9891-c048a1cb0fc3}</uid>
-                          </DElement>
-                         </base-DElement>
-                         <object>{2cb01e3a-af22-4101-b06f-33a90bbf6786}</object>
-                         <a>{9f365000-4310-413a-8b79-7c55e16e63eb}</a>
-                         <b>{45967437-129d-490d-8d61-c143a5c369b7}</b>
-                        </DRelation>
-                       </base-DRelation>
-                       <a>
-                        <DAssociationEnd>
-                         <navigable>true</navigable>
-                        </DAssociationEnd>
-                       </a>
-                      </DAssociation>
-                     </instance>
-                    </item>
                    </qlist>
                   </elements>
-                  <last-modified>1730858299568</last-modified>
+                  <last-modified>1730769461224</last-modified>
                   <toolbarid>General</toolbarid>
                  </MDiagram>
                 </base-MDiagram>
                </MCanvasDiagram>
+              </instance>
+             </target>
+            </handle>
+           </item>
+           <item>
+            <handle>
+             <uid>{554e0c96-3acb-42e1-84ec-70bef323451f}</uid>
+             <target>
+              <instance type="MClass">
+               <MClass>
+                <base-MObject>
+                 <MObject>
+                  <base-MElement>
+                   <MElement>
+                    <uid>{554e0c96-3acb-42e1-84ec-70bef323451f}</uid>
+                   </MElement>
+                  </base-MElement>
+                  <name>Model</name>
+                  <relations>
+                   <handles>
+                    <handles>
+                     <qlist>
+                      <item>
+                       <handle>
+                        <uid>{d8531c8c-6544-4f2a-ab6c-3289ec7050b5}</uid>
+                        <target>
+                         <instance type="MAssociation">
+                          <MAssociation>
+                           <base-MRelation>
+                            <MRelation>
+                             <base-MElement>
+                              <MElement>
+                               <uid>{d8531c8c-6544-4f2a-ab6c-3289ec7050b5}</uid>
+                              </MElement>
+                             </base-MElement>
+                             <a>{554e0c96-3acb-42e1-84ec-70bef323451f}</a>
+                             <b>{e53e0ce6-38ad-485e-9afa-e1dad6584e00}</b>
+                            </MRelation>
+                           </base-MRelation>
+                           <a>
+                            <MAssociationEnd>
+                             <cardinality>*</cardinality>
+                             <navigable>true</navigable>
+                             <kind>1</kind>
+                            </MAssociationEnd>
+                           </a>
+                          </MAssociation>
+                         </instance>
+                        </target>
+                       </handle>
+                      </item>
+                      <item>
+                       <handle>
+                        <uid>{614adac1-425f-46c1-8026-dac104471941}</uid>
+                        <target>
+                         <instance type="MAssociation">
+                          <MAssociation>
+                           <base-MRelation>
+                            <MRelation>
+                             <base-MElement>
+                              <MElement>
+                               <uid>{614adac1-425f-46c1-8026-dac104471941}</uid>
+                              </MElement>
+                             </base-MElement>
+                             <a>{554e0c96-3acb-42e1-84ec-70bef323451f}</a>
+                             <b>{e53e0ce6-38ad-485e-9afa-e1dad6584e00}</b>
+                            </MRelation>
+                           </base-MRelation>
+                           <a>
+                            <MAssociationEnd>
+                             <navigable>true</navigable>
+                            </MAssociationEnd>
+                           </a>
+                          </MAssociation>
+                         </instance>
+                        </target>
+                       </handle>
+                      </item>
+                      <item>
+                       <handle>
+                        <uid>{4a068b41-fadb-4491-977d-361e52bd6c23}</uid>
+                        <target>
+                         <instance type="MAssociation">
+                          <MAssociation>
+                           <base-MRelation>
+                            <MRelation>
+                             <base-MElement>
+                              <MElement>
+                               <uid>{4a068b41-fadb-4491-977d-361e52bd6c23}</uid>
+                              </MElement>
+                             </base-MElement>
+                             <a>{554e0c96-3acb-42e1-84ec-70bef323451f}</a>
+                             <b>{0ea7c548-7cbe-4229-9afb-4f096f378886}</b>
+                            </MRelation>
+                           </base-MRelation>
+                           <a>
+                            <MAssociationEnd>
+                             <navigable>true</navigable>
+                            </MAssociationEnd>
+                           </a>
+                          </MAssociation>
+                         </instance>
+                        </target>
+                       </handle>
+                      </item>
+                      <item>
+                       <handle>
+                        <uid>{1292368c-851c-4151-875b-fbde80968f7b}</uid>
+                        <target>
+                         <instance type="MAssociation">
+                          <MAssociation>
+                           <base-MRelation>
+                            <MRelation>
+                             <base-MElement>
+                              <MElement>
+                               <uid>{1292368c-851c-4151-875b-fbde80968f7b}</uid>
+                              </MElement>
+                             </base-MElement>
+                             <a>{554e0c96-3acb-42e1-84ec-70bef323451f}</a>
+                             <b>{24b16e5b-e835-4f28-91ff-f835f06e0d34}</b>
+                            </MRelation>
+                           </base-MRelation>
+                           <a>
+                            <MAssociationEnd>
+                             <navigable>true</navigable>
+                            </MAssociationEnd>
+                           </a>
+                          </MAssociation>
+                         </instance>
+                        </target>
+                       </handle>
+                      </item>
+                      <item>
+                       <handle>
+                        <uid>{9a787daa-ad89-445c-ad98-18154954ab54}</uid>
+                        <target>
+                         <instance type="MAssociation">
+                          <MAssociation>
+                           <base-MRelation>
+                            <MRelation>
+                             <base-MElement>
+                              <MElement>
+                               <uid>{9a787daa-ad89-445c-ad98-18154954ab54}</uid>
+                              </MElement>
+                             </base-MElement>
+                             <a>{554e0c96-3acb-42e1-84ec-70bef323451f}</a>
+                             <b>{c37b5b76-5658-41f1-b329-4407143aa6e5}</b>
+                            </MRelation>
+                           </base-MRelation>
+                           <a>
+                            <MAssociationEnd>
+                             <navigable>true</navigable>
+                            </MAssociationEnd>
+                           </a>
+                          </MAssociation>
+                         </instance>
+                        </target>
+                       </handle>
+                      </item>
+                      <item>
+                       <handle>
+                        <uid>{8d6e1a54-06e6-492b-a713-9b4662915fec}</uid>
+                        <target>
+                         <instance type="MAssociation">
+                          <MAssociation>
+                           <base-MRelation>
+                            <MRelation>
+                             <base-MElement>
+                              <MElement>
+                               <uid>{8d6e1a54-06e6-492b-a713-9b4662915fec}</uid>
+                              </MElement>
+                             </base-MElement>
+                             <a>{554e0c96-3acb-42e1-84ec-70bef323451f}</a>
+                             <b>{62980fa1-f51a-4c69-ad0e-792992a67f54}</b>
+                            </MRelation>
+                           </base-MRelation>
+                           <a>
+                            <MAssociationEnd>
+                             <cardinality>1</cardinality>
+                             <navigable>true</navigable>
+                             <kind>2</kind>
+                            </MAssociationEnd>
+                           </a>
+                          </MAssociation>
+                         </instance>
+                        </target>
+                       </handle>
+                      </item>
+                     </qlist>
+                    </handles>
+                   </handles>
+                  </relations>
+                 </MObject>
+                </base-MObject>
+                <members>
+                 <qlist>
+                  <item>
+                   <MClassMember>
+                    <uid>{6ea08adb-9a81-4d44-ad05-48d3f394b5d6}</uid>
+                    <type>1</type>
+                    <declaration>-fps : int</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{de0ad399-5b02-405f-83e0-3f547e22959d}</uid>
+                    <type>1</type>
+                    <declaration>-frameIndex : int</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{e54db4ff-52e2-404b-9c47-5122a69ddc5f}</uid>
+                    <type>1</type>
+                    <declaration>-canvasDisplayScale : float</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{c57327d2-b3e9-42bf-8cd7-401a8d36229a}</uid>
+                    <type>1</type>
+                    <declaration>-rightMouseKeyDown : bool</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{b35fe3a3-1a01-4a7f-8a41-cc365475e64f}</uid>
+                    <type>1</type>
+                    <declaration>-leftMouseKeyDown : bool</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{0b2484db-dcc4-449e-af6c-0af1a70ba1c2}</uid>
+                    <type>1</type>
+                    <declaration>-inFrameScale : float</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{c31b8482-3a93-4ade-ac8f-97f2159269fd}</uid>
+                    <type>1</type>
+                    <declaration>-picSize : QSize</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{f2600f64-9203-458f-967f-4bd9df1b19ed}</uid>
+                    <type>1</type>
+                    <declaration>-mousePos : QPointF</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{572ad2e8-5aec-4e86-9267-690143608c9c}</uid>
+                    <type>1</type>
+                    <declaration>-previousMousePos : QPointF</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{57691071-0a88-44ae-8b58-875478c9b2c4}</uid>
+                    <type>1</type>
+                    <declaration>-initialOffset : QPointF</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{5aef63e7-8d27-4248-8982-f55c30a883c2}</uid>
+                    <type>1</type>
+                    <declaration>-offset : QPointF</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{b0ca87ad-1c2a-40e4-b2c6-95431e206fc1}</uid>
+                    <type>1</type>
+                    <declaration>-timer : QTimer*</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{44157150-9a73-4a75-8a42-5e930a11599c}</uid>
+                    <type>1</type>
+                    <declaration>-frameSequence : vector&lt;QImage&gt;</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{8f61658f-42ce-4f57-8c8b-062a79862927}</uid>
+                    <type>1</type>
+                    <declaration>-imageTool : ImageTool*</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{22d9aa44-319e-4b21-8cdc-09aac4b4fcf3}</uid>
+                    <type>1</type>
+                    <declaration>-brushTool : BrushTool*</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{7c9aa856-5f40-41fa-a847-1563c520af7c}</uid>
+                    <type>1</type>
+                    <declaration>-shape : Shape</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{f20b4b18-e022-4a1c-a068-1b806300133d}</uid>
+                    <type>2</type>
+                    <declaration>+selectFrame(int index)</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{44cfee07-5863-4973-97f9-28435bd1e09d}</uid>
+                    <type>2</type>
+                    <declaration>+addFrame(int index)</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{f484058f-274a-478f-a3df-f92960029d8a}</uid>
+                    <type>2</type>
+                    <declaration>+removeFrame(int index)</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{2703e5f1-2cc9-4027-803a-674336862b1f}</uid>
+                    <type>2</type>
+                    <declaration>+receiveMouseEvent(mouseButton button)</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{50bf7cb4-dae2-4386-bd67-9af58e192c33}</uid>
+                    <type>2</type>
+                    <declaration>+updateCanvas(float scale, const QImage&amp; image, const QPointF&amp; offset)</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{53e9e7c9-141d-4e81-9ad4-a12f10ee994f}</uid>
+                    <type>2</type>
+                    <declaration>+updateSequencePlayer(const QImage&amp; image)</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{cace2983-07dd-4f01-b18e-ea0612598683}</uid>
+                    <type>2</type>
+                    <declaration>+updateSequenceOverView(const QImage&amp; image)</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{661351a3-c80a-4839-a593-66e672b90a06}</uid>
+                    <type>2</type>
+                    <declaration>+filpImage()</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{295ff5e5-413f-48d6-b0ad-c817c7faefce}</uid>
+                    <type>2</type>
+                    <declaration>+rotateImage()</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{eced20aa-6168-41ca-8051-230e0fe23b9e}</uid>
+                    <type>2</type>
+                    <declaration>+saveFile()</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{b6a6c72b-2108-453c-974c-de86ae569942}</uid>
+                    <type>2</type>
+                    <declaration>+openFile(string fileName)</declaration>
+                   </MClassMember>
+                  </item>
+                 </qlist>
+                </members>
+               </MClass>
+              </instance>
+             </target>
+            </handle>
+           </item>
+           <item>
+            <handle>
+             <uid>{e53e0ce6-38ad-485e-9afa-e1dad6584e00}</uid>
+             <target>
+              <instance type="MClass">
+               <MClass>
+                <base-MObject>
+                 <MObject>
+                  <base-MElement>
+                   <MElement>
+                    <uid>{e53e0ce6-38ad-485e-9afa-e1dad6584e00}</uid>
+                   </MElement>
+                  </base-MElement>
+                  <name>View</name>
+                  <relations>
+                   <handles>
+                    <handles>
+                     <qlist>
+                      <item>
+                       <handle>
+                        <uid>{748447c2-2f81-4137-8284-429fff37b3a8}</uid>
+                        <target>
+                         <instance type="MAssociation">
+                          <MAssociation>
+                           <base-MRelation>
+                            <MRelation>
+                             <base-MElement>
+                              <MElement>
+                               <uid>{748447c2-2f81-4137-8284-429fff37b3a8}</uid>
+                              </MElement>
+                             </base-MElement>
+                             <a>{e53e0ce6-38ad-485e-9afa-e1dad6584e00}</a>
+                             <b>{0ea7c548-7cbe-4229-9afb-4f096f378886}</b>
+                            </MRelation>
+                           </base-MRelation>
+                           <a>
+                            <MAssociationEnd>
+                             <cardinality>1</cardinality>
+                             <navigable>true</navigable>
+                             <kind>2</kind>
+                            </MAssociationEnd>
+                           </a>
+                          </MAssociation>
+                         </instance>
+                        </target>
+                       </handle>
+                      </item>
+                      <item>
+                       <handle>
+                        <uid>{992e3f13-e669-4cd3-b7e3-75c634a517a6}</uid>
+                        <target>
+                         <instance type="MAssociation">
+                          <MAssociation>
+                           <base-MRelation>
+                            <MRelation>
+                             <base-MElement>
+                              <MElement>
+                               <uid>{992e3f13-e669-4cd3-b7e3-75c634a517a6}</uid>
+                              </MElement>
+                             </base-MElement>
+                             <a>{e53e0ce6-38ad-485e-9afa-e1dad6584e00}</a>
+                             <b>{554e0c96-3acb-42e1-84ec-70bef323451f}</b>
+                            </MRelation>
+                           </base-MRelation>
+                           <a>
+                            <MAssociationEnd>
+                             <cardinality>*</cardinality>
+                             <navigable>true</navigable>
+                             <kind>1</kind>
+                            </MAssociationEnd>
+                           </a>
+                          </MAssociation>
+                         </instance>
+                        </target>
+                       </handle>
+                      </item>
+                      <item>
+                       <handle>
+                        <uid>{2cb01e3a-af22-4101-b06f-33a90bbf6786}</uid>
+                        <target>
+                         <instance type="MAssociation">
+                          <MAssociation>
+                           <base-MRelation>
+                            <MRelation>
+                             <base-MElement>
+                              <MElement>
+                               <uid>{2cb01e3a-af22-4101-b06f-33a90bbf6786}</uid>
+                              </MElement>
+                             </base-MElement>
+                             <a>{e53e0ce6-38ad-485e-9afa-e1dad6584e00}</a>
+                             <b>{554e0c96-3acb-42e1-84ec-70bef323451f}</b>
+                            </MRelation>
+                           </base-MRelation>
+                           <a>
+                            <MAssociationEnd>
+                             <navigable>true</navigable>
+                            </MAssociationEnd>
+                           </a>
+                          </MAssociation>
+                         </instance>
+                        </target>
+                       </handle>
+                      </item>
+                     </qlist>
+                    </handles>
+                   </handles>
+                  </relations>
+                 </MObject>
+                </base-MObject>
+                <members>
+                 <qlist>
+                  <item>
+                   <MClassMember>
+                    <uid>{8c39fb20-9825-4402-8c24-7d46fa03c29c}</uid>
+                    <type>1</type>
+                    <declaration>-canvas : Canvas</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{d0b39c59-f71b-4cbd-878f-c4f629cfede1}</uid>
+                    <type>1</type>
+                    <declaration>-overView : QScrollArea</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{0f8d534f-44be-42fd-a164-38d13df4dab5}</uid>
+                    <type>1</type>
+                    <declaration>-sequencePlayer : Label</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{3b94806f-40e7-4926-8000-eb591f9318aa}</uid>
+                    <type>1</type>
+                    <declaration>-buttonList : QList&lt;QPushButton*&gt;</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{5a5a7ccd-16ee-4f73-86d1-db3d9146d496}</uid>
+                    <type>2</type>
+                    <declaration>+display(float scale, const QImage&amp; image, const QPointF&amp; offset)</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{e1cfdf8c-a3e9-4d03-bec0-3c0616d6a141}</uid>
+                    <type>2</type>
+                    <declaration>+updateSequencePlayer(const QImage&amp; image)</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{6b526ce6-8351-4f5c-8f4b-2703e2c8c1aa}</uid>
+                    <type>2</type>
+                    <declaration>+updateSequenceOverView(const QImage&amp; image)</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{5874bbe0-1309-48c2-aaad-8462baf99aa5}</uid>
+                    <type>2</type>
+                    <declaration>+receivePenButtonPress()</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{5b8621b9-900b-45d2-8666-a24dc6bdc83e}</uid>
+                    <type>2</type>
+                    <declaration>+reveiveEreaseButtonPress()</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{11b24453-d2f3-4176-9ee2-c30aaf0caf61}</uid>
+                    <type>2</type>
+                    <declaration>+reveiveShapeButtonPress()</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{19602aef-8fca-4447-8cfc-5cf5d2e80bda}</uid>
+                    <type>2</type>
+                    <declaration>+sendSelectedBrushTool()</declaration>
+                   </MClassMember>
+                  </item>
+                 </qlist>
+                </members>
+               </MClass>
+              </instance>
+             </target>
+            </handle>
+           </item>
+           <item>
+            <handle>
+             <uid>{0ea7c548-7cbe-4229-9afb-4f096f378886}</uid>
+             <target>
+              <instance type="MClass">
+               <MClass>
+                <base-MObject>
+                 <MObject>
+                  <base-MElement>
+                   <MElement>
+                    <uid>{0ea7c548-7cbe-4229-9afb-4f096f378886}</uid>
+                   </MElement>
+                  </base-MElement>
+                  <name>Canvas</name>
+                  <relations>
+                   <handles>
+                    <handles>
+                     <qlist>
+                      <item>
+                       <handle>
+                        <uid>{223285bb-1e4d-41d8-8111-7bd49f4ebd1c}</uid>
+                        <target>
+                         <instance type="MAssociation">
+                          <MAssociation>
+                           <base-MRelation>
+                            <MRelation>
+                             <base-MElement>
+                              <MElement>
+                               <uid>{223285bb-1e4d-41d8-8111-7bd49f4ebd1c}</uid>
+                              </MElement>
+                             </base-MElement>
+                             <a>{0ea7c548-7cbe-4229-9afb-4f096f378886}</a>
+                             <b>{6f66d2d8-1634-4185-b1d1-58f75b49f37a}</b>
+                            </MRelation>
+                           </base-MRelation>
+                           <a>
+                            <MAssociationEnd>
+                             <cardinality>*</cardinality>
+                             <navigable>true</navigable>
+                             <kind>1</kind>
+                            </MAssociationEnd>
+                           </a>
+                          </MAssociation>
+                         </instance>
+                        </target>
+                       </handle>
+                      </item>
+                      <item>
+                       <handle>
+                        <uid>{ed7bbac3-30f4-4e40-b41c-6ee8b93568da}</uid>
+                        <target>
+                         <instance type="MAssociation">
+                          <MAssociation>
+                           <base-MRelation>
+                            <MRelation>
+                             <base-MElement>
+                              <MElement>
+                               <uid>{ed7bbac3-30f4-4e40-b41c-6ee8b93568da}</uid>
+                              </MElement>
+                             </base-MElement>
+                             <a>{0ea7c548-7cbe-4229-9afb-4f096f378886}</a>
+                             <b>{6f66d2d8-1634-4185-b1d1-58f75b49f37a}</b>
+                            </MRelation>
+                           </base-MRelation>
+                           <a>
+                            <MAssociationEnd>
+                             <navigable>true</navigable>
+                            </MAssociationEnd>
+                           </a>
+                          </MAssociation>
+                         </instance>
+                        </target>
+                       </handle>
+                      </item>
+                     </qlist>
+                    </handles>
+                   </handles>
+                  </relations>
+                 </MObject>
+                </base-MObject>
+                <members>
+                 <qlist>
+                  <item>
+                   <MClassMember>
+                    <uid>{c19f8e6d-2aac-4836-a33f-d3943ffd4ad1}</uid>
+                    <type>1</type>
+                    <declaration>- offset : QPointF</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{51a1e9c8-8929-446c-8d2d-4075bb025000}</uid>
+                    <type>2</type>
+                    <declaration>+ setOffset(const QPointF&amp;)</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{9bdf90c2-b22d-4f73-bdd5-f710b41952d3}</uid>
+                    <type>2</type>
+                    <declaration>+ convertToLocalPosition(const QPointF&amp;)</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{c81c86d4-d282-47a3-a9fb-1cbdd3381bae}</uid>
+                    <type>2</type>
+                    <declaration>+ sendMouseEvent(mouseButton)</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{d0720d5d-11cb-478d-99bb-c21aeb41186d}</uid>
+                    <type>2</type>
+                    <declaration># mousePressEvent(QMouseEvent*)</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{f0644464-b9e7-4fe9-a5c5-c321163c06bb}</uid>
+                    <type>2</type>
+                    <declaration># mouseMoveEvent(QMouseEvent*)</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{80fa6ced-6814-42fa-85a4-2c002dcaa499}</uid>
+                    <type>2</type>
+                    <declaration># mouseReleaseEvent(QMouseEvent*)</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{8488c521-d33f-4107-ade4-efdc5a1f8386}</uid>
+                    <type>2</type>
+                    <declaration># wheelEvent(QWheelEvent*)</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{e2c72a76-fde8-4996-b52e-0c390b17484a}</uid>
+                    <type>2</type>
+                    <declaration># paintEvent(QPaintEvent*)</declaration>
+                   </MClassMember>
+                  </item>
+                 </qlist>
+                </members>
+               </MClass>
+              </instance>
+             </target>
+            </handle>
+           </item>
+           <item>
+            <handle>
+             <uid>{6f66d2d8-1634-4185-b1d1-58f75b49f37a}</uid>
+             <target>
+              <instance type="MClass">
+               <MClass>
+                <base-MObject>
+                 <MObject>
+                  <base-MElement>
+                   <MElement>
+                    <uid>{6f66d2d8-1634-4185-b1d1-58f75b49f37a}</uid>
+                   </MElement>
+                  </base-MElement>
+                  <name>MouseButton</name>
+                 </MObject>
+                </base-MObject>
+                <members>
+                 <qlist>
+                  <item>
+                   <MClassMember>
+                    <uid>{c1787bb7-1131-47e8-9d03-670df690fb9e}</uid>
+                    <type>1</type>
+                    <declaration>- buttonType : buttonType</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{2628cf15-0ae4-4245-8d9a-298d0d0af0eb}</uid>
+                    <type>1</type>
+                    <declaration>- pos : QPointF</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{6c9f0600-ce0d-435a-b84d-42e162a2cf6b}</uid>
+                    <type>1</type>
+                    <declaration>- amount : int</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{0b6aa7a2-3df3-4467-a53b-b98f0f362348}</uid>
+                    <type>2</type>
+                    <declaration>+ mouseButton(enum buttonType btn, QPointF pos, int amount)</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{7fd21f21-80cd-4358-ada2-dd178c28ace4}</uid>
+                    <type>2</type>
+                    <declaration>+ const enum buttonType&amp; getButtonType()</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{c68e4473-8def-4a22-9d25-4122e27ff3fe}</uid>
+                    <type>2</type>
+                    <declaration>+ int getAmount()</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{2635e38e-c894-4610-b5b1-f516c07a6cf1}</uid>
+                    <type>2</type>
+                    <declaration>+ QPointF getPos()</declaration>
+                   </MClassMember>
+                  </item>
+                 </qlist>
+                </members>
+               </MClass>
+              </instance>
+             </target>
+            </handle>
+           </item>
+           <item>
+            <handle>
+             <uid>{24b16e5b-e835-4f28-91ff-f835f06e0d34}</uid>
+             <target>
+              <instance type="MClass">
+               <MClass>
+                <base-MObject>
+                 <MObject>
+                  <base-MElement>
+                   <MElement>
+                    <uid>{24b16e5b-e835-4f28-91ff-f835f06e0d34}</uid>
+                   </MElement>
+                  </base-MElement>
+                  <name>ImageTool</name>
+                 </MObject>
+                </base-MObject>
+                <members>
+                 <qlist>
+                  <item>
+                   <MClassMember>
+                    <uid>{f7ad4a32-7a70-423b-8b01-b93e7be60414}</uid>
+                    <type>2</type>
+                    <declaration>+apply(QImage&amp; image)</declaration>
+                   </MClassMember>
+                  </item>
+                 </qlist>
+                </members>
+               </MClass>
+              </instance>
+             </target>
+            </handle>
+           </item>
+           <item>
+            <handle>
+             <uid>{c0abbf92-2b12-4596-887b-49551a6d3e84}</uid>
+             <target>
+              <instance type="MClass">
+               <MClass>
+                <base-MObject>
+                 <MObject>
+                  <base-MElement>
+                   <MElement>
+                    <uid>{c0abbf92-2b12-4596-887b-49551a6d3e84}</uid>
+                   </MElement>
+                  </base-MElement>
+                  <name>FlipImageTool</name>
+                  <relations>
+                   <handles>
+                    <handles>
+                     <qlist>
+                      <item>
+                       <handle>
+                        <uid>{90364b67-9e93-43f9-a53b-6adc13b8133e}</uid>
+                        <target>
+                         <instance type="MInheritance">
+                          <MInheritance>
+                           <base-MRelation>
+                            <MRelation>
+                             <base-MElement>
+                              <MElement>
+                               <uid>{90364b67-9e93-43f9-a53b-6adc13b8133e}</uid>
+                              </MElement>
+                             </base-MElement>
+                             <a>{c0abbf92-2b12-4596-887b-49551a6d3e84}</a>
+                             <b>{24b16e5b-e835-4f28-91ff-f835f06e0d34}</b>
+                            </MRelation>
+                           </base-MRelation>
+                          </MInheritance>
+                         </instance>
+                        </target>
+                       </handle>
+                      </item>
+                     </qlist>
+                    </handles>
+                   </handles>
+                  </relations>
+                 </MObject>
+                </base-MObject>
+                <members>
+                 <qlist>
+                  <item>
+                   <MClassMember>
+                    <uid>{5d1ac075-e098-4eea-931c-d7448777100f}</uid>
+                    <type>2</type>
+                    <declaration>+apply(QImage&amp; image)</declaration>
+                   </MClassMember>
+                  </item>
+                 </qlist>
+                </members>
+               </MClass>
+              </instance>
+             </target>
+            </handle>
+           </item>
+           <item>
+            <handle>
+             <uid>{3f8136fe-13c1-4b7c-83f4-ec4086c7c223}</uid>
+             <target>
+              <instance type="MClass">
+               <MClass>
+                <base-MObject>
+                 <MObject>
+                  <base-MElement>
+                   <MElement>
+                    <uid>{3f8136fe-13c1-4b7c-83f4-ec4086c7c223}</uid>
+                   </MElement>
+                  </base-MElement>
+                  <name>RotateImageTool</name>
+                  <relations>
+                   <handles>
+                    <handles>
+                     <qlist>
+                      <item>
+                       <handle>
+                        <uid>{0b83c540-4c77-4658-9f50-63c71cbc3073}</uid>
+                        <target>
+                         <instance type="MInheritance">
+                          <MInheritance>
+                           <base-MRelation>
+                            <MRelation>
+                             <base-MElement>
+                              <MElement>
+                               <uid>{0b83c540-4c77-4658-9f50-63c71cbc3073}</uid>
+                              </MElement>
+                             </base-MElement>
+                             <a>{3f8136fe-13c1-4b7c-83f4-ec4086c7c223}</a>
+                             <b>{24b16e5b-e835-4f28-91ff-f835f06e0d34}</b>
+                            </MRelation>
+                           </base-MRelation>
+                          </MInheritance>
+                         </instance>
+                        </target>
+                       </handle>
+                      </item>
+                     </qlist>
+                    </handles>
+                   </handles>
+                  </relations>
+                 </MObject>
+                </base-MObject>
+                <members>
+                 <qlist>
+                  <item>
+                   <MClassMember>
+                    <uid>{922d9e70-6c1b-4a4b-992b-9058c3dc1fd4}</uid>
+                    <type>2</type>
+                    <declaration>+apply(QImage&amp; image)</declaration>
+                   </MClassMember>
+                  </item>
+                 </qlist>
+                </members>
+               </MClass>
+              </instance>
+             </target>
+            </handle>
+           </item>
+           <item>
+            <handle>
+             <uid>{c37b5b76-5658-41f1-b329-4407143aa6e5}</uid>
+             <target>
+              <instance type="MClass">
+               <MClass>
+                <base-MObject>
+                 <MObject>
+                  <base-MElement>
+                   <MElement>
+                    <uid>{c37b5b76-5658-41f1-b329-4407143aa6e5}</uid>
+                   </MElement>
+                  </base-MElement>
+                  <name>BrushTool</name>
+                 </MObject>
+                </base-MObject>
+                <members>
+                 <qlist>
+                  <item>
+                   <MClassMember>
+                    <uid>{b72bec9f-e5f6-45d7-9b6a-da5b717ae7a7}</uid>
+                    <type>1</type>
+                    <declaration>-Temp : QImage</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{a2e7013f-9c8c-4bb9-95b8-927f7fc79f62}</uid>
+                    <type>2</type>
+                    <declaration>+apply(QImage&amp; image, const MouseButton&amp; input, const Shape shape)</declaration>
+                   </MClassMember>
+                  </item>
+                 </qlist>
+                </members>
+               </MClass>
+              </instance>
+             </target>
+            </handle>
+           </item>
+           <item>
+            <handle>
+             <uid>{129997c7-7bca-4795-8b53-5f6c0055033a}</uid>
+             <target>
+              <instance type="MClass">
+               <MClass>
+                <base-MObject>
+                 <MObject>
+                  <base-MElement>
+                   <MElement>
+                    <uid>{129997c7-7bca-4795-8b53-5f6c0055033a}</uid>
+                   </MElement>
+                  </base-MElement>
+                  <name>Paint</name>
+                  <relations>
+                   <handles>
+                    <handles>
+                     <qlist>
+                      <item>
+                       <handle>
+                        <uid>{21c4c92b-bce7-4542-92a7-a87a047e914d}</uid>
+                        <target>
+                         <instance type="MInheritance">
+                          <MInheritance>
+                           <base-MRelation>
+                            <MRelation>
+                             <base-MElement>
+                              <MElement>
+                               <uid>{21c4c92b-bce7-4542-92a7-a87a047e914d}</uid>
+                              </MElement>
+                             </base-MElement>
+                             <a>{129997c7-7bca-4795-8b53-5f6c0055033a}</a>
+                             <b>{c37b5b76-5658-41f1-b329-4407143aa6e5}</b>
+                            </MRelation>
+                           </base-MRelation>
+                          </MInheritance>
+                         </instance>
+                        </target>
+                       </handle>
+                      </item>
+                     </qlist>
+                    </handles>
+                   </handles>
+                  </relations>
+                 </MObject>
+                </base-MObject>
+                <members>
+                 <qlist>
+                  <item>
+                   <MClassMember>
+                    <uid>{da728213-faf2-411b-9c2e-146e8801af4e}</uid>
+                    <type>2</type>
+                    <declaration>+apply(QImage&amp; image, const MouseButton&amp; input, const Shape shape)</declaration>
+                   </MClassMember>
+                  </item>
+                 </qlist>
+                </members>
+               </MClass>
+              </instance>
+             </target>
+            </handle>
+           </item>
+           <item>
+            <handle>
+             <uid>{496f708e-234a-4083-b3aa-2802cdd7e8d5}</uid>
+             <target>
+              <instance type="MClass">
+               <MClass>
+                <base-MObject>
+                 <MObject>
+                  <base-MElement>
+                   <MElement>
+                    <uid>{496f708e-234a-4083-b3aa-2802cdd7e8d5}</uid>
+                   </MElement>
+                  </base-MElement>
+                  <name>DragShape</name>
+                  <relations>
+                   <handles>
+                    <handles>
+                     <qlist>
+                      <item>
+                       <handle>
+                        <uid>{66a4216b-01f2-44c7-bc84-b58b82063d9c}</uid>
+                        <target>
+                         <instance type="MInheritance">
+                          <MInheritance>
+                           <base-MRelation>
+                            <MRelation>
+                             <base-MElement>
+                              <MElement>
+                               <uid>{66a4216b-01f2-44c7-bc84-b58b82063d9c}</uid>
+                              </MElement>
+                             </base-MElement>
+                             <a>{496f708e-234a-4083-b3aa-2802cdd7e8d5}</a>
+                             <b>{c37b5b76-5658-41f1-b329-4407143aa6e5}</b>
+                            </MRelation>
+                           </base-MRelation>
+                          </MInheritance>
+                         </instance>
+                        </target>
+                       </handle>
+                      </item>
+                     </qlist>
+                    </handles>
+                   </handles>
+                  </relations>
+                 </MObject>
+                </base-MObject>
+                <members>
+                 <qlist>
+                  <item>
+                   <MClassMember>
+                    <uid>{0cfaab1f-6da7-4fa0-9891-81bc7baa2689}</uid>
+                    <type>2</type>
+                    <declaration>+apply(QImage&amp; image, const MouseButton&amp; input, const Shape shape)</declaration>
+                   </MClassMember>
+                  </item>
+                 </qlist>
+                </members>
+               </MClass>
+              </instance>
+             </target>
+            </handle>
+           </item>
+           <item>
+            <handle>
+             <uid>{8a2856ff-086c-4631-8b4a-200adac49914}</uid>
+             <target>
+              <instance type="MItem">
+               <MItem>
+                <base-MObject>
+                 <MObject>
+                  <base-MElement>
+                   <MElement>
+                    <uid>{8a2856ff-086c-4631-8b4a-200adac49914}</uid>
+                   </MElement>
+                  </base-MElement>
+                  <name>New Item</name>
+                 </MObject>
+                </base-MObject>
+               </MItem>
+              </instance>
+             </target>
+            </handle>
+           </item>
+           <item>
+            <handle>
+             <uid>{d4a96ef6-8bb3-4d58-af02-69774ece8f32}</uid>
+             <target>
+              <instance type="MClass">
+               <MClass>
+                <base-MObject>
+                 <MObject>
+                  <base-MElement>
+                   <MElement>
+                    <uid>{d4a96ef6-8bb3-4d58-af02-69774ece8f32}</uid>
+                   </MElement>
+                  </base-MElement>
+                  <name>Erase</name>
+                  <relations>
+                   <handles>
+                    <handles>
+                     <qlist>
+                      <item>
+                       <handle>
+                        <uid>{55169a59-cb99-42d3-8b22-232adb883f78}</uid>
+                        <target>
+                         <instance type="MInheritance">
+                          <MInheritance>
+                           <base-MRelation>
+                            <MRelation>
+                             <base-MElement>
+                              <MElement>
+                               <uid>{55169a59-cb99-42d3-8b22-232adb883f78}</uid>
+                              </MElement>
+                             </base-MElement>
+                             <a>{d4a96ef6-8bb3-4d58-af02-69774ece8f32}</a>
+                             <b>{c37b5b76-5658-41f1-b329-4407143aa6e5}</b>
+                            </MRelation>
+                           </base-MRelation>
+                          </MInheritance>
+                         </instance>
+                        </target>
+                       </handle>
+                      </item>
+                     </qlist>
+                    </handles>
+                   </handles>
+                  </relations>
+                 </MObject>
+                </base-MObject>
+                <members>
+                 <qlist>
+                  <item>
+                   <MClassMember>
+                    <uid>{6c1a7bfd-651c-46db-8d42-55d9438ff8a7}</uid>
+                    <type>2</type>
+                    <declaration>+apply(QImage&amp; image, const MouseButton&amp; input, const Shape shape)</declaration>
+                   </MClassMember>
+                  </item>
+                 </qlist>
+                </members>
+               </MClass>
+              </instance>
+             </target>
+            </handle>
+           </item>
+           <item>
+            <handle>
+             <uid>{62980fa1-f51a-4c69-ad0e-792992a67f54}</uid>
+             <target>
+              <instance type="MClass">
+               <MClass>
+                <base-MObject>
+                 <MObject>
+                  <base-MElement>
+                   <MElement>
+                    <uid>{62980fa1-f51a-4c69-ad0e-792992a67f54}</uid>
+                   </MElement>
+                  </base-MElement>
+                  <name>Shape</name>
+                 </MObject>
+                </base-MObject>
+                <members>
+                 <qlist>
+                  <item>
+                   <MClassMember>
+                    <uid>{4ec3bacd-2507-46bc-ba84-178cb42316f8}</uid>
+                    <type>1</type>
+                    <declaration>-shapeSize : QPointF</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{28c75152-c521-44a9-b2ae-b57bd08295f0}</uid>
+                    <type>1</type>
+                    <declaration>-shapeColor : QColor</declaration>
+                   </MClassMember>
+                  </item>
+                 </qlist>
+                </members>
+               </MClass>
               </instance>
              </target>
             </handle>
