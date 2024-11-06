@@ -10,10 +10,10 @@ const enum buttonType& MouseButton::getButtonType() const{
     return buttonType;
 }
 
-int MouseButton::getAmount const(){
+int MouseButton::getAmount() const{
     return amount;
 }
 
-QPointF MouseButton::getPos const(){
+QPointF MouseButton::getPos() const{
     return pos;
 }
