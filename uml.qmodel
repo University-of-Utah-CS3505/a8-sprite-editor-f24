@@ -964,77 +964,77 @@
                  <qlist>
                   <item>
                    <MClassMember>
-                    <uid>{8c39fb20-9825-4402-8c24-7d46fa03c29c}</uid>
+                    <uid>{2e307d87-158f-4bf7-916b-5104ca9a7d94}</uid>
                     <type>1</type>
                     <declaration>-canvas : Canvas</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{d0b39c59-f71b-4cbd-878f-c4f629cfede1}</uid>
+                    <uid>{58cacd11-8891-4a2f-a0ab-c97ed82b1e56}</uid>
                     <type>1</type>
                     <declaration>-overView : QScrollArea</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{0f8d534f-44be-42fd-a164-38d13df4dab5}</uid>
+                    <uid>{2fbb11bf-c723-449e-9169-43035bb2d643}</uid>
                     <type>1</type>
                     <declaration>-sequencePlayer : Label</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{3b94806f-40e7-4926-8000-eb591f9318aa}</uid>
+                    <uid>{9d89af03-694a-49e1-ac81-2230178f638a}</uid>
                     <type>1</type>
                     <declaration>-buttonList : QList&lt;QPushButton*&gt;</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{5a5a7ccd-16ee-4f73-86d1-db3d9146d496}</uid>
+                    <uid>{3d33a45e-1d07-47b8-96da-0613db4c3ed3}</uid>
                     <type>2</type>
                     <declaration>+display(float scale, const QImage&amp; image, const QPointF&amp; offset)</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{e1cfdf8c-a3e9-4d03-bec0-3c0616d6a141}</uid>
+                    <uid>{eae9e13a-b616-4195-803a-f54e2084cfa5}</uid>
                     <type>2</type>
                     <declaration>+updateSequencePlayer(const QImage&amp; image)</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{6b526ce6-8351-4f5c-8f4b-2703e2c8c1aa}</uid>
+                    <uid>{eb54332e-b22e-4b3c-a32c-bc6e676c3340}</uid>
                     <type>2</type>
                     <declaration>+updateSequenceOverView(const QImage&amp; image)</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{5874bbe0-1309-48c2-aaad-8462baf99aa5}</uid>
+                    <uid>{f798114c-d836-4dfd-83fc-ff94069689dc}</uid>
                     <type>2</type>
                     <declaration>+receivePenButtonPress()</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{5b8621b9-900b-45d2-8666-a24dc6bdc83e}</uid>
+                    <uid>{ad037d53-6301-4b40-b0e5-fb1ae9705568}</uid>
                     <type>2</type>
                     <declaration>+reveiveEreaseButtonPress()</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{11b24453-d2f3-4176-9ee2-c30aaf0caf61}</uid>
+                    <uid>{f675b86a-702b-4334-827d-ab86d4adb32c}</uid>
                     <type>2</type>
                     <declaration>+reveiveShapeButtonPress()</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{19602aef-8fca-4447-8cfc-5cf5d2e80bda}</uid>
+                    <uid>{678c8745-42c4-4bff-b531-9254b9e37963}</uid>
                     <type>2</type>
                     <declaration>+sendSelectedBrushTool()</declaration>
                    </MClassMember>

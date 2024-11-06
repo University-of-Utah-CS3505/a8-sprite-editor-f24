@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1100</width>
-    <height>950</height>
+    <height>900</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,7 +17,7 @@
    <widget class="CanvasLabel" name="canvasLabel">
     <property name="geometry">
      <rect>
-      <x>330</x>
+      <x>340</x>
       <y>10</y>
       <width>750</width>
       <height>750</height>
@@ -274,9 +274,9 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>789</y>
-      <width>1071</width>
-      <height>91</height>
+      <y>760</y>
+      <width>1080</width>
+      <height>90</height>
      </rect>
     </property>
     <property name="widgetResizable">
@@ -287,8 +287,8 @@
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>1069</width>
-       <height>89</height>
+       <width>1078</width>
+       <height>88</height>
       </rect>
      </property>
     </widget>
@@ -332,12 +332,12 @@
      <string>Load Image</string>
     </property>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>10</x>
       <y>620</y>
-      <width>301</width>
+      <width>323</width>
       <height>41</height>
      </rect>
     </property>
@@ -372,7 +372,7 @@
      <x>0</x>
      <y>0</y>
      <width>1100</width>
-     <height>20</height>
+     <height>24</height>
     </rect>
    </property>
   </widget>
