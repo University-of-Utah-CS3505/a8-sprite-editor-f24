@@ -3,11 +3,11 @@
 
 #include <QObject>
 
-class model : public QObject
+class Model : public QObject
 {
     Q_OBJECT
 public:
-    explicit model(QObject *parent = nullptr);
+    explicit Model(QObject *parent = nullptr);
 
 signals:
 };

@@ -11,13 +11,13 @@ enum buttonType{
     mouseMove
 };
 
-class mouseButton
+class MouseButton
 {
     buttonType buttonType;
     QPointF pos;
     int amount;
 public:
-    mouseButton(enum buttonType btn, QPointF pos, int amount);
+    MouseButton(enum buttonType btn, QPointF pos, int amount);
     const enum buttonType& getButtonType();
     int getAmount();
     QPointF getPos();

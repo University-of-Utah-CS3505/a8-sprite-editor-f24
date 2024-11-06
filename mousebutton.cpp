@@ -1,19 +1,19 @@
 #include "mousebutton.h"
 
-mouseButton::mouseButton(enum buttonType btn, QPointF pos, int amount)
+MouseButton::MouseButton(enum buttonType btn, QPointF pos, int amount)
     : buttonType(btn), pos(pos), amount(amount)
 {
 
 }
 
-const enum buttonType& mouseButton::getButtonType(){
+const enum buttonType& MouseButton::getButtonType(){
     return buttonType;
 }
 
-int mouseButton::getAmount(){
+int MouseButton::getAmount(){
     return amount;
 }
 
-QPointF mouseButton::getPos(){
+QPointF MouseButton::getPos(){
     return pos;
 }

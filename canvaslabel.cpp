@@ -1,56 +1,56 @@
 #include "canvaslabel.h"
 
-canvasLabel::canvasLabel() {}
+CanvasLabel::CanvasLabel() {}
 
-canvasLabel::canvasLabel(const QString &text, QWidget *parent): QLabel(text, parent){
-
-}
-
-canvasLabel::canvasLabel(QWidget *parent): QLabel("", parent){
+CanvasLabel::CanvasLabel(const QString &text, QWidget *parent): QLabel(text, parent){
 
 }
 
+CanvasLabel::CanvasLabel(QWidget *parent): QLabel("", parent){
 
-void canvasLabel::paintEvent(QPaintEvent *event) {
+}
+
+
+void CanvasLabel::paintEvent(QPaintEvent *event) {
     QLabel::paintEvent(event);
     QPainter painter(this);
     painter.drawPixmap(offset, this->pixmap());
 }
 
 
-void canvasLabel::setOffset(const QPointF& offset){
+void CanvasLabel::setOffset(const QPointF& offset){
     this->offset = offset;
 }
 
-void canvasLabel::mousePressEvent(QMouseEvent *event){
+void CanvasLabel::mousePressEvent(QMouseEvent *event){
     if (event->button() == Qt::LeftButton) {
-        emit sendMouseEvent(mouseButton(leftButtonDown, convertToLocalPosition(event->pos()), 1));
+        emit sendMouseEvent(MouseButton(leftButtonDown, convertToLocalPosition(event->pos()), 1));
     }else if(event->button() == Qt::RightButton){
-        emit sendMouseEvent(mouseButton(rightButtonDown, convertToLocalPosition(event->pos()), 1));
+        emit sendMouseEvent(MouseButton(rightButtonDown, convertToLocalPosition(event->pos()), 1));
     }
     QLabel::mousePressEvent(event); // 保持原始事件行为
 }
 
-void canvasLabel::mouseMoveEvent(QMouseEvent* event){
-    emit sendMouseEvent(mouseButton(mouseMove, convertToLocalPosition(event->pos()), 1));
+void CanvasLabel::mouseMoveEvent(QMouseEvent* event){
+    emit sendMouseEvent(MouseButton(mouseMove, convertToLocalPosition(event->pos()), 1));
 }
 
-void canvasLabel::mouseReleaseEvent(QMouseEvent* event){
+void CanvasLabel::mouseReleaseEvent(QMouseEvent* event){
     if (event->button() == Qt::LeftButton) {
-        emit sendMouseEvent(mouseButton(leftButtonUp, convertToLocalPosition(event->pos()), 1));
+        emit sendMouseEvent(MouseButton(leftButtonUp, convertToLocalPosition(event->pos()), 1));
     }else if(event->button() == Qt::RightButton){
-        emit sendMouseEvent(mouseButton(rightButtonUp, convertToLocalPosition(event->pos()), 1));
+        emit sendMouseEvent(MouseButton(rightButtonUp, convertToLocalPosition(event->pos()), 1));
     }
 }
 
-void canvasLabel::wheelEvent(QWheelEvent* event){
+void CanvasLabel::wheelEvent(QWheelEvent* event){
     // 获取滚动的角度
     QPointF delta = event->angleDelta();
-    emit sendMouseEvent(mouseButton(middleButtonScroll, convertToLocalPosition(event->position()), delta.y()));
+    emit sendMouseEvent(MouseButton(middleButtonScroll, convertToLocalPosition(event->position()), delta.y()));
 };
 
 
-QPointF canvasLabel::convertToLocalPosition(const QPointF& pos){
+QPointF CanvasLabel::convertToLocalPosition(const QPointF& pos){
     QPixmap pixmap = this->pixmap();
     if (pixmap.isNull()) return QPointF(-10000, -10000);
     // 获取 QLabel 的尺寸和 QPixmap 的实际尺寸

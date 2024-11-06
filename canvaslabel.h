@@ -6,14 +6,14 @@
 #include <QObject>
 #include "mousebutton.h"
 
-class canvasLabel : public QLabel
+class CanvasLabel : public QLabel
 {
     Q_OBJECT
     QPointF offset;
 public:
-    canvasLabel();
-    explicit canvasLabel(const QString &text, QWidget *parent = nullptr);
-    explicit canvasLabel(QWidget *parent = nullptr);
+    CanvasLabel();
+    explicit CanvasLabel(const QString &text, QWidget *parent = nullptr);
+    explicit CanvasLabel(QWidget *parent = nullptr);
     void setOffset(const QPointF& offset);
 protected:
     void mousePressEvent(QMouseEvent *event) override;
@@ -30,7 +30,7 @@ private:
     QPointF convertToLocalPosition(const QPointF& pos);
 
 signals:
-    void sendMouseEvent(mouseButton button);
+    void sendMouseEvent(MouseButton button);
 
 };
 
