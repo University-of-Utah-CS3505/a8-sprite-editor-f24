@@ -6,6 +6,7 @@
 #include <QGraphicsScene>
 #include <QImage>
 #include <QGraphicsPixmapItem>
+#include "intsignalbutton.h"
 
 SpriteEditor::SpriteEditor(class Model& model, QWidget *parent)
     : QMainWindow(parent)
@@ -53,7 +54,7 @@ void SpriteEditor::display(const QImage& image, float scale, const QPointF& offs
 
 
 void SpriteEditor::addFrame(){
-    QPushButton *button = new QPushButton();
+    IntSignalButton *button = new IntSignalButton(frameIndex+1);
     button->setStyleSheet("QPushButton {"
                           "  border: 2px solid blue;"  // 设置2像素宽的黑色描边
                           "  border-radius: 5px;"       // 圆角半径，可选

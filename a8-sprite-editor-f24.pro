@@ -12,6 +12,7 @@ SOURCES += \
     brushtool.cpp \
     canvaslabel.cpp \
     imagetool.cpp \
+    intsignalbutton.cpp \
     main.cpp \
     model.cpp \
     mousebutton.cpp \
@@ -22,6 +23,7 @@ HEADERS += \
     brushtool.h \
     canvaslabel.h \
     imagetool.h \
+    intsignalbutton.h \
     model.h \
     mousebutton.h \
     shape.h \
