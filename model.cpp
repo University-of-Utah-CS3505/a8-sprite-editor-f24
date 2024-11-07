@@ -9,7 +9,7 @@ void Model::receiveMouseEvent(MouseButton button){
 
 }
 
-void Model::receiveCurrentFrame(int frameIndex){
+void Model::receiveCurrentFrameIndex(int frameIndex){
 
 }
 

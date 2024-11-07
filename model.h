@@ -17,7 +17,7 @@ public:
 
 public slots:
     void receiveMouseEvent(MouseButton button);
-    void receiveCurrentFrame(int frameIndex);
+    void receiveCurrentFrameIndex(int frameIndex);
     void addNewFrameAtCurrentFrame();
     void removeCurrentFrame();
     void cloneCurrentFrame();
