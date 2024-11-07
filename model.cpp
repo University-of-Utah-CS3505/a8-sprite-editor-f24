@@ -9,7 +9,7 @@ void Model::receiveMouseEvent(MouseButton button){
 
 }
 
-void Model::selectFrame(int frameIndex){
+void Model::receiveCurrentFrame(int frameIndex){
 
 }
 
@@ -25,7 +25,7 @@ void Model::cloneCurrentFrame(){
 
 }
 
-void Model::setFPS(int fps){
+void Model::receiveFPS(int fps){
 
 }
 

@@ -17,15 +17,15 @@ public:
 
 public slots:
     void receiveMouseEvent(MouseButton button);
-    void selectFrame(int frameIndex);
+    void receiveCurrentFrame(int frameIndex);
     void addNewFrameAtCurrentFrame();
     void removeCurrentFrame();
     void cloneCurrentFrame();
 
-    void setFPS(int fps);
+    void receiveFPS(int fps);
 
     //Brush tool
-    void updateBrushType(Brush brush);
+    void receiveBrushType(Brush brush);
     //Image tool
     void rotateImage();
     void flipImageAlongY();
@@ -38,8 +38,8 @@ public slots:
     void saveFile(QString fileName);
 
 signals:
-    void updateCanvas(float scale, const QImage& image, const QPointF& offset);
-    void updateSequencePlayer(const QImage& image);
+    void sendCanvasImage(float scale, const QImage& image, const QPointF& offset);
+    void sendSequencePlayerImage(const QImage& image);
 
 
 };
