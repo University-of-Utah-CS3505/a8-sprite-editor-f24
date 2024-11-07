@@ -73,8 +73,7 @@ void BrushTool::erase(QImage& image, const MouseButton& input, const Shape& shap
     // 创建 QPainter 对象，用于在 QImage 上绘制
     QPainter painter(&image);
     // set painter style
-    painter.setPen(QPen(QColor(0,0,0,0)));
-    painter.setBrush(QColor(0,0,0,0));
+    painter.setCompositionMode(QPainter::CompositionMode_Clear);
     drawShapeOnImage(input, shape, canvasScale, offset, painter);
 }
 
