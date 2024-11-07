@@ -25,3 +25,21 @@ void Model::cloneCurrentFrame(){
 
 }
 
+void Model::setFPS(int fps){
+
+}
+
+void Model::updateBrushType(Brush brush){
+
+}
+
+//Image tool
+void Model::rotateImage(){}
+void Model::flipImageAlongY(){}
+void Model::flipImageAlongX(){}
+void Model::loadImage(QString imagePath){}
+void Model::fillBlankArea(){}
+void Model::clearCanvas(){}
+//Saving
+void Model::openFile(QString fileName){}
+void Model::saveFile(QString fileName){}
