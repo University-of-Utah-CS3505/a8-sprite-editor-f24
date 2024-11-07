@@ -57,7 +57,7 @@ public slots:
     void saveFile(QString fileName);
 
 signals:
-    void sendCanvasImage(float scale, const QImage& image, const QPointF& offset);
+    void sendCanvasImage(const QImage& image, float scale, const QPointF& offset);
     void sendSequencePlayerImage(const QImage& image);
 
 

@@ -53,7 +53,7 @@ SpriteEditor::SpriteEditor(class Model& model, QWidget *parent)
 
 
     //Connect model signal to ui slot
-    //connect(&model, &Model::display, this, &SpriteEditor::display);
+    connect(&model, &Model::sendCanvasImage, this, &SpriteEditor::updateCanvas);
 
     // setup the scroll area
     frameOverviewContainer = new QWidget;
@@ -74,11 +74,14 @@ SpriteEditor::SpriteEditor(class Model& model, QWidget *parent)
 
 }
 
+
 void SpriteEditor::selectColor(){
     QColor color = QColorDialog::getColor(brush.getShape().color, this, "Select Color");
 
     if (color.isValid()) {
-        brush.setShape(Shape(brush.getShape().shapeType,brush.getShape().size,color));
+        brush.setShape(Shape(brush.getShape().shapeType,brush.getShape().size,
+                             QColor(color.red(), color.green(), color.blue(), brush.getShape().color.alpha())
+                             ));
 
         //get text color(inverse)
         QColor textColor = QColor(255-color.red(),255-color.green(),255-color.blue());
@@ -91,7 +94,8 @@ void SpriteEditor::selectColor(){
     emit sendBrushType(brush);
 }
 
-void SpriteEditor::display(const QImage& image, float scale, const QPointF& offset){
+
+void SpriteEditor::updateCanvas(const QImage& image, float scale, const QPointF& offset){
     // 将 QImage 转换为 QPixmap
     QPixmap pixmap = QPixmap::fromImage(image);
 

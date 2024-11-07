@@ -8,11 +8,16 @@ Model::Model(QObject *parent)
     brushTool = BrushTool();
     scale = 5.0;
     offset = QPointF(0,0);
+    // TODO update this
+    picSize = QSize(64,64);
+
+    rightMouseKeyDown = false;
+    leftMouseKeyDown = false;
+
     initialOffset = QPointF(750.0/2 - picSize.width() / 2.0 * scale ,750.0/2 - picSize.height() / 2.0 * scale);
     frameSequence.push_back(QImage(picSize, QImage::Format_ARGB32));
 
-    // TODO update this
-    picSize = QSize(64,64);
+
 
     connect(drawTimer, &QTimer::timeout, this, &Model::draw);
 }
@@ -30,7 +35,7 @@ void Model::receiveMouseEvent(MouseButton button){
         }
 
         initialOffset = QPointF(750.0/2 - picSize.width() / 2.0 * scale ,750.0/2 - picSize.height() / 2.0 * scale);
-        emit sendCanvasImage(scale, frameSequence[frameIndex], offset + initialOffset);
+        emit sendCanvasImage(frameSequence[frameIndex], scale, offset + initialOffset);
         break;
 
     case leftButtonDown:
@@ -48,7 +53,7 @@ void Model::receiveMouseEvent(MouseButton button){
 
             qDebug() << "offset" << offset;
             previousMousePos = button.getPos();
-            emit sendCanvasImage(scale, frameSequence[frameIndex], offset + initialOffset);
+            emit sendCanvasImage(frameSequence[frameIndex], scale, offset + initialOffset);
         }
 
         qDebug() << "pos" << mousePos/scale - offset/scale;
@@ -63,11 +68,12 @@ void Model::receiveMouseEvent(MouseButton button){
         previousMousePos = button.getPos();
         mousePos = button.getPos();
         rightMouseKeyDown = true;
+        qDebug()<<"right down";
         break;
 
     case rightButtonUp:
         rightMouseKeyDown = false;
-
+        break;
 
     }
 }
@@ -94,7 +100,7 @@ void Model::receiveFPS(int fps){
 }
 
 void Model::receiveBrushType(Brush brush){
-    qDebug() << "brush" <<  brush.getBrushType();
+    qDebug() << "brush" <<  brush.getBrushType() <<"color" << brush.getShape().color;
     this->brush = brush;
 }
 
@@ -113,7 +119,7 @@ void Model::draw() {
     }
 
     qDebug() << "pos" << pos << "offset" << offset<< "scale"<<scale;
-    emit sendCanvasImage(scale, frameSequence[frameIndex], offset + initialOffset);
+    emit sendCanvasImage(frameSequence[frameIndex], scale, offset + initialOffset);
 }
 
 

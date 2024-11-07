@@ -43,7 +43,7 @@ public slots:
     void removeFrame();
     void cloneFrame();
     void updateFrameSequence(const QImage& image);
-    void display(const QImage& image, float scale, const QPointF& offset);
+    void updateCanvas(const QImage& image, float scale, const QPointF& offset);
     void setAlpha(int value);
     void setBrushSize(int value);
 
