@@ -227,7 +227,7 @@
    <widget class="QPushButton" name="imageTool_RotateButton">
     <property name="geometry">
      <rect>
-      <x>130</x>
+      <x>190</x>
       <y>590</y>
       <width>51</width>
       <height>51</height>
@@ -250,7 +250,7 @@
    <widget class="QPushButton" name="imageTool_FillBlankButton">
     <property name="geometry">
      <rect>
-      <x>130</x>
+      <x>190</x>
       <y>520</y>
       <width>51</width>
       <height>51</height>
@@ -400,8 +400,8 @@
    <widget class="QPushButton" name="imageTool_LoadImageButton">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>520</y>
+      <x>100</x>
+      <y>590</y>
       <width>51</width>
       <height>51</height>
      </rect>
@@ -565,6 +565,19 @@
      <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
     </property>
    </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>520</y>
+      <width>51</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Setting</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -572,7 +585,7 @@
      <x>0</x>
      <y>0</y>
      <width>1100</width>
-     <height>20</height>
+     <height>24</height>
     </rect>
    </property>
   </widget>

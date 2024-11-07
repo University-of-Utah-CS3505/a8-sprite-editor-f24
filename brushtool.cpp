@@ -7,8 +7,10 @@ void BrushTool::paint(QImage& image, const MouseButton& input, const Shape& shap
     // 创建 QPainter 对象，用于在 QImage 上绘制
     QPainter painter(&image);
     // set painter style
+    qDebug() << shape.color;
     painter.setPen(QPen(shape.color)); //bound color
     painter.setBrush(shape.color); //inside color
+    qDebug() << QPen(shape.color);
     drawShapeOnImage(input, shape, canvasScale, offset, painter);
 }
 

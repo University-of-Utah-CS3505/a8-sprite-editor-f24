@@ -6,12 +6,29 @@
 #include <QPainter>
 #include <qtimer.h>
 #include "brush.h"
+#include "brushtool.h"
 
 #include "mousebutton.h"
 
 class Model : public QObject
 {
     Q_OBJECT
+    float scale;
+    float inFrameScale;
+    bool leftMouseKeyDown;
+    bool rightMouseKeyDown;
+    int frameIndex;
+    Brush brush;
+    BrushTool brushTool;
+    QTimer* drawTimer;
+    QSize picSize;
+    QPointF initialOffset;
+    QPointF offset;
+    QPointF mousePos;
+    QPointF previousMousePos;
+    QList<QImage> frameSequence;
+    MouseButton userInput;
+
 public:
     explicit Model(QObject *parent = nullptr);
 
@@ -24,8 +41,10 @@ public slots:
 
     void receiveFPS(int fps);
 
+
     //Brush tool
     void receiveBrushType(Brush brush);
+    void draw();
     //Image tool
     void rotateImage();
     void flipImageAlongY();
