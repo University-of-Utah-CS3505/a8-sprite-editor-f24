@@ -62,7 +62,7 @@
      <enum>Qt::Orientation::Horizontal</enum>
     </property>
    </widget>
-   <widget class="QLabel" name="FPS_TEXT">
+   <widget class="QLabel" name="textLabel_FPS">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -88,7 +88,20 @@
      </rect>
     </property>
     <property name="text">
-     <string>brush</string>
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>resources/pen_unselected.png</normaloff>
+      <normalon>:/Icons/resources/pen_unselected.png</normalon>
+      <disabledoff>:/Icons/resources/pen.png</disabledoff>
+      <disabledon>:/Icons/resources/pen_unselected.png</disabledon>resources/pen_unselected.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>27</width>
+      <height>30</height>
+     </size>
     </property>
    </widget>
    <widget class="QPushButton" name="brushTool_EraseButton">
@@ -101,7 +114,21 @@
      </rect>
     </property>
     <property name="text">
-     <string>erase</string>
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="Resources.qrc">
+      <normaloff>:/Icons/resources/erase_unselected.png</normaloff>
+      <disabledoff>:/Icons/resources/erase.png</disabledoff>:/Icons/resources/erase_unselected.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>34</width>
+      <height>34</height>
+     </size>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
     </property>
    </widget>
    <widget class="QPushButton" name="brushTool_ShapeButton">
@@ -114,7 +141,18 @@
      </rect>
     </property>
     <property name="text">
-     <string>shape</string>
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="Resources.qrc">
+      <normaloff>:/Icons/resources/shape_unselected.png</normaloff>
+      <disabledoff>:/Icons/resources/shape.png</disabledoff>:/Icons/resources/shape_unselected.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>30</width>
+      <height>30</height>
+     </size>
     </property>
    </widget>
    <widget class="QComboBox" name="brushTool_shapeComboBox">
@@ -130,14 +168,24 @@
    <widget class="QPushButton" name="imageTool_FlipHorizontalButton">
     <property name="geometry">
      <rect>
-      <x>170</x>
-      <y>530</y>
-      <width>141</width>
-      <height>21</height>
+      <x>260</x>
+      <y>520</y>
+      <width>51</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="text">
-     <string>flipH</string>
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="Resources.qrc">
+      <normaloff>:/Icons/resources/flipH.png</normaloff>:/Icons/resources/flipH.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>24</width>
+      <height>30</height>
+     </size>
     </property>
    </widget>
    <widget class="Line" name="line">
@@ -156,47 +204,77 @@
    <widget class="QPushButton" name="imageTool_FlipVerticalButton">
     <property name="geometry">
      <rect>
-      <x>170</x>
-      <y>560</y>
-      <width>141</width>
-      <height>21</height>
+      <x>260</x>
+      <y>590</y>
+      <width>51</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="text">
-     <string>flipV</string>
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="Resources.qrc">
+      <normaloff>:/Icons/resources/flipV.png</normaloff>:/Icons/resources/flipV.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>24</width>
+      <height>30</height>
+     </size>
     </property>
    </widget>
    <widget class="QPushButton" name="imageTool_RotateButton">
     <property name="geometry">
      <rect>
-      <x>170</x>
+      <x>130</x>
       <y>590</y>
-      <width>141</width>
-      <height>21</height>
+      <width>51</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="text">
-     <string>rotate</string>
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="Resources.qrc">
+      <normaloff>:/Icons/resources/rotate.png</normaloff>:/Icons/resources/rotate.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>24</width>
+      <height>24</height>
+     </size>
     </property>
    </widget>
    <widget class="QPushButton" name="imageTool_FillBlankButton">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>530</y>
-      <width>141</width>
-      <height>21</height>
+      <x>130</x>
+      <y>520</y>
+      <width>51</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="text">
-     <string>fill blank area</string>
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="Resources.qrc">
+      <normaloff>:/Icons/resources/fill.png</normaloff>:/Icons/resources/fill.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>30</width>
+      <height>30</height>
+     </size>
     </property>
    </widget>
    <widget class="Line" name="line_2">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>620</y>
+      <y>640</y>
       <width>301</width>
       <height>16</height>
      </rect>
@@ -209,7 +287,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>700</y>
+      <y>720</y>
       <width>141</width>
       <height>23</height>
      </rect>
@@ -222,7 +300,7 @@
     <property name="geometry">
      <rect>
       <x>170</x>
-      <y>700</y>
+      <y>720</y>
       <width>141</width>
       <height>23</height>
      </rect>
@@ -235,7 +313,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>730</y>
+      <y>750</y>
       <width>301</width>
       <height>23</height>
      </rect>
@@ -248,7 +326,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>680</y>
+      <y>700</y>
       <width>301</width>
       <height>16</height>
      </rect>
@@ -300,33 +378,53 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>560</y>
-      <width>141</width>
-      <height>21</height>
+      <y>590</y>
+      <width>51</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="text">
-     <string>Clear canvas</string>
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="Resources.qrc">
+      <normaloff>:/Icons/resources/clean.png</normaloff>:/Icons/resources/clean.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>30</width>
+      <height>30</height>
+     </size>
     </property>
    </widget>
    <widget class="QPushButton" name="imageTool_LoadImageButton">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>590</y>
-      <width>141</width>
-      <height>21</height>
+      <y>520</y>
+      <width>51</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="text">
-     <string>Load Image</string>
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="Resources.qrc">
+      <normaloff>:/Icons/resources/loadImg.png</normaloff>:/Icons/resources/loadImg.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>28</width>
+      <height>30</height>
+     </size>
     </property>
    </widget>
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>640</y>
+      <y>660</y>
       <width>301</width>
       <height>41</height>
      </rect>
@@ -368,7 +466,7 @@
      <string>Color Selector</string>
     </property>
    </widget>
-   <widget class="QSlider" name="horizontalSlider">
+   <widget class="QSlider" name="brushTool_AlphaSlider">
     <property name="geometry">
      <rect>
       <x>80</x>
@@ -377,11 +475,17 @@
       <height>20</height>
      </rect>
     </property>
+    <property name="maximum">
+     <number>255</number>
+    </property>
+    <property name="value">
+     <number>255</number>
+    </property>
     <property name="orientation">
      <enum>Qt::Orientation::Horizontal</enum>
     </property>
    </widget>
-   <widget class="QSlider" name="horizontalSlider_2">
+   <widget class="QSlider" name="brushTool_BrushSizeSlider">
     <property name="geometry">
      <rect>
       <x>200</x>
@@ -390,27 +494,33 @@
       <height>16</height>
      </rect>
     </property>
+    <property name="minimum">
+     <number>1</number>
+    </property>
+    <property name="maximum">
+     <number>25</number>
+    </property>
     <property name="orientation">
      <enum>Qt::Orientation::Horizontal</enum>
     </property>
    </widget>
-   <widget class="QLabel" name="label">
+   <widget class="QLabel" name="textLabel_BrushSize">
     <property name="geometry">
      <rect>
       <x>200</x>
       <y>430</y>
-      <width>111</width>
+      <width>61</width>
       <height>16</height>
      </rect>
     </property>
     <property name="text">
-     <string>BrushSize</string>
+     <string>Size:</string>
     </property>
     <property name="alignment">
-     <set>Qt::AlignmentFlag::AlignCenter</set>
+     <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
     </property>
    </widget>
-   <widget class="QLabel" name="label_2">
+   <widget class="QLabel" name="textLabel_Alpha">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -426,7 +536,7 @@
      <set>Qt::AlignmentFlag::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QLabel" name="label_3">
+   <widget class="QLabel" name="brushTool_alphaValueLabel">
     <property name="geometry">
      <rect>
       <x>50</x>
@@ -437,6 +547,22 @@
     </property>
     <property name="text">
      <string>255</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="brushTool_BrushSizeLabel">
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>430</y>
+      <width>81</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>1 px</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
     </property>
    </widget>
   </widget>
@@ -459,6 +585,8 @@
    <header>CanvasLabel.h</header>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="Resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

@@ -1,1 +1,16 @@
-<RCC/>
+<RCC>
+    <qresource prefix="/Icons">
+        <file>resources/clean.png</file>
+        <file>resources/erase.png</file>
+        <file>resources/fill.png</file>
+        <file>resources/flipH.png</file>
+        <file>resources/flipV.png</file>
+        <file>resources/pen.png</file>
+        <file>resources/rotate.png</file>
+        <file>resources/shape.png</file>
+        <file>resources/loadImg.png</file>
+        <file>resources/erase_unselected.png</file>
+        <file>resources/pen_unselected.png</file>
+        <file>resources/shape_unselected.png</file>
+    </qresource>
+</RCC>

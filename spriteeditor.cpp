@@ -15,6 +15,8 @@ SpriteEditor::SpriteEditor(class Model& model, QWidget *parent)
 {
     ui->setupUi(this);
 
+    //Setup icon
+
     // Default is pen tool
     lastBrushButtonSelected = ui->brushTool_PenButton;
     lastBrushButtonSelected->setEnabled(false);
