@@ -3,7 +3,6 @@
 Model::Model(QObject *parent)
     : QObject{parent}, userInput(MouseButton(mouseMove, QPointF(0,0), 0))
 {
-    drawTimer = new QTimer();
     frameIndex = 0;
     brushTool = BrushTool();
     scale = 5.0;
@@ -17,10 +16,6 @@ Model::Model(QObject *parent)
 
     initialOffset = QPointF(750.0/2 - picSize.width() / 2.0 * scale ,750.0/2 - picSize.height() / 2.0 * scale);
     frameSequence.push_back(QImage(picSize, QImage::Format_ARGB32));
-
-
-
-    connect(drawTimer, &QTimer::timeout, this, &Model::draw);
 }
 
 
@@ -40,9 +35,9 @@ void Model::receiveMouseEvent(MouseButton button){
         break;
 
     case leftButtonDown:
-        drawTimer->start(10);
         mousePos = button.getPos();
         leftMouseKeyDown = true;
+        draw();
         break;
 
     case mouseMove:
@@ -52,24 +47,28 @@ void Model::receiveMouseEvent(MouseButton button){
                 offset += mousePos - previousMousePos;
             }
 
-            qDebug() << "offset" << offset;
+            //qDebug() << "offset" << offset;
             previousMousePos = button.getPos();
             emit sendCanvasImage(frameSequence[frameIndex], scale, offset + initialOffset);
         }
 
+        if(leftMouseKeyDown){
+            draw();
+        }
         qDebug() << "pos" << mousePos/scale - offset/scale;
 
         break;
 
     case leftButtonUp:
-        drawTimer->stop();
+        leftMouseKeyDown = false;
+        draw();
         break;
 
     case rightButtonDown:
         previousMousePos = button.getPos();
         mousePos = button.getPos();
         rightMouseKeyDown = true;
-        qDebug()<<"right down";
+
         break;
 
     case rightButtonUp:
@@ -119,7 +118,7 @@ void Model::draw() {
         brushTool.dragShape(frameSequence[frameIndex], userInput, brush.getShape(), pos);
     }
 
-    qDebug() << "pos" << pos << "offset" << offset<< "scale"<<scale;
+    //qDebug() << "pos" << pos << "offset" << offset<< "scale"<<scale;
     emit sendCanvasImage(frameSequence[frameIndex], scale, offset + initialOffset);
 }
 

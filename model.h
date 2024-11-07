@@ -20,7 +20,6 @@ class Model : public QObject
     int frameIndex;
     Brush brush;
     BrushTool brushTool;
-    QTimer* drawTimer;
     QSize picSize;
     QPointF initialOffset;
     QPointF offset;

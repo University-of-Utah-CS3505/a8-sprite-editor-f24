@@ -13,27 +13,35 @@ void BrushTool::paint(QImage& image, const MouseButton& input, const Shape& shap
     // 创建 QPainter 对象，用于在 QImage 上绘制
     QPainter painter(&image);
     // set painter style
-    painter.setPen(QPen(shape.color)); //bound color
+    painter.setPen(Qt::NoPen); //no border
     painter.setBrush(shape.color); //inside color
-    qDebug() << QPen(shape.color);
+    //qDebug() << QPen(shape.color);
     drawShapeOnImage(shape, pos, painter);
+
+    if(input.getButtonType()==leftButtonUp){
+        buffer = image;
+    }
 }
 
 void BrushTool::dragShape(QImage& image, const MouseButton& input, const Shape& shape, const QPointF pos){
 
     if(input.getButtonType()==leftButtonDown){
+        qDebug()<< "New shape start at" << pos;
         start = pos;
         // backup the image
         buffer = image;
         return;
     }
 
-    image = buffer;
+    if(input.getButtonType()==mouseMove){
+        //qDebug()<< "reDraw shape";
+        image = buffer;
+    }
 
     // 创建 QPainter 对象，用于在 QImage 上绘制
     QPainter painter(&image);
     // set painter style
-    painter.setPen(QPen(shape.color)); //bound color
+    painter.setPen(Qt::NoPen); //bound color
     painter.setBrush(shape.color); //inside color
 
     end = pos;
@@ -71,7 +79,10 @@ void BrushTool::dragShape(QImage& image, const MouseButton& input, const Shape& 
         break;
     }
 
-    end = start;
+    if(input.getButtonType()==leftButtonUp){
+        buffer = image;
+    }
+
 }
 
 void BrushTool::erase(QImage& image, const MouseButton& input, const Shape& shape, const QPointF pos){
@@ -79,7 +90,13 @@ void BrushTool::erase(QImage& image, const MouseButton& input, const Shape& shap
     QPainter painter(&image);
     // set painter style
     painter.setCompositionMode(QPainter::CompositionMode_Clear);
+    painter.setPen(Qt::NoPen);
+    painter.setBrush(shape.color);
     drawShapeOnImage(shape, pos, painter);
+
+    if(input.getButtonType()==leftButtonUp){
+        buffer = image;
+    }
 }
 
 
@@ -104,7 +121,7 @@ void BrushTool::drawShapeOnImage(const Shape& shape, const QPointF pos, QPainter
             break;
         case shapeType::rect:
             qDebug() << "a";
-            painter.drawRect(pos.x() - shape.size, pos.y() - shape.size, shape.size, shape.size);
+            painter.drawRect(pos.x() - shape.size / 2.0, pos.y() - shape.size/ 2.0, shape.size, shape.size);
             break;
         case shapeType::roundedRect:
             painter.drawRoundedRect(pos.x() - shape.size / 2.0, pos.y() - shape.size / 2.0,
