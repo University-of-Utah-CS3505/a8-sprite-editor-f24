@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1100</width>
-    <height>900</height>
+    <height>930</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -274,10 +274,13 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>760</y>
+      <y>780</y>
       <width>1080</width>
-      <height>90</height>
+      <height>100</height>
      </rect>
+    </property>
+    <property name="verticalScrollBarPolicy">
+     <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
     </property>
     <property name="widgetResizable">
      <bool>true</bool>
@@ -288,7 +291,7 @@
        <x>0</x>
        <y>0</y>
        <width>1078</width>
-       <height>88</height>
+       <height>98</height>
       </rect>
      </property>
     </widget>

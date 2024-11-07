@@ -129,7 +129,7 @@ void SpriteEditor::selectFrame(int newFrameIndex){
     setFrameButtonSelected(frameSelectorButtonList[newFrameIndex]);
 
     this->frameIndex = newFrameIndex;
-    emit(sendSelectedFrameIndex(newFrameIndex));
+    emit sendSelectedFrameIndex(newFrameIndex);
 }
 
 void SpriteEditor::updateFrameSequence(const QImage& image){
