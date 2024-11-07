@@ -6,6 +6,7 @@
 #include <QGraphicsScene>
 #include <QImage>
 #include <QGraphicsPixmapItem>
+#include <QColorDialog>
 
 
 SpriteEditor::SpriteEditor(class Model& model, QWidget *parent)
@@ -13,6 +14,18 @@ SpriteEditor::SpriteEditor(class Model& model, QWidget *parent)
     , ui(new Ui::SpriteEditor)
 {
     ui->setupUi(this);
+
+    // Default is pen tool
+    lastBrushButtonSelected = ui->brushTool_PenButton;
+    lastBrushButtonSelected->setEnabled(false);
+
+    // Add shapes to comboBox
+    ui->brushTool_shapeComboBox->addItem("line");
+    ui->brushTool_shapeComboBox->addItem("rect");
+    ui->brushTool_shapeComboBox->addItem("roundedRect");
+    ui->brushTool_shapeComboBox->addItem("ellipse");
+    ui->brushTool_shapeComboBox->addItem("polygon");
+    ui->brushTool_shapeComboBox->setCurrentIndex(3);
 
 
     //Connect ui singal to model slot
@@ -22,10 +35,18 @@ SpriteEditor::SpriteEditor(class Model& model, QWidget *parent)
     connect(ui->cloneFrameButton, &QPushButton::pressed, &model, &Model::cloneCurrentFrame);
 
 
-    //Connect ui signal to self slot
+    //----------Connect ui signal to self slot------------
+    //frame sequence part
     connect(ui->addFrameButton, &QPushButton::pressed, this, &SpriteEditor::addFrame);
     connect(ui->removeFrameButton, &QPushButton::pressed, this, &SpriteEditor::removeFrame);
     connect(ui->cloneFrameButton, &QPushButton::pressed, this, &SpriteEditor::cloneFrame);
+    //brush part
+    connect(ui->brushTool_shapeComboBox, &QComboBox::activated, this, &SpriteEditor::selectShape);
+    connect(ui->brushTool_PenButton, &QPushButton::pressed, this, &SpriteEditor::selectDrawBrush);
+    connect(ui->brushTool_EraseButton, &QPushButton::pressed, this, &SpriteEditor::selectEraseBrush);
+    connect(ui->brushTool_ShapeButton, &QPushButton::pressed, this, &SpriteEditor::selectShapeBrush);
+    connect(ui->brushTool_colorSelectorButton, &QPushButton::pressed, this, &SpriteEditor::selectColor);
+
 
     //Connect model signal to ui slot
     //connect(&model, &Model::display, this, &SpriteEditor::display);
@@ -49,6 +70,23 @@ SpriteEditor::SpriteEditor(class Model& model, QWidget *parent)
 
 }
 
+void SpriteEditor::selectColor(){
+    QColor color = QColorDialog::getColor(brush.getShape().color, this, "Select Color");
+
+    if (color.isValid()) {
+        brush.setShape(Shape(brush.getShape().shapeType,brush.getShape().size,color));
+
+        //get text color(inverse)
+        QColor textColor = QColor(255-color.red(),255-color.green(),255-color.blue());
+
+        // 将颜色应用到按钮背景和文字
+        ui->brushTool_colorSelectorButton->setStyleSheet(QString("background-color: %1; color: %2;")
+                                                                  .arg(color.name())
+                                                                  .arg(textColor.name()));
+    }
+    emit sendBrushType(brush);
+}
+
 void SpriteEditor::display(const QImage& image, float scale, const QPointF& offset){
     // 将 QImage 转换为 QPixmap
     QPixmap pixmap = QPixmap::fromImage(image);
@@ -64,9 +102,57 @@ void SpriteEditor::display(const QImage& image, float scale, const QPointF& offs
     // 设置缩放后的图片到 QLabel 上
     ui->canvasLabel->setPixmap(scaledPixmap);
 
-    //TODO update the picture at buttom list
+    //update the picture at buttom list
+    frameSelectorButtonList[frameIndex]->setIcon(QPixmap::fromImage(image));
 }
 
+void SpriteEditor::selectShape(int shapeID){
+    switch(shapeID){
+        case 1:
+            brush.setShape(Shape(shapeType::line,1,QColor(1,1,1)));
+            break;
+        case 2:
+            brush.setShape(Shape(shapeType::rect,1,QColor(1,1,1)));
+            break;
+        case 3:
+            brush.setShape(Shape(shapeType::roundedRect,1,QColor(1,1,1)));
+            break;
+        case 4:
+            brush.setShape(Shape(shapeType::ellipse,1,QColor(1,1,1)));
+            break;
+        case 5:
+            brush.setShape(Shape(shapeType::polygon,1,QColor(1,1,1)));
+            break;
+        default:
+            break;
+    }
+
+    emit sendBrushType(brush);
+}
+
+void SpriteEditor::selectDrawBrush(){
+    lastBrushButtonSelected->setEnabled(true);
+    ui->brushTool_PenButton->setEnabled(false);
+    lastBrushButtonSelected = ui->brushTool_PenButton;
+    brush.setBrushType(drawBrush);
+    emit sendBrushType(brush);
+}
+
+void SpriteEditor::selectEraseBrush(){
+    lastBrushButtonSelected->setEnabled(true);
+    ui->brushTool_EraseButton->setEnabled(false);
+    lastBrushButtonSelected = ui->brushTool_EraseButton;
+    brush.setBrushType(eraseBrush);
+    emit sendBrushType(brush);
+}
+
+void SpriteEditor::selectShapeBrush(){
+    lastBrushButtonSelected->setEnabled(true);
+    ui->brushTool_ShapeButton->setEnabled(false);
+    lastBrushButtonSelected = ui->brushTool_ShapeButton;
+    brush.setBrushType(shapeBrush);
+    emit sendBrushType(brush);
+}
 
 void SpriteEditor::addFrame(){
     //select
@@ -144,14 +230,13 @@ void SpriteEditor::setFrameButtonSelected(IntSignalButton* button){
                           "}");
     button->setEnabled(false);
 }
+
 void SpriteEditor::setFrameButtonUnselected(IntSignalButton* button){
     button->setStyleSheet("QPushButton {"
                           "  padding: 5px;"             // 内容与边框之间的间距
                           "}");
     button->setEnabled(true);
 }
-
-
 
 SpriteEditor::~SpriteEditor()
 {

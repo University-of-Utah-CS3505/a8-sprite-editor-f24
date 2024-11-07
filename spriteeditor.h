@@ -4,7 +4,6 @@
 #include <QMainWindow>
 #include <QGraphicsSceneMouseEvent>
 #include "model.h"
-#include "canvaslabel.h"
 #include <QPushButton>
 #include <QHBoxLayout>
 #include "intsignalbutton.h"
@@ -20,9 +19,11 @@ class SpriteEditor : public QMainWindow
 {
     Q_OBJECT
     int frameIndex = 0;
+    Brush brush;
     QList<IntSignalButton*> frameSelectorButtonList;
     QWidget *frameOverviewContainer;
     QHBoxLayout *frameOverviewLayout;
+    QPushButton* lastBrushButtonSelected;
 
     void setFrameButtonSelected(IntSignalButton* button);
     void setFrameButtonUnselected(IntSignalButton* button);
@@ -32,7 +33,12 @@ public:
     ~SpriteEditor();
 
 public slots:
+    void selectShape(int shapeId);
+    void selectDrawBrush();
+    void selectEraseBrush();
+    void selectShapeBrush();
     void selectFrame(int frameIndex);
+    void selectColor();
     void addFrame();
     void removeFrame();
     void cloneFrame();
@@ -41,6 +47,7 @@ public slots:
 
 signals:
     void sendSelectedFrameIndex(int index);
+    void sendBrushType(Brush brush);
 
 private:
     Ui::SpriteEditor *ui;
