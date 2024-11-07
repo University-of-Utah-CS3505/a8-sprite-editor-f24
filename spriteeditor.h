@@ -44,6 +44,8 @@ public slots:
     void cloneFrame();
     void updateFrameSequence(const QImage& image);
     void display(const QImage& image, float scale, const QPointF& offset);
+    void setAlpha(int value);
+    void setBrushSize(int value);
 
 signals:
     void sendSelectedFrameIndex(int index);

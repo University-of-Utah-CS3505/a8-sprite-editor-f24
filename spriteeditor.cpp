@@ -46,6 +46,8 @@ SpriteEditor::SpriteEditor(class Model& model, QWidget *parent)
     connect(ui->brushTool_EraseButton, &QPushButton::pressed, this, &SpriteEditor::selectEraseBrush);
     connect(ui->brushTool_ShapeButton, &QPushButton::pressed, this, &SpriteEditor::selectShapeBrush);
     connect(ui->brushTool_colorSelectorButton, &QPushButton::pressed, this, &SpriteEditor::selectColor);
+    connect(ui->brushTool_BrushSizeSlider, &QSlider::sliderMoved, this, &SpriteEditor::setBrushSize);
+    connect(ui->brushTool_AlphaSlider, &QSlider::sliderMoved, this, &SpriteEditor::setAlpha);
 
 
     //Connect model signal to ui slot
@@ -106,22 +108,53 @@ void SpriteEditor::display(const QImage& image, float scale, const QPointF& offs
     frameSelectorButtonList[frameIndex]->setIcon(QPixmap::fromImage(image));
 }
 
+void SpriteEditor::setAlpha(int value){
+    const Shape& s = brush.getShape();
+    QColor color = QColor(s.color.red(), s.color.green(), s.color.blue(), value);
+
+    QString colorWithAlpha = QString("rgba(%1, %2, %3, %4)")
+                                 .arg(color.red())
+                                 .arg(color.green())
+                                 .arg(color.blue())
+                                 .arg(value / 255.0);  // 透明度范围为 0.0 到 1.0
+
+    brush.setShape(Shape(s.shapeType, s.size, color));
+
+    //get text color(inverse)
+    QColor textColor = QColor(255-color.red(),255-color.green(),255-color.blue());
+
+    //将颜色应用到按钮背景和文字
+    ui->brushTool_colorSelectorButton->setStyleSheet(QString("background-color: %1; color: %2;")
+                                                         .arg(colorWithAlpha)
+                                                         .arg(textColor.name()));
+
+    ui->brushTool_alphaValueLabel->setText(QString::number(value));
+    emit sendBrushType(brush);
+}
+
+void SpriteEditor::setBrushSize(int size){
+    const Shape& s = brush.getShape();
+    brush.setShape(Shape(s.shapeType, size, s.color));
+    ui->brushTool_BrushSizeLabel->setText(QString::number(size) + " px");
+    emit sendBrushType(brush);
+}
+
 void SpriteEditor::selectShape(int shapeID){
     switch(shapeID){
         case 1:
-            brush.setShape(Shape(shapeType::line,1,QColor(1,1,1)));
+            brush.setShape(Shape(shapeType::line, brush.getShape().size, brush.getShape().color));
             break;
         case 2:
-            brush.setShape(Shape(shapeType::rect,1,QColor(1,1,1)));
+            brush.setShape(Shape(shapeType::rect, brush.getShape().size, brush.getShape().color));
             break;
         case 3:
-            brush.setShape(Shape(shapeType::roundedRect,1,QColor(1,1,1)));
+            brush.setShape(Shape(shapeType::roundedRect,brush.getShape().size, brush.getShape().color));
             break;
         case 4:
-            brush.setShape(Shape(shapeType::ellipse,1,QColor(1,1,1)));
+            brush.setShape(Shape(shapeType::ellipse, brush.getShape().size, brush.getShape().color));
             break;
         case 5:
-            brush.setShape(Shape(shapeType::polygon,1,QColor(1,1,1)));
+            brush.setShape(Shape(shapeType::polygon, brush.getShape().size, brush.getShape().color));
             break;
         default:
             break;
