@@ -35,6 +35,7 @@ SpriteEditor::SpriteEditor(class Model& model, QWidget *parent)
     connect(ui->addFrameButton, &QPushButton::pressed, &model, &Model::addNewFrameAtCurrentFrame);
     connect(ui->removeFrameButton, &QPushButton::pressed, &model, &Model::removeCurrentFrame);
     connect(ui->cloneFrameButton, &QPushButton::pressed, &model, &Model::cloneCurrentFrame);
+    connect(this, &SpriteEditor::sendBrushType, &model, &Model::receiveBrushType);
 
 
     //----------Connect ui signal to self slot------------
@@ -147,19 +148,19 @@ void SpriteEditor::setBrushSize(int size){
 
 void SpriteEditor::selectShape(int shapeID){
     switch(shapeID){
-        case 1:
+        case 0:
             brush.setShape(Shape(shapeType::line, brush.getShape().size, brush.getShape().color));
             break;
-        case 2:
+        case 1:
             brush.setShape(Shape(shapeType::rect, brush.getShape().size, brush.getShape().color));
             break;
-        case 3:
+        case 2:
             brush.setShape(Shape(shapeType::roundedRect,brush.getShape().size, brush.getShape().color));
             break;
-        case 4:
+        case 3:
             brush.setShape(Shape(shapeType::ellipse, brush.getShape().size, brush.getShape().color));
             break;
-        case 5:
+        case 4:
             brush.setShape(Shape(shapeType::polygon, brush.getShape().size, brush.getShape().color));
             break;
         default:

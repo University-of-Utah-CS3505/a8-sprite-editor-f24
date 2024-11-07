@@ -10,6 +10,7 @@ Model::Model(QObject *parent)
     offset = QPointF(0,0);
     // TODO update this
     picSize = QSize(64,64);
+    inFrameScale = std::min(750.0 / picSize.width(), 750.0 / picSize.height());
 
     rightMouseKeyDown = false;
     leftMouseKeyDown = false;
@@ -109,13 +110,13 @@ void Model::draw() {
     QPointF pos = mousePos/scale - offset/scale;
     switch(brush.getBrushType()){
     case drawBrush:
-        brushTool.paint(frameSequence[frameIndex], userInput, brush.getShape(), scale, offset);
+        brushTool.paint(frameSequence[frameIndex], userInput, brush.getShape(), pos);
         break;
     case eraseBrush:
-        brushTool.erase(frameSequence[frameIndex], userInput, brush.getShape(), scale, offset);
+        brushTool.erase(frameSequence[frameIndex], userInput, brush.getShape(), pos);
         break;
     case shapeBrush:
-        brushTool.dragShape(frameSequence[frameIndex], userInput, brush.getShape(), scale, offset);
+        brushTool.dragShape(frameSequence[frameIndex], userInput, brush.getShape(), pos);
     }
 
     qDebug() << "pos" << pos << "offset" << offset<< "scale"<<scale;
