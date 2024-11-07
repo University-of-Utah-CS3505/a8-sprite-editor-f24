@@ -93,7 +93,7 @@
                          </base-DElement>
                          <object>{0ea7c548-7cbe-4229-9afb-4f096f378886}</object>
                          <name>Canvas</name>
-                         <pos>x:-145;y:-90</pos>
+                         <pos>x:-120;y:-100</pos>
                          <rect>x:-125;y:-95;w:250;h:190</rect>
                          <visual-role>0</visual-role>
                         </DObject>
@@ -372,7 +372,7 @@
                          </base-DElement>
                          <object>{62980fa1-f51a-4c69-ad0e-792992a67f54}</object>
                          <name>Shape</name>
-                         <pos>x:620;y:390</pos>
+                         <pos>x:630;y:225</pos>
                          <rect>x:-65;y:-50;w:130;h:100</rect>
                          <visual-role>0</visual-role>
                         </DObject>
@@ -428,17 +428,64 @@
                      </instance>
                     </item>
                     <item>
+                     <instance type="DClass">
+                      <DClass>
+                       <base-DObject>
+                        <DObject>
+                         <base-DElement>
+                          <DElement>
+                           <uid>{939be8b5-1629-4e7a-9f30-f9ad58c311a4}</uid>
+                          </DElement>
+                         </base-DElement>
+                         <object>{8f6b6032-ea7b-43b6-b8d5-24f70a3f2af3}</object>
+                         <name>Brush type</name>
+                         <pos>x:630;y:385</pos>
+                         <rect>x:-65;y:-50;w:130;h:100</rect>
+                         <auto-sized>false</auto-sized>
+                         <visual-role>0</visual-role>
+                        </DObject>
+                       </base-DObject>
+                       <show-all-members>true</show-all-members>
+                      </DClass>
+                     </instance>
+                    </item>
+                    <item>
                      <instance type="DAssociation">
                       <DAssociation>
                        <base-DRelation>
                         <DRelation>
                          <base-DElement>
                           <DElement>
-                           <uid>{b4236855-22bb-465a-9ddd-a648e8fa5c6f}</uid>
+                           <uid>{14f772c2-33cf-4ba6-a7e9-b541fa70950b}</uid>
                           </DElement>
                          </base-DElement>
-                         <object>{8d6e1a54-06e6-492b-a713-9b4662915fec}</object>
+                         <object>{7fb5cce5-af0c-4cf9-9b48-37fc8bb90d15}</object>
                          <a>{45967437-129d-490d-8d61-c143a5c369b7}</a>
+                         <b>{939be8b5-1629-4e7a-9f30-f9ad58c311a4}</b>
+                        </DRelation>
+                       </base-DRelation>
+                       <a>
+                        <DAssociationEnd>
+                         <cradinality>1</cradinality>
+                         <navigable>true</navigable>
+                         <kind>2</kind>
+                        </DAssociationEnd>
+                       </a>
+                      </DAssociation>
+                     </instance>
+                    </item>
+                    <item>
+                     <instance type="DAssociation">
+                      <DAssociation>
+                       <base-DRelation>
+                        <DRelation>
+                         <base-DElement>
+                          <DElement>
+                           <uid>{671c08c6-909b-433e-b6fe-c05c7b9fb401}</uid>
+                          </DElement>
+                         </base-DElement>
+                         <object>{425135fd-f24f-4b71-ba20-8e19cfe892f6}</object>
+                         <a>{939be8b5-1629-4e7a-9f30-f9ad58c311a4}</a>
                          <b>{92a283d1-9649-4dc7-ba03-f20973b19ef6}</b>
                         </DRelation>
                        </base-DRelation>
@@ -454,7 +501,7 @@
                     </item>
                    </qlist>
                   </elements>
-                  <last-modified>1730930478614</last-modified>
+                  <last-modified>1730949175740</last-modified>
                   <toolbarid>General</toolbarid>
                  </MDiagram>
                 </base-MDiagram>
@@ -647,6 +694,35 @@
                         </target>
                        </handle>
                       </item>
+                      <item>
+                       <handle>
+                        <uid>{7fb5cce5-af0c-4cf9-9b48-37fc8bb90d15}</uid>
+                        <target>
+                         <instance type="MAssociation">
+                          <MAssociation>
+                           <base-MRelation>
+                            <MRelation>
+                             <base-MElement>
+                              <MElement>
+                               <uid>{7fb5cce5-af0c-4cf9-9b48-37fc8bb90d15}</uid>
+                              </MElement>
+                             </base-MElement>
+                             <a>{554e0c96-3acb-42e1-84ec-70bef323451f}</a>
+                             <b>{8f6b6032-ea7b-43b6-b8d5-24f70a3f2af3}</b>
+                            </MRelation>
+                           </base-MRelation>
+                           <a>
+                            <MAssociationEnd>
+                             <cardinality>1</cardinality>
+                             <navigable>true</navigable>
+                             <kind>2</kind>
+                            </MAssociationEnd>
+                           </a>
+                          </MAssociation>
+                         </instance>
+                        </target>
+                       </handle>
+                      </item>
                      </qlist>
                     </handles>
                    </handles>
@@ -657,191 +733,170 @@
                  <qlist>
                   <item>
                    <MClassMember>
-                    <uid>{72d47d79-dd8c-4004-a807-42c104955720}</uid>
+                    <uid>{d94aa386-8de4-448f-ac21-6e3a6a1c3d8f}</uid>
                     <type>1</type>
                     <declaration>-fps : int</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{d138d09f-b2b1-44e9-8f19-f13365c94db5}</uid>
+                    <uid>{e4e8f8d2-50ff-4ddb-a434-d9731c345652}</uid>
                     <type>1</type>
                     <declaration>-frameIndex : int</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{5a63ca01-ed3e-4b4e-ae6c-5c833f7ea919}</uid>
+                    <uid>{491cee34-cb21-4c19-85ba-88c9c728c6d7}</uid>
                     <type>1</type>
                     <declaration>-canvasDisplayScale : float</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{a1808139-cc6b-44e1-824a-e5d9c5194a88}</uid>
+                    <uid>{03953211-6442-496d-aa03-3a0f3804bc9d}</uid>
                     <type>1</type>
                     <declaration>-rightMouseKeyDown : bool</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{33a9ca5d-dd96-447d-91c8-94659b1416f7}</uid>
+                    <uid>{1edb9135-eb35-4c6c-91d7-e8947e052818}</uid>
                     <type>1</type>
                     <declaration>-leftMouseKeyDown : bool</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{43fc4197-e98f-41f7-b048-ba7e1a1af302}</uid>
+                    <uid>{5a9de135-7768-415d-8acf-d9c2364de90f}</uid>
                     <type>1</type>
                     <declaration>-inFrameScale : float</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{7f47d191-8438-475f-bb2f-c34ab0c8088f}</uid>
+                    <uid>{05dc5336-0b97-4b46-be15-253352844d44}</uid>
                     <type>1</type>
                     <declaration>-picSize : QSize</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{973def44-bb54-4b4a-9dc5-86898ffb451d}</uid>
+                    <uid>{47692485-dbdf-4d88-baae-915672b1c0e2}</uid>
                     <type>1</type>
                     <declaration>-mousePos : QPointF</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{aecaefb3-3e83-4f42-8440-564bde5bb7ce}</uid>
+                    <uid>{b7cb62b8-488c-44eb-907e-3aa270410626}</uid>
                     <type>1</type>
                     <declaration>-previousMousePos : QPointF</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{acde3813-ebe1-4d7b-8491-eb11c46fc9e2}</uid>
+                    <uid>{34f9d1dc-7c35-4b72-bb5f-f14d4bda9526}</uid>
                     <type>1</type>
                     <declaration>-initialOffset : QPointF</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{c1e92869-272d-4216-9f5d-3b9e2e0236c5}</uid>
+                    <uid>{8fbd8c65-ee04-4f00-bee2-79a90479b1cd}</uid>
                     <type>1</type>
                     <declaration>-offset : QPointF</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{b8a8772b-ee1f-4556-9fe2-05dd8badaa74}</uid>
+                    <uid>{8d46ce4d-9249-40a1-9bb6-9435c95d96da}</uid>
                     <type>1</type>
                     <declaration>-timer : QTimer*</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{880700b2-c59a-456f-91fa-15cd6713b626}</uid>
+                    <uid>{18bd92bc-fa7d-4f6f-9b44-230c10edecc9}</uid>
                     <type>1</type>
                     <declaration>-frameSequence : vector&lt;QImage&gt;</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{65d69aaf-4beb-4e77-9a65-604675717410}</uid>
+                    <uid>{922b39d8-4c5b-454e-83d9-bc36b9a1eafe}</uid>
                     <type>1</type>
-                    <declaration>-imageTool : ImageTool*</declaration>
+                    <declaration>-brush:Brush</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{56300c23-439c-4172-bafc-1ff3ce3abce4}</uid>
-                    <type>1</type>
-                    <declaration>-brushTool : BrushTool*</declaration>
-                   </MClassMember>
-                  </item>
-                  <item>
-                   <MClassMember>
-                    <uid>{9bf17bf1-af96-4f8a-95c7-fd0cf7aeffa6}</uid>
-                    <type>1</type>
-                    <declaration>-shape : Shape</declaration>
-                   </MClassMember>
-                  </item>
-                  <item>
-                   <MClassMember>
-                    <uid>{07fc66f8-dbc6-4ba2-b426-93a27a2006b8}</uid>
+                    <uid>{8090f680-1bd1-4da9-8722-5a3d5d8dd45d}</uid>
                     <type>2</type>
                     <declaration>+selectFrame(int index)</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{f24fede8-dc22-4cd8-9de8-c43610bb9174}</uid>
+                    <uid>{0d461f31-d871-4227-b3aa-f6a92b59792c}</uid>
                     <type>2</type>
                     <declaration>+addFrame()</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{72f30db4-c9cb-433f-a6c3-699fed27da21}</uid>
+                    <uid>{7869772e-23ca-4c4c-8709-d230af12df3a}</uid>
                     <type>2</type>
                     <declaration>+removeFrame()</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{7eea1908-fa15-4f57-bfba-9387b7dbfdca}</uid>
+                    <uid>{23cc445f-3878-4ed5-a054-7e4877fdfc9c}</uid>
                     <type>2</type>
                     <declaration>+receiveMouseEvent(mouseButton button)</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{3393ba30-2a4c-4dc0-bbd3-1c1bb66bd52d}</uid>
+                    <uid>{435cb2f0-184a-4e98-ae80-06ef34bdf207}</uid>
                     <type>2</type>
                     <declaration>+filpImage()</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{bd35b1d9-eb71-4223-997d-a89a8ca21287}</uid>
+                    <uid>{3dda12e7-ef33-4e6e-b626-f0d854f1224f}</uid>
                     <type>2</type>
                     <declaration>+rotateImage()</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{994bd0ad-150f-4cd7-af44-b8425d7cd7d0}</uid>
+                    <uid>{13b10bcc-3d29-4f2e-b4d0-9a24b439bb39}</uid>
                     <type>2</type>
                     <declaration>+saveFile()</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{76d200c2-9ec2-417a-84dc-eb5dead3550f}</uid>
+                    <uid>{1dadaacc-8c39-45b2-92e6-0da511457ddb}</uid>
                     <type>2</type>
                     <declaration>+openFile(string fileName)</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{c9be1a8a-67f3-4711-bb75-89148d24afb8}</uid>
+                    <uid>{3d4445f6-e2ef-4d3e-bce1-54eb40f18721}</uid>
                     <type>2</type>
                     <declaration>+updateCanvas(float scale, const QImage&amp; image, const QPointF&amp; offset)</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{c0941e03-d984-4d8e-8602-357cf3fdd901}</uid>
+                    <uid>{919f4a2c-2b2b-460e-8eca-d27ea1040a3b}</uid>
                     <type>2</type>
                     <declaration>+updateSequencePlayer(const QImage&amp; image)</declaration>
-                   </MClassMember>
-                  </item>
-                  <item>
-                   <MClassMember>
-                    <uid>{2b875b7d-676d-4221-8f98-178b17e47a98}</uid>
-                    <type>2</type>
-                    <declaration>+updateSequenceOverView(const QImage&amp; image)</declaration>
                    </MClassMember>
                   </item>
                  </qlist>
@@ -1137,63 +1192,63 @@
                  <qlist>
                   <item>
                    <MClassMember>
-                    <uid>{b604000c-6eba-4e32-b5b4-bede38e55b90}</uid>
+                    <uid>{13768fa7-cfa5-415a-ae23-31bd430f55a0}</uid>
                     <type>1</type>
                     <declaration>- offset : QPointF</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{75106803-0f2c-425b-b1e5-dd68e15fa914}</uid>
+                    <uid>{ccffc7aa-05e9-4612-bd6e-7b16557bfc66}</uid>
                     <type>2</type>
                     <declaration>+ setOffset(const QPointF&amp;)</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{ef81c568-82bf-4021-974b-754f3d5374b8}</uid>
+                    <uid>{c445c20a-c728-4c1d-9d23-eecc7266a1dc}</uid>
                     <type>2</type>
                     <declaration>+ convertToLocalPosition(const QPointF&amp;)</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{3d8895ab-125a-4ea0-8507-94f609eddf6c}</uid>
+                    <uid>{2ccc98b3-8d01-4148-8090-f8a2811d29ca}</uid>
                     <type>2</type>
                     <declaration>+ sendMouseEvent(mouseButton)</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{4eed5736-4929-4342-a2a0-f72f9a1ad9e4}</uid>
+                    <uid>{41c9a69a-6c6b-42fe-bbb7-dc2339577b1f}</uid>
                     <type>2</type>
                     <declaration># mousePressEvent(QMouseEvent*)</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{ce45ba41-70f3-4c5d-afd4-1a7afb3b3beb}</uid>
+                    <uid>{f14eabc4-6257-49cd-be8f-d932ba511866}</uid>
                     <type>2</type>
                     <declaration># mouseMoveEvent(QMouseEvent*)</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{3494e02a-2c70-4500-88a7-558b8abb95e9}</uid>
+                    <uid>{26d189cf-b2e4-4041-b8c6-03e4f4e889ed}</uid>
                     <type>2</type>
                     <declaration># mouseReleaseEvent(QMouseEvent*)</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{3a50b8ea-6177-4f5e-b2e4-b3b7c787da5f}</uid>
+                    <uid>{43b6441d-fae4-4ab0-84ce-772ac60f4ede}</uid>
                     <type>2</type>
                     <declaration># wheelEvent(QWheelEvent*)</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{5e014311-c0d2-4155-ad00-f434e4590875}</uid>
+                    <uid>{e274cc2e-c620-445b-b8f4-221a8d7027b9}</uid>
                     <type>2</type>
                     <declaration># paintEvent(QPaintEvent*)</declaration>
                    </MClassMember>
@@ -1715,23 +1770,128 @@
                  <qlist>
                   <item>
                    <MClassMember>
-                    <uid>{1ac06bda-5b3a-4cfd-9788-bc8d9413bf76}</uid>
+                    <uid>{1202b6c4-1881-4a6f-9f24-80b3b151bf56}</uid>
                     <type>1</type>
                     <declaration>-shapeSize : float</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{0610b3ee-131c-478c-aa97-0d451e7f8eae}</uid>
+                    <uid>{19d66d0b-1d81-43a4-ba0d-9d758f87ef63}</uid>
                     <type>1</type>
                     <declaration>-shapeColor : QColor</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{739628ad-f2f1-4691-ab82-0bde8314b2f4}</uid>
+                    <uid>{c3287ad8-2500-420c-9b04-8c0d04928499}</uid>
                     <type>1</type>
                     <declaration>-shapeType : enum</declaration>
+                   </MClassMember>
+                  </item>
+                 </qlist>
+                </members>
+               </MClass>
+              </instance>
+             </target>
+            </handle>
+           </item>
+           <item>
+            <handle>
+             <uid>{8f6b6032-ea7b-43b6-b8d5-24f70a3f2af3}</uid>
+             <target>
+              <instance type="MClass">
+               <MClass>
+                <base-MObject>
+                 <MObject>
+                  <base-MElement>
+                   <MElement>
+                    <uid>{8f6b6032-ea7b-43b6-b8d5-24f70a3f2af3}</uid>
+                   </MElement>
+                  </base-MElement>
+                  <name>Brush type</name>
+                  <relations>
+                   <handles>
+                    <handles>
+                     <qlist>
+                      <item>
+                       <handle>
+                        <uid>{92bc471b-d97c-4158-ae9b-5a2d4aa5c420}</uid>
+                        <target>
+                         <instance type="MAssociation">
+                          <MAssociation>
+                           <base-MRelation>
+                            <MRelation>
+                             <base-MElement>
+                              <MElement>
+                               <uid>{92bc471b-d97c-4158-ae9b-5a2d4aa5c420}</uid>
+                              </MElement>
+                             </base-MElement>
+                             <a>{8f6b6032-ea7b-43b6-b8d5-24f70a3f2af3}</a>
+                             <b>{554e0c96-3acb-42e1-84ec-70bef323451f}</b>
+                            </MRelation>
+                           </base-MRelation>
+                           <a>
+                            <MAssociationEnd>
+                             <cardinality>1</cardinality>
+                             <navigable>true</navigable>
+                             <kind>2</kind>
+                            </MAssociationEnd>
+                           </a>
+                          </MAssociation>
+                         </instance>
+                        </target>
+                       </handle>
+                      </item>
+                      <item>
+                       <handle>
+                        <uid>{425135fd-f24f-4b71-ba20-8e19cfe892f6}</uid>
+                        <target>
+                         <instance type="MAssociation">
+                          <MAssociation>
+                           <base-MRelation>
+                            <MRelation>
+                             <base-MElement>
+                              <MElement>
+                               <uid>{425135fd-f24f-4b71-ba20-8e19cfe892f6}</uid>
+                              </MElement>
+                             </base-MElement>
+                             <a>{8f6b6032-ea7b-43b6-b8d5-24f70a3f2af3}</a>
+                             <b>{62980fa1-f51a-4c69-ad0e-792992a67f54}</b>
+                            </MRelation>
+                           </base-MRelation>
+                           <a>
+                            <MAssociationEnd>
+                             <cardinality>1</cardinality>
+                             <navigable>true</navigable>
+                             <kind>2</kind>
+                            </MAssociationEnd>
+                           </a>
+                          </MAssociation>
+                         </instance>
+                        </target>
+                       </handle>
+                      </item>
+                     </qlist>
+                    </handles>
+                   </handles>
+                  </relations>
+                 </MObject>
+                </base-MObject>
+                <members>
+                 <qlist>
+                  <item>
+                   <MClassMember>
+                    <uid>{4d8f4f3b-b19c-482d-9325-3f89401d9f1b}</uid>
+                    <type>1</type>
+                    <declaration>-brushType:Brush</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{91b44a08-7757-44fb-83c3-6206253b9d7d}</uid>
+                    <type>1</type>
+                    <declaration>-shape: Shape</declaration>
                    </MClassMember>
                   </item>
                  </qlist>

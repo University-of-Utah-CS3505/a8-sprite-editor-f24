@@ -5,6 +5,7 @@
 #include <QImage>
 #include <QPainter>
 #include <qtimer.h>
+#include "brush.h"
 
 #include "mousebutton.h"
 
@@ -21,8 +22,24 @@ public slots:
     void removeCurrentFrame();
     void cloneCurrentFrame();
 
+    void setFPS(int fps);
+
+    //Brush tool
+    void updateBrushType(Brush brush);
+    //Image tool
+    void rotateImage();
+    void flipImageAlongY();
+    void flipImageAlongX();
+    void loadImage(QString imagePath);
+    void fillBlankArea();
+    void clearCanvas();
+    //Saving
+    void openFile(QString fileName);
+    void saveFile(QString fileName);
+
 signals:
-    void display(float scale, const QImage& image, const QPointF& offset);
+    void updateCanvas(float scale, const QImage& image, const QPointF& offset);
+    void updateSequencePlayer(const QImage& image);
 
 
 };
