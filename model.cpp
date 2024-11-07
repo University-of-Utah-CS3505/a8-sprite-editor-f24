@@ -29,7 +29,7 @@ void Model::receiveFPS(int fps){
 
 }
 
-void Model::updateBrushType(Brush brush){
+void Model::receiveBrushType(Brush brush){
 
 }
 

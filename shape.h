@@ -16,6 +16,7 @@ public:
     shapeType shapeType;
     float size;
     QColor color;
+    Shape(enum shapeType shapeType, float size, QColor color);
     Shape();
 };
 
