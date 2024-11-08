@@ -2,9 +2,8 @@
 #include <QPainter>
 
 BrushTool::BrushTool() {
-    end = QPointF(-100,-100);
-    start = QPointF(100,100);
-    dir = QPoint(0,0);
+    end = QPointF(0,0);
+    start = QPointF(0,0);
 }
 
 void BrushTool::paint(QImage& image, const MouseButton& input, const Shape& shape, const QPointF pos){
@@ -30,15 +29,33 @@ void BrushTool::dragShape(QImage& image, const MouseButton& input, const Shape& 
         start = pos;
         // backup the image
         buffer = image;
+
+        if(shape.shapeType == shapeType::polygon){
+            polygon = QPolygonF();
+            polygon.append(pos);
+
+        }
         return;
     }
+
+    if(input.getButtonType()==leftButtonUp){
+        buffer = image;
+        polygon.clear();
+        return;
+    }
+
 
     if(input.getButtonType()==mouseMove){
         //qDebug()<< "reDraw shape";
         image = buffer;
     }
 
-    // 创建 QPainter 对象，用于在 QImage 上绘制
+    if(input.getButtonType()==rightButtonDown){
+        polygon.append(pos);
+        qDebug() << polygon;
+    }
+
+
     QPainter painter(&image);
     // set painter style
     painter.setPen(Qt::NoPen); //bound color
@@ -46,42 +63,47 @@ void BrushTool::dragShape(QImage& image, const MouseButton& input, const Shape& 
 
     end = pos;
 
+    QPen pen(shape.color);
+    pen.setWidth(shape.size);
+
 
     switch(shape.shapeType){
-    case line:
+    case shapeType::line:
+        painter.setPen(pen);
         painter.drawLine(start, end);
         break;
-    case rect:
+    case shapeType::rect:
         painter.drawRect(std::min(start.x(),end.x()), //topLeft.x
                          std::min(start.y(), end.y()),//topLeft.y
                          std::abs(start.x() - end.x()),//width
                          std::abs(start.y() - end.y())//height
                          );
         break;
-    case roundedRect:
+    case shapeType::roundedRect:
         painter.drawRoundedRect(std::min(start.x(),end.x()), //topLeft.x
                                 std::min(start.y(), end.y()),//topLeft.y
                                 std::abs(start.x() - end.x()),//width
                                 std::abs(start.y() - end.y()),//height
-                                shape.size,
-                                shape.size
+                                shape.size / 4.0,
+                                shape.size / 4.0
                          );
         break;
-    case ellipse:
+    case shapeType::ellipse:
         painter.drawEllipse(std::min(start.x(),end.x()), //topLeft.x
                             std::min(start.y(), end.y()),//topLeft.y
                             std::abs(start.x() - end.x()),//width
                             std::abs(start.y() - end.y())//height
                             );
         break;
-    case polygon:
+    case shapeType::polygon:
+        if(polygon.size() < 3) break;
+
+        painter.drawPolygon(polygon);
         painter.drawEllipse(input.getPos(), shape.size / 2.0, shape.size / 2.0);
         break;
     }
 
-    if(input.getButtonType()==leftButtonUp){
-        buffer = image;
-    }
+
 
 }
 
@@ -107,20 +129,9 @@ void BrushTool::drawShapeOnImage(const Shape& shape, const QPointF pos, QPainter
 
     switch(shape.shapeType){
         case shapeType::line:
-            start = pos;
-            dir = start - end;
-            // get line that vertical with dir
-            dir = QPointF(dir.y(),dir.x());
-
-
-            qDebug() << "dir" << dir;
-            // divide by it's length to get unit vector
-            dir /= std::sqrt(QPointF::dotProduct(dir, dir));
-            painter.drawLine(pos + dir * shape.size / 2.0, pos - dir * shape.size / 2.0);
-            end = start;
+            painter.drawRect(pos.x() - shape.size / 2.0, pos.y() - shape.size/ 2.0, shape.size, shape.size);
             break;
         case shapeType::rect:
-            qDebug() << "a";
             painter.drawRect(pos.x() - shape.size / 2.0, pos.y() - shape.size/ 2.0, shape.size, shape.size);
             break;
         case shapeType::roundedRect:
@@ -134,9 +145,5 @@ void BrushTool::drawShapeOnImage(const Shape& shape, const QPointF pos, QPainter
             painter.drawEllipse(pos, shape.size / 2.0, shape.size / 2.0);
             break;
     }
-
-    //painter.drawEllipse(pos, 1, 1); // (center, radiusX, radiusY)
-    //qDebug() << "pos" << pos;
-    //emit display(scale, frameSequence[0], offset + initialOffset);
 }
 

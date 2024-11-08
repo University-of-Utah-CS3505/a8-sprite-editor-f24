@@ -1,6 +1,8 @@
 #ifndef BRUSHTOOL_H
 #define BRUSHTOOL_H
 #include <QImage>
+#include <QPolygon>
+#include <QList>
 #include "mousebutton.h"
 #include "shape.h"
 
@@ -9,7 +11,7 @@ class BrushTool
     QImage buffer;
     QPointF start;
     QPointF end;
-    QPointF dir;
+    QPolygonF polygon;
     ///
     /// \brief BrushTool::paint
     /// \param image canvas image

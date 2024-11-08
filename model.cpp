@@ -16,6 +16,10 @@ Model::Model(QObject *parent)
 
     initialOffset = QPointF(750.0/2 - picSize.width() / 2.0 * scale ,750.0/2 - picSize.height() / 2.0 * scale);
     frameSequence.push_back(QImage(picSize, QImage::Format_ARGB32));
+
+    QTimer::singleShot(100, [=](){
+         emit sendCanvasImage(frameSequence[frameIndex], scale, offset + initialOffset);
+    });
 }
 
 
@@ -55,7 +59,6 @@ void Model::receiveMouseEvent(MouseButton button){
         if(leftMouseKeyDown){
             draw();
         }
-        qDebug() << "pos" << mousePos/scale - offset/scale;
 
         break;
 
@@ -65,9 +68,14 @@ void Model::receiveMouseEvent(MouseButton button){
         break;
 
     case rightButtonDown:
+
         previousMousePos = button.getPos();
         mousePos = button.getPos();
         rightMouseKeyDown = true;
+
+        if(leftMouseKeyDown){
+            draw();
+        }
 
         break;
 
