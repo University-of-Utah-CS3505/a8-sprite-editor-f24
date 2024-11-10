@@ -46,6 +46,7 @@ public slots:
     void updateCanvas(const QImage& image, float scale, const QPointF& offset);
     void setAlpha(int value);
     void setBrushSize(int value);
+    void showHelpMessage();
 
 signals:
     void sendSelectedFrameIndex(int index);

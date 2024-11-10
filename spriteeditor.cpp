@@ -73,6 +73,9 @@ SpriteEditor::SpriteEditor(class Model& model, QWidget *parent)
     frameOverviewLayout->addWidget(button);
     connect(frameSelectorButtonList[0], &IntSignalButton::sendSelfValue, this, &SpriteEditor::selectFrame);
 
+    //helpMessage
+    connect(ui->showHelpDocButton, &QPushButton::clicked, this, &SpriteEditor::showHelpMessage);
+
 }
 
 
@@ -276,6 +279,30 @@ void SpriteEditor::setFrameButtonUnselected(IntSignalButton* button){
                           "  padding: 5px;"             // 内容与边框之间的间距
                           "}");
     button->setEnabled(true);
+}
+
+void SpriteEditor::showHelpMessage(){
+    QWidget * w = new QWidget(this);
+    w->setWindowFlags(Qt::Popup);
+    w->setGeometry(300,300,350,500);
+    w->setAttribute(Qt::WA_DeleteOnClose);
+
+    QLabel *label = new QLabel("This is the help message.\n"
+                            "\n"
+                            "1. The left top is the anime preview.\n"
+                            "\n"
+                            "2. There is a slide bar to adjust the FPS of the preview.\n""\n"
+                            "3. The next bar is main tools we can use, we can use pen tool, shape tool, erase tool and size of the pen\n""\n"
+                            "4. Color selector can be used to select color and change alpha value\n""\n"
+                            "5. In the middle we have sub tools liking fliping the drawing - upside down, left to right, insert image, erase all staff in the drawing panel. redo the drawing\n""\n"
+                            "6. Frame operation, we can add frame, delete frame, copy the frame to the frame list\n""\n"
+                            "7. the last bar is save and load button, we can save our sprite or load other existed sprite.""\n""\n"
+                            "8. the buttom button list is our sprite anime sequence, each button represent each frame.\n""\n"
+                            "9. The right big canvas is our drawing canvas\n", w);
+    label->setAlignment(Qt::AlignCenter);
+    label->setWordWrap(true);
+    label->setGeometry(10, 10, 300, 500);
+    w->show();
 }
 
 SpriteEditor::~SpriteEditor()
