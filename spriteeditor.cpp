@@ -36,9 +36,12 @@ SpriteEditor::SpriteEditor(class Model& model, QWidget *parent)
     connect(ui->removeFrameButton, &QPushButton::pressed, &model, &Model::removeCurrentFrame);
     connect(ui->cloneFrameButton, &QPushButton::pressed, &model, &Model::cloneCurrentFrame);
     connect(this, &SpriteEditor::sendBrushType, &model, &Model::receiveBrushType);
+    connect(this, &SpriteEditor::sendFPS, &model, &Model::receiveFPS);
+
 
 
     //----------Connect ui signal to self slot------------
+    connect(ui->fpsSlider, &QSlider::sliderMoved, this, &SpriteEditor::setFPS);
     //frame sequence part
     connect(ui->addFrameButton, &QPushButton::pressed, this, &SpriteEditor::addFrame);
     connect(ui->removeFrameButton, &QPushButton::pressed, this, &SpriteEditor::removeFrame);
@@ -144,6 +147,11 @@ void SpriteEditor::setBrushSize(int size){
     brush.setShape(Shape(s.shapeType, size, s.color));
     ui->brushTool_BrushSizeLabel->setText(QString::number(size) + " px");
     emit sendBrushType(brush);
+}
+
+void SpriteEditor::setFPS(int fps){
+    ui->textLabel_FPSData->setText(QString::number(fps));
+    emit sendFPS(fps);
 }
 
 void SpriteEditor::selectShape(int shapeID){
