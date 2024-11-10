@@ -58,6 +58,9 @@
       <height>16</height>
      </rect>
     </property>
+    <property name="maximum">
+     <number>60</number>
+    </property>
     <property name="orientation">
      <enum>Qt::Orientation::Horizontal</enum>
     </property>
@@ -65,14 +68,14 @@
    <widget class="QLabel" name="textLabel_FPS">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>100</x>
       <y>340</y>
-      <width>311</width>
+      <width>51</width>
       <height>16</height>
      </rect>
     </property>
     <property name="text">
-     <string>FPS</string>
+     <string>FPS:</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -425,7 +428,7 @@
      <rect>
       <x>10</x>
       <y>660</y>
-      <width>301</width>
+      <width>323</width>
       <height>41</height>
      </rect>
     </property>
@@ -576,6 +579,19 @@
     </property>
     <property name="text">
      <string>Setting</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="textLabel_FPSData">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>340</y>
+      <width>41</width>
+      <height>19</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>10</string>
     </property>
    </widget>
   </widget>
