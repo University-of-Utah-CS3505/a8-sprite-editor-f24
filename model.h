@@ -10,7 +10,11 @@
 #include <QColor>
 #include "mousebutton.h"
 #include "imagetool.h"
-
+#include <QJsonArray>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QFile>
+#include <QBuffer>
 
 
 class Model : public QObject
