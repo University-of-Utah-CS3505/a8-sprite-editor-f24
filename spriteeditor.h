@@ -45,11 +45,14 @@ public slots:
     void updateFrameSequence(const QImage& image);
     void updateCanvas(const QImage& image, float scale, const QPointF& offset);
     void setAlpha(int value);
+    void setFPS(int fps);
     void setBrushSize(int value);
+    void showHelpMessage();
 
 signals:
     void sendSelectedFrameIndex(int index);
     void sendBrushType(Brush brush);
+    void sendFPS(int fps);
 
 private:
     Ui::SpriteEditor *ui;
