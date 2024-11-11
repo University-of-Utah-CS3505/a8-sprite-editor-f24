@@ -5,7 +5,11 @@
  * @brief The Model class
  *
  *  Team Name : Sam's Club
+ *
+ *  Team Members : Rohith Veeramachaneni, Shu Chen, Bingkun Han and PING-HSUN HSIEH
+ *
  *  Contributor's Names of Model.h : Rohith Veeramachaneni and Shu Chen
+ *
  *  Date Modified : November 10, 2024
  *
  *  Model class is the model in MVP structure for the sprite editor application.Contains slots,methods to communicate with other
