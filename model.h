@@ -17,6 +17,17 @@
 #include <QBuffer>
 
 
+/**
+ * @brief The Model class
+ *
+ *  Team Name : Sam's Club
+ *  Contributor's Names of Model.h : Rohith Veeramachaneni and Shu Chen
+ *  Date Modified : November 10, 2024
+ *
+ *  Model header file is the model's header in MVP structure for the sprite editor application.Contains declaration of all fields,slots,methods
+ *  for model class
+ */
+
 class Model : public QObject
 {
     Q_OBJECT

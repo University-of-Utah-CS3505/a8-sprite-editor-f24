@@ -1,6 +1,17 @@
 #include "model.h"
 #include <QDebug>
 
+/**
+ * @brief The Model class
+ *
+ *  Team Name : Sam's Club
+ *  Contributor's Names of Model.h : Rohith Veeramachaneni and Shu Chen
+ *  Date Modified : November 10, 2024
+ *
+ *  Model class is the model in MVP structure for the sprite editor application.Contains slots,methods to communicate with other
+ *  tool classes to draw and edit images frames in the canvas editor, play frame sequence from all the current frames.
+ */
+
 Model::Model(QObject *parent)
     : QObject{parent}, userInput(MouseButton(mouseMove, QPointF(0,0), 0))
 {
@@ -166,6 +177,7 @@ void Model::draw() {
 
 
 //Image tool
+
 void Model::rotateImage(){
 
     if(frameIndex >= 0 && frameIndex < frameSequence.size())

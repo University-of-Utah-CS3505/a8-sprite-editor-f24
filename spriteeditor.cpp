@@ -317,3 +317,9 @@ SpriteEditor::~SpriteEditor()
 {
     delete ui;
 }
+
+void SpriteEditor::on_imageTool_FillBlankButton_clicked()
+{
+
+}
+
