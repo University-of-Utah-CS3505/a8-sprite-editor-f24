@@ -41,7 +41,7 @@ void ImageTool::rotateImage(QImage &image)
 }
 
 
-void ImageTool::fillBlankWithColor(QImage &image, QColor color)
+void ImageTool::fillBlankWithColor(QImage &image, const QColor& color)
 {
     if(image.isNull())
     {

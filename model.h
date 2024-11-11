@@ -72,7 +72,7 @@ public slots:
     void flipImageAlongY();
     void flipImageAlongX();
     void loadImage(QString imagePath);
-    void fillBlankArea();
+    void fillBlankArea(const QColor& color);
     void clearCanvas();
     //Saving
     void openFile(QList<QImage> &images, const QString &inputFilePath);

@@ -48,11 +48,16 @@ public slots:
     void setFPS(int fps);
     void setBrushSize(int value);
     void showHelpMessage();
+    void fillBlankArea();
 
 signals:
     void sendSelectedFrameIndex(int index);
     void sendBrushType(Brush brush);
     void sendFPS(int fps);
+    void sendAddFrame();
+    void sendCloneFrame();
+    void sendRemoveFrame();
+    void sendFillBlankArea(const QColor& color);
 
 private:
     Ui::SpriteEditor *ui;

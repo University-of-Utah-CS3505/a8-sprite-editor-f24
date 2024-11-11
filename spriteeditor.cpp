@@ -30,13 +30,22 @@ SpriteEditor::SpriteEditor(class Model& model, QWidget *parent)
     ui->brushTool_shapeComboBox->setCurrentIndex(3);
 
 
-    //Connect ui singal to model slot
+    //-----------Connect ui singal to model slot------------------
     connect(ui->canvasLabel, &CanvasLabel::sendMouseEvent, &model, &Model::receiveMouseEvent);
-    connect(ui->addFrameButton, &QPushButton::pressed, &model, &Model::addNewFrameAtCurrentFrame);
-    connect(ui->removeFrameButton, &QPushButton::pressed, &model, &Model::removeCurrentFrame);
-    connect(ui->cloneFrameButton, &QPushButton::pressed, &model, &Model::cloneCurrentFrame);
+    connect(this, &SpriteEditor::sendAddFrame, &model, &Model::addNewFrameAtCurrentFrame);
+    connect(this, &SpriteEditor::sendCloneFrame, &model, &Model::cloneCurrentFrame);
+    connect(this, &SpriteEditor::sendRemoveFrame, &model, &Model::removeCurrentFrame);
     connect(this, &SpriteEditor::sendBrushType, &model, &Model::receiveBrushType);
     connect(this, &SpriteEditor::sendFPS, &model, &Model::receiveFPS);
+    connect(this, &SpriteEditor::sendSelectedFrameIndex, &model, &Model::receiveCurrentFrameIndex);
+    // image tool
+    connect(ui->imageTool_FlipAlongYButton, &QPushButton::pressed, &model, &Model::flipImageAlongY);
+    connect(ui->imageTool_FlipAlongXButton, &QPushButton::pressed, &model, &Model::flipImageAlongX);
+    connect(ui->imageTool_RotateButton, &QPushButton::pressed, &model, &Model::rotateImage);
+    connect(this, &SpriteEditor::sendFillBlankArea, &model, &Model::fillBlankArea);
+    connect(ui->imageTool_ClearCanvasButton, &QPushButton::pressed, &model, &Model::clearCanvas);
+
+
 
 
 
@@ -55,6 +64,8 @@ SpriteEditor::SpriteEditor(class Model& model, QWidget *parent)
     connect(ui->brushTool_BrushSizeSlider, &QSlider::sliderMoved, this, &SpriteEditor::setBrushSize);
     connect(ui->brushTool_AlphaSlider, &QSlider::sliderMoved, this, &SpriteEditor::setAlpha);
 
+    connect(ui->imageTool_FillBlankButton, &QPushButton::pressed, this, &SpriteEditor::fillBlankArea);
+
 
     //Connect model signal to ui slot
     connect(&model, &Model::sendCanvasImage, this, &SpriteEditor::updateCanvas);
@@ -72,6 +83,7 @@ SpriteEditor::SpriteEditor(class Model& model, QWidget *parent)
     IntSignalButton *button = new IntSignalButton(0);
     setFrameButtonSelected(button);
     button->setFixedSize(75,75);
+    button->setIconSize(QSize(75,75));
     frameSelectorButtonList.push_back(button);
     frameOverviewLayout->addWidget(button);
     connect(frameSelectorButtonList[0], &IntSignalButton::sendSelfValue, this, &SpriteEditor::selectFrame);
@@ -212,6 +224,7 @@ void SpriteEditor::addFrame(){
     IntSignalButton *button = new IntSignalButton(frameIndex);
     setFrameButtonSelected(button);
     button->setFixedSize(75,75);
+    button->setIconSize(QSize(75,75));
 
     if(frameIndex >= frameSelectorButtonList.size() || frameIndex < 0){
         frameSelectorButtonList.push_back(button);
@@ -226,12 +239,16 @@ void SpriteEditor::addFrame(){
 
     updateAllChangedFrameButton();
 
-    selectFrame(frameIndex);
+
 
     frameOverviewContainer->adjustSize();  // adjust button to center
+    emit sendAddFrame();
+    selectFrame(frameIndex);
+    //emit sendSelectedFrameIndex(frameIndex);
 }
 
 void SpriteEditor::removeFrame(){
+
     if(frameSelectorButtonList.size() < 2) return;
 
     //Start to remove the button
@@ -242,16 +259,24 @@ void SpriteEditor::removeFrame(){
 
     frameIndex = std::max(0, --frameIndex);
     updateAllChangedFrameButton();
-    selectFrame(frameIndex);
+
     frameOverviewContainer->adjustSize();
-
-
     update();
+    emit sendRemoveFrame();
+    selectFrame(frameIndex);
+    emit sendSelectedFrameIndex(frameIndex);
+}
+
+
+void SpriteEditor::fillBlankArea(){
+    emit sendFillBlankArea(brush.getShape().color);
 }
 
 void SpriteEditor::cloneFrame(){
     addFrame();
     frameSelectorButtonList[frameIndex]->setIcon(frameSelectorButtonList[frameIndex-1]->icon());
+    emit sendCloneFrame();
+    //emit sendSelectedFrameIndex(frameIndex);
 }
 
 void SpriteEditor::updateAllChangedFrameButton(){
@@ -318,8 +343,8 @@ SpriteEditor::~SpriteEditor()
     delete ui;
 }
 
-void SpriteEditor::on_imageTool_FillBlankButton_clicked()
-{
+// void SpriteEditor::on_imageTool_FillBlankButton_clicked()
+// {
 
-}
+// }
 

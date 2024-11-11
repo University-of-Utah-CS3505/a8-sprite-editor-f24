@@ -31,7 +31,9 @@ Model::Model(QObject *parent)
     leftMouseKeyDown = false;
 
     initialOffset = QPointF(750.0/2 - picSize.width() / 2.0 * scale ,750.0/2 - picSize.height() / 2.0 * scale);
-    frameSequence.push_back(QImage(picSize, QImage::Format_ARGB32));
+    QImage img = QImage(picSize, QImage::Format_ARGB32);
+    img.fill(Qt::white);
+    frameSequence.push_back(img);
 
     QTimer::singleShot(100, [=](){
          emit sendCanvasImage(frameSequence[frameIndex], scale, offset + initialOffset);
@@ -121,6 +123,7 @@ void Model::receiveCurrentFrameIndex(int frameIndex){
     if(frameIndex >= 0 && frameIndex < frameSequence.size())
     {
         this->frameIndex = frameIndex;
+        qDebug() << frameIndex;
         emit sendCanvasImage(frameSequence[frameIndex], scale, offset + initialOffset);
     }
 
@@ -138,8 +141,8 @@ void Model::addNewFrameAtCurrentFrame(){
     if(frameIndex >= 0 && frameIndex < frameSequence.size())
     {
         QImage newFrame(picSize, QImage::Format_ARGB32);
-        newFrame.fill(Qt::transparent);
-        frameSequence.insert(frameIndex + 1, newFrame);
+        newFrame.fill(Qt::white);
+        frameSequence.insert(++frameIndex, newFrame);
         emit sendCanvasImage(frameSequence[frameIndex], scale, offset + initialOffset);
     }
     // frameSequence.push_back(QImage(picSize, QImage::Format_ARGB32));
@@ -158,7 +161,8 @@ void Model::removeCurrentFrame(){
     if(frameSequence.size() > 1)
     {
         frameSequence.removeAt(frameIndex);
-        frameIndex = std::max(frameIndex - 1, 0);
+        qDebug()<<frameIndex;
+        frameIndex = std::max(--frameIndex, 0);
         emit sendCanvasImage(frameSequence[frameIndex], scale, offset + initialOffset);
     }
 
@@ -172,16 +176,12 @@ void Model::removeCurrentFrame(){
 /**
  * @brief Model::cloneCurrentFrame
  *
- *  Clones the current frame in the seqeunce section and adds it right next to the current frame in sequence
+ *  Clones will copy frame before current frame to current frame
  */
 void Model::cloneCurrentFrame(){
 
-    if(frameIndex >= 0 && frameIndex < frameSequence.size())
-    {
-        QImage clonedNewImageFrame = frameSequence[frameIndex].copy();
-        frameSequence.insert(frameIndex + 1, clonedNewImageFrame);
-        emit sendCanvasImage(frameSequence[frameIndex], scale, offset + initialOffset);
-    }
+    frameSequence[frameIndex] = frameSequence[frameIndex - 1];
+    emit sendCanvasImage(frameSequence[frameIndex], scale, offset + initialOffset);
 }
 
 /**
@@ -249,7 +249,7 @@ void Model::flipImageAlongY(){
 
     if(frameIndex >= 0 && frameIndex < frameSequence.size())
     {
-        imageTool.flipImage(frameSequence[frameIndex], true);
+        imageTool.flipImage(frameSequence[frameIndex], false);
         emit sendCanvasImage(frameSequence[frameIndex],scale, initialOffset + offset);
     }
 }
@@ -262,7 +262,7 @@ void Model::flipImageAlongX(){
 
     if(frameIndex >= 0 && frameIndex < frameSequence.size())
     {
-        imageTool.rotateImage(frameSequence[frameIndex]),false;
+        imageTool.flipImage(frameSequence[frameIndex], true);
         emit sendCanvasImage(frameSequence[frameIndex],scale, initialOffset + offset);
     }
 
@@ -295,11 +295,12 @@ void Model::loadImage(QString imagePath){
  *
  *  Fills the current frame with blank canvas with white color
  */
-void Model::fillBlankArea(){
+void Model::fillBlankArea(const QColor& color){
 
     if(frameIndex >= 0 && frameIndex < frameSequence.size())
     {
-        imageTool.fillBlankWithColor(frameSequence[frameIndex], QColor(255, 255, 255, 255));
+        imageTool.fillBlankWithColor(frameSequence[frameIndex], color);
+        emit sendCanvasImage(frameSequence[frameIndex], scale, offset + initialOffset);
     }
 
 }

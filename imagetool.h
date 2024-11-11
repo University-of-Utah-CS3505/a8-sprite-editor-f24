@@ -30,7 +30,7 @@ public:
     /// \param image: The image that being filled color
     /// \param color: the color that we want to fill
     ///
-    void static fillBlankWithColor(QImage& image, QColor color);
+    void static fillBlankWithColor(QImage& image, const QColor& color);
 };
 
 #endif // IMAGETOOL_H
