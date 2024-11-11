@@ -17,9 +17,9 @@
    <widget class="CanvasLabel" name="canvasLabel">
     <property name="geometry">
      <rect>
-      <x>340</x>
+      <x>339</x>
       <y>10</y>
-      <width>750</width>
+      <width>751</width>
       <height>750</height>
      </rect>
     </property>
@@ -431,7 +431,7 @@
      <rect>
       <x>10</x>
       <y>660</y>
-      <width>301</width>
+      <width>351</width>
       <height>41</height>
      </rect>
     </property>
@@ -604,7 +604,7 @@
      <x>0</x>
      <y>0</y>
      <width>1100</width>
-     <height>24</height>
+     <height>42</height>
     </rect>
    </property>
   </widget>

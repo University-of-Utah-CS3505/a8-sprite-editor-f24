@@ -7,8 +7,11 @@
 #include <qtimer.h>
 #include "brush.h"
 #include "brushtool.h"
-
+#include <QColor>
 #include "mousebutton.h"
+#include "imagetool.h"
+
+
 
 class Model : public QObject
 {
@@ -27,6 +30,7 @@ class Model : public QObject
     QPointF previousMousePos;
     QList<QImage> frameSequence;
     MouseButton userInput;
+    ImageTool imageTool;
 
 public:
     explicit Model(QObject *parent = nullptr);

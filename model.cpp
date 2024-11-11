@@ -1,4 +1,5 @@
 #include "model.h"
+#include <QDebug>
 
 Model::Model(QObject *parent)
     : QObject{parent}, userInput(MouseButton(mouseMove, QPointF(0,0), 0))
@@ -21,6 +22,7 @@ Model::Model(QObject *parent)
          emit sendCanvasImage(frameSequence[frameIndex], scale, offset + initialOffset);
     });
 }
+
 
 
 void Model::receiveMouseEvent(MouseButton button){
@@ -88,23 +90,57 @@ void Model::receiveMouseEvent(MouseButton button){
 
 void Model::receiveCurrentFrameIndex(int frameIndex){
 
+    if(frameIndex >= 0 && frameIndex < frameSequence.size())
+    {
+        this->frameIndex = frameIndex;
+        emit sendCanvasImage(frameSequence[frameIndex], scale, offset + initialOffset);
+    }
+
+    else
+        qWarning() << " Invalid frame Index : " << frameIndex;
 }
 
 void Model::addNewFrameAtCurrentFrame(){
     //TODO update this
+
+    if(frameIndex >= 0 && frameIndex < frameSequence.size())
+    {
+        QImage newFrame(picSize, QImage::Format_ARGB32);
+        newFrame.fill(Qt::transparent);
+        frameSequence.insert(frameIndex + 1, newFrame);
+        emit sendCanvasImage(frameSequence[frameIndex], scale, offset + initialOffset);
+    }
     frameSequence.push_back(QImage(picSize, QImage::Format_ARGB32));
 }
 
 void Model::removeCurrentFrame(){
 
+    if(frameSequence.size() > 1)
+    {
+        frameSequence.removeAt(frameIndex);
+        frameIndex = std::max(frameIndex - 1, 0);
+        emit sendCanvasImage(frameSequence[frameIndex], scale, offset + initialOffset);
+    }
+
+    else
+    {
+        qWarning() << " Cannot remove the last remaining frame !!";
+    }
+
 }
 
 void Model::cloneCurrentFrame(){
 
+    if(frameIndex >= 0 && frameIndex < frameSequence.size())
+    {
+        QImage clonedNewImageFrame = frameSequence[frameIndex].copy();
+        frameSequence.insert(frameIndex + 1, clonedNewImageFrame);
+        emit sendCanvasImage(frameSequence[frameIndex], scale, offset + initialOffset);
+    }
 }
 
 void Model::receiveFPS(int fps){
-
+    qDebug() << "Received FPS value : " << fps;
 }
 
 void Model::receiveBrushType(Brush brush){
@@ -132,12 +168,65 @@ void Model::draw() {
 
 
 //Image tool
-void Model::rotateImage(){}
-void Model::flipImageAlongY(){}
-void Model::flipImageAlongX(){}
-void Model::loadImage(QString imagePath){}
-void Model::fillBlankArea(){}
-void Model::clearCanvas(){}
+void Model::rotateImage(){
+
+    if(frameIndex >= 0 && frameIndex < frameSequence.size())
+    {
+        imageTool.rotateImage(frameSequence[frameIndex]);
+        emit sendCanvasImage(frameSequence[frameIndex],scale, initialOffset + offset);
+    }
+}
+void Model::flipImageAlongY(){
+
+    if(frameIndex >= 0 && frameIndex < frameSequence.size())
+    {
+        imageTool.flipImage(frameSequence[frameIndex], true);
+        emit sendCanvasImage(frameSequence[frameIndex],scale, initialOffset + offset);
+    }
+}
+
+void Model::flipImageAlongX(){
+
+    if(frameIndex >= 0 && frameIndex < frameSequence.size())
+    {
+        imageTool.rotateImage(frameSequence[frameIndex]),false;
+        emit sendCanvasImage(frameSequence[frameIndex],scale, initialOffset + offset);
+    }
+
+}
+
+void Model::loadImage(QString imagePath){
+
+    QImage loadedImage(imagePath);
+
+    if(!loadedImage.isNull())
+    {
+        loadedImage = loadedImage.scaled(picSize, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+        frameSequence[frameIndex] = loadedImage;
+        emit sendCanvasImage(frameSequence[frameIndex], scale, offset + initialOffset);
+    }
+    else
+    {
+        qWarning() << " Failed to load image from the given path !! " << imagePath;
+    }
+}
+
+void Model::fillBlankArea(){
+
+    if(frameIndex >= 0 && frameIndex < frameSequence.size())
+    {
+        imageTool.fillBlankWithColor(frameSequence[frameIndex], QColor(255, 255, 255, 255));
+    }
+
+}
+void Model::clearCanvas(){
+
+    if(frameIndex >= 0 && frameIndex < frameSequence.size())
+    {
+        frameSequence[frameIndex].fill(Qt::transparent);
+        emit sendCanvasImage(frameSequence[frameIndex], scale, offset + initialOffset);
+    }
+}
 //Saving
 void Model::openFile(QString fileName){}
 void Model::saveFile(QString fileName){}
