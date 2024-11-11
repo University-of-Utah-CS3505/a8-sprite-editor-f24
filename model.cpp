@@ -23,8 +23,6 @@ Model::Model(QObject *parent)
     });
 }
 
-
-
 void Model::receiveMouseEvent(MouseButton button){
     userInput = button;
     switch(button.getButtonType()){
