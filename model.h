@@ -56,8 +56,8 @@ public slots:
     void fillBlankArea();
     void clearCanvas();
     //Saving
-    void openFile(QString fileName);
-    void saveFile(QString fileName);
+    void openFile(QList<QImage> &images, const QString &inputFilePath);
+    void saveFile(const QList<QImage> &images, const QString &outputFilePath);
 
 signals:
     void sendCanvasImage(const QImage& image, float scale, const QPointF& offset);

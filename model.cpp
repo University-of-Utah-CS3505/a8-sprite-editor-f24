@@ -228,5 +228,44 @@ void Model::clearCanvas(){
     }
 }
 //Saving
-void Model::openFile(QString fileName){}
-void Model::saveFile(QString fileName){}
+void Model::saveFile(const QList<QImage> &images, const QString &outputFilePath) {
+    QJsonArray jsonArray;
+
+    for (const QImage &image : images) {
+        QByteArray byteArray;
+        QBuffer buffer(&byteArray);
+        buffer.open(QIODevice::WriteOnly);
+        image.save(&buffer, "PNG");  // 将 QImage 保存为 PNG 格式
+        QString base64Image = QString::fromLatin1(byteArray.toBase64());  // 转为 Base64 编码字符串
+
+        jsonArray.append(base64Image);  // 添加到 JSON 数组中
+    }
+
+    // 将 JSON 数组保存到文件
+    QJsonDocument doc(jsonArray);
+    QFile file(outputFilePath);
+    if (file.open(QIODevice::WriteOnly)) {
+        file.write(doc.toJson(QJsonDocument::Indented));
+        file.close();
+    }
+}
+
+void Model::openFile(QList<QImage> &images, const QString &inputFilePath) {
+    QFile file(inputFilePath);
+    if (!file.open(QIODevice::ReadOnly)) {
+        return;
+    }
+
+    QJsonDocument doc = QJsonDocument::fromJson(file.readAll());
+    file.close();
+
+    QJsonArray jsonArray = doc.array();
+
+    for (const QJsonValue &value : jsonArray) {
+        QByteArray byteArray = QByteArray::fromBase64(value.toString().toLatin1());
+        QImage image;
+        image.loadFromData(byteArray, "PNG");  // 从 Base64 编码的 QByteArray 加载 QImage
+
+        images.append(image);
+    }
+}
