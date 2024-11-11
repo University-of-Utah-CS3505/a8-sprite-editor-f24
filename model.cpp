@@ -38,9 +38,18 @@ Model::Model(QObject *parent)
     });
 }
 
+/**
+ * @brief Model::receiveMouseEvent
+ * @param button MouseButton which was recently used and passed in
+ *
+ *  Gets the mouseButton and then depending on the type of mouseButton such as LeftButtonUp,RightButtonDown or MouseScrollWheel and other
+ *  types of mouse events
+ */
 void Model::receiveMouseEvent(MouseButton button){
     userInput = button;
     switch(button.getButtonType()){
+
+        /// If the received mouse event was mouseWheelScroll, then increases scale slightly by adding button's amount
     case middleButtonScroll:
         //qDebug()<<button.getAmount() / 200.0;
         scale += (button.getAmount() / 200.0);
@@ -101,6 +110,12 @@ void Model::receiveMouseEvent(MouseButton button){
     }
 }
 
+/**
+ * @brief Model::receiveCurrentFrameIndex
+ * @param frameIndex current frame index
+ *
+ *  Based on the given frameIndex, model changes frameIndex in current model with the frameIndex selected in the UI's form file
+ */
 void Model::receiveCurrentFrameIndex(int frameIndex){
 
     if(frameIndex >= 0 && frameIndex < frameSequence.size())
@@ -113,8 +128,12 @@ void Model::receiveCurrentFrameIndex(int frameIndex){
         qWarning() << " Invalid frame Index : " << frameIndex;
 }
 
+/**
+ * @brief Model::addNewFrameAtCurrentFrame
+ *
+ *  Adds a new frame at current frame and then pushes the current frame at that index to the next index
+ */
 void Model::addNewFrameAtCurrentFrame(){
-    //TODO update this
 
     if(frameIndex >= 0 && frameIndex < frameSequence.size())
     {
@@ -123,8 +142,16 @@ void Model::addNewFrameAtCurrentFrame(){
         frameSequence.insert(frameIndex + 1, newFrame);
         emit sendCanvasImage(frameSequence[frameIndex], scale, offset + initialOffset);
     }
-    frameSequence.push_back(QImage(picSize, QImage::Format_ARGB32));
+    // frameSequence.push_back(QImage(picSize, QImage::Format_ARGB32));
 }
+
+/**
+ * @brief Model::removeCurrentFrame
+ *
+ *  Removes the current frame selected and moves the active frameIndex to the previous frame Index.
+ *
+ *  Note : This method does not remove the last frame in the frame sequence
+ */
 
 void Model::removeCurrentFrame(){
 
@@ -142,6 +169,11 @@ void Model::removeCurrentFrame(){
 
 }
 
+/**
+ * @brief Model::cloneCurrentFrame
+ *
+ *  Clones the current frame in the seqeunce section and adds it right next to the current frame in sequence
+ */
 void Model::cloneCurrentFrame(){
 
     if(frameIndex >= 0 && frameIndex < frameSequence.size())
@@ -152,6 +184,12 @@ void Model::cloneCurrentFrame(){
     }
 }
 
+/**
+ * @brief Model::receiveFPS
+ * @param fps The current fps information
+ *
+ *  Gives the current fps information in debug console
+ */
 void Model::receiveFPS(int fps){
     qDebug() << "Received FPS value : " << fps;
 }
@@ -161,6 +199,13 @@ void Model::receiveBrushType(Brush brush){
     this->brush = brush;
 }
 
+/**
+ * @brief Model::draw
+ *
+ *  Draw method in the model class is one of the vital methods since it helps the user draw images or shapes on the canvas at their mouse
+ *  postion with their intended color if draw mode is selected and erases the images/shapes at current location is eraser is selected and draws shape
+ *  if shape drawer mode is selected
+ */
 void Model::draw() {
     //calculate pos
     QPointF pos = mousePos/scale - offset/scale;
@@ -182,6 +227,11 @@ void Model::draw() {
 
 //Image tool
 
+/**
+ * @brief Model::rotateImage
+ *
+ *  Rotates the image in the current frame if image is valid and non-null
+ */
 void Model::rotateImage(){
 
     if(frameIndex >= 0 && frameIndex < frameSequence.size())
@@ -190,6 +240,11 @@ void Model::rotateImage(){
         emit sendCanvasImage(frameSequence[frameIndex],scale, initialOffset + offset);
     }
 }
+
+/**
+ * @brief Model::flipImageAlongY
+ *  Flips the image at the current frame along Y axis direction vertically if image is valid and non-null
+ */
 void Model::flipImageAlongY(){
 
     if(frameIndex >= 0 && frameIndex < frameSequence.size())
@@ -199,6 +254,10 @@ void Model::flipImageAlongY(){
     }
 }
 
+/**
+ * @brief Model::flipImageAlongX
+ *  Flips the image in the current frame along X axis direction horizontally if image is valid and non-null
+ */
 void Model::flipImageAlongX(){
 
     if(frameIndex >= 0 && frameIndex < frameSequence.size())
@@ -209,6 +268,12 @@ void Model::flipImageAlongX(){
 
 }
 
+/**
+ * @brief Model::loadImage
+ * @param imagePath the path of the image to be loaded
+ *
+ *  Loads the image into the current frame based on the path given for the image
+ */
 void Model::loadImage(QString imagePath){
 
     QImage loadedImage(imagePath);
@@ -225,6 +290,11 @@ void Model::loadImage(QString imagePath){
     }
 }
 
+/**
+ * @brief Model::fillBlankArea
+ *
+ *  Fills the current frame with blank canvas with white color
+ */
 void Model::fillBlankArea(){
 
     if(frameIndex >= 0 && frameIndex < frameSequence.size())
@@ -233,6 +303,12 @@ void Model::fillBlankArea(){
     }
 
 }
+
+/**
+ * @brief Model::clearCanvas
+ *
+ *  Clears the canvas in the current frame by making it transparent
+ */
 void Model::clearCanvas(){
 
     if(frameIndex >= 0 && frameIndex < frameSequence.size())
@@ -241,10 +317,18 @@ void Model::clearCanvas(){
         emit sendCanvasImage(frameSequence[frameIndex], scale, offset + initialOffset);
     }
 }
+
 //Saving
+
+/**
+ * @brief Model::saveFile
+ * @param images All the images used in the frames to be saved
+ * @param outputFilePath the path where output file should be saved at
+ */
 void Model::saveFile(const QList<QImage> &images, const QString &outputFilePath) {
     QJsonArray jsonArray;
 
+    /// Iterates through all list of images and saves every image in PNG format in jsonArray
     for (const QImage &image : images) {
         QByteArray byteArray;
         QBuffer buffer(&byteArray);
@@ -264,6 +348,11 @@ void Model::saveFile(const QList<QImage> &images, const QString &outputFilePath)
     }
 }
 
+/**
+ * @brief Model::openFile
+ * @param images All the images to be loaded into the frame sequences
+ * @param inputFilePath The path from where the existing sprite sequence should be opened from
+ */
 void Model::openFile(QList<QImage> &images, const QString &inputFilePath) {
     QFile file(inputFilePath);
     if (!file.open(QIODevice::ReadOnly)) {
