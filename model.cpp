@@ -145,13 +145,14 @@ void Model::removeCurrentFrame(){
 
     if(frameSequence.size() > 1)
     {
+        frameSequenceTimer.stop();
         frameSequence.removeAt(frameIndex);
         //qDebug()<<frameIndex;
         frameIndex = std::max(--frameIndex, 0);
+        int size = frameSequence.size() - 1;
+        playerFrameIndex = std::min(size, playerFrameIndex);
         emit sendCanvasImage(frameSequence[frameIndex], scale, offset + initialOffset);
-    }
-
-    else
+    }else
     {
         qWarning() << " Cannot remove the last remaining frame !!";
     }
