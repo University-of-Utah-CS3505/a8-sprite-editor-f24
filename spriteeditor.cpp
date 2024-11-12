@@ -429,8 +429,15 @@ void SpriteEditor::saveFile(){
     }
 };
 void SpriteEditor::loadFile(){
-    // popup the selector window
-    QString fileName = QFileDialog::getSaveFileName(this, tr("Load File path"), "", tr("spriteFile(*.sprite)"));
+    QString fileName = QFileDialog::getOpenFileName(
+        this,                                 // parent window
+        "Select the File",                   // title
+        "",                                   // default path
+        "spriteFile(*.sprite)", // filter
+        nullptr,                              // default
+        QFileDialog::ReadOnly                 // readonly
+        );
+
     if (!fileName.isEmpty()) {
         emit sendLoadFilePath(fileName);
     }
