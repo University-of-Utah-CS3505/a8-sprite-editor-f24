@@ -157,11 +157,12 @@ void SpriteEditor::initialize(const QSize& size){
     IntSignalButton *button = new IntSignalButton(0);
     setFrameButtonSelected(button);
     button->setFixedSize(75,75);
-    button->setIconSize(QSize(75,75));
+    button->setIconSize(QSize(70,70));
     frameSelectorButtonList.push_back(button);
     frameOverviewLayout->addWidget(button);
     connect(frameSelectorButtonList[0], &IntSignalButton::sendSelfValue, this, &SpriteEditor::selectFrame);
 
+    frameIndex = 0;
     emit initializeModel(size);
 }
 
@@ -285,7 +286,7 @@ void SpriteEditor::addFrame(){
     IntSignalButton *button = new IntSignalButton(frameIndex);
     setFrameButtonSelected(button);
     button->setFixedSize(75,75);
-    button->setIconSize(QSize(75,75));
+    button->setIconSize(QSize(70,70));
 
     if(frameIndex >= frameSelectorButtonList.size() || frameIndex < 0){
         frameSelectorButtonList.push_back(button);
@@ -356,7 +357,9 @@ void SpriteEditor::selectFrame(int newFrameIndex){
 }
 
 void SpriteEditor::updateFrameSequence(const QImage& image){
-    ui->animationPlayerLabel->setPixmap(QPixmap::fromImage(image));
+    QPixmap img = QPixmap::fromImage(image);
+    img = img.scaled(ui->animationPlayerLabel->size(), Qt::KeepAspectRatio, Qt::FastTransformation);
+    ui->animationPlayerLabel->setPixmap(img);
 }
 
 void SpriteEditor::setFrameButtonSelected(IntSignalButton* button){
@@ -428,7 +431,7 @@ void SpriteEditor::receiveAllImages(const QList<QImage>& images){
     for(int i = 0; i < images.size(); i++){
         IntSignalButton *button = new IntSignalButton(i);
         button->setFixedSize(75,75);
-        button->setIconSize(QSize(75,75));
+        button->setIconSize(QSize(70,70));
         button->setIcon(QPixmap::fromImage(images[i]));
         frameSelectorButtonList.push_back(button);
         frameOverviewLayout->addWidget(button);

@@ -48,6 +48,9 @@
     <property name="text">
      <string>TextLabel</string>
     </property>
+    <property name="scaledContents">
+     <bool>false</bool>
+    </property>
    </widget>
    <widget class="QSlider" name="fpsSlider">
     <property name="geometry">
