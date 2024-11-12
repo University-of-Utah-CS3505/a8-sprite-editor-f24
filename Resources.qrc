@@ -12,5 +12,7 @@
         <file>resources/erase_unselected.png</file>
         <file>resources/pen_unselected.png</file>
         <file>resources/shape_unselected.png</file>
+        <file>resources/export.png</file>
+        <file>resources/size.png</file>
     </qresource>
 </RCC>
