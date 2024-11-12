@@ -7,6 +7,7 @@
 #include <QImage>
 #include <QGraphicsPixmapItem>
 #include <QColorDialog>
+#include <QFileDialog>
 
 
 SpriteEditor::SpriteEditor(class Model& model, QWidget *parent)
@@ -44,6 +45,8 @@ SpriteEditor::SpriteEditor(class Model& model, QWidget *parent)
     connect(ui->imageTool_RotateButton, &QPushButton::pressed, &model, &Model::rotateImage);
     connect(this, &SpriteEditor::sendFillBlankArea, &model, &Model::fillBlankArea);
     connect(ui->imageTool_ClearCanvasButton, &QPushButton::pressed, &model, &Model::clearCanvas);
+    connect(ui->imageTool_LoadImageButton, &QPushButton::pressed, this, &SpriteEditor::loadImage);
+    connect(this, &SpriteEditor::sendLoadedImage, &model, &Model::loadImage);
 
 
 
@@ -105,14 +108,33 @@ void SpriteEditor::selectColor(){
         //get text color(inverse)
         QColor textColor = QColor(255-color.red(),255-color.green(),255-color.blue());
 
+        QString colorWithAlpha = QString("rgba(%1, %2, %3, %4)")
+                                     .arg(color.red())
+                                     .arg(color.green())
+                                     .arg(color.blue())
+                                     .arg(brush.getShape().color.alpha() / 255.0);  // 透明度范围为 0.0 到 1.0
+
         // 将颜色应用到按钮背景和文字
         ui->brushTool_colorSelectorButton->setStyleSheet(QString("background-color: %1; color: %2;")
-                                                                  .arg(color.name())
+                                                                  .arg(colorWithAlpha)
                                                                   .arg(textColor.name()));
     }
     emit sendBrushType(brush);
 }
 
+void SpriteEditor::loadImage(){
+    // popup the selector window
+    QString filePath = QFileDialog::getOpenFileName(
+        this,                                 // 父窗口
+        "Selete the Image",                   // 弹窗标题
+        "",                                   // 默认目录
+        "ImgFile (*.png *.jpg);;All Files (*.*)"  // 过滤器，允许选择 PNG 和 JPG 图片
+        );
+
+    if (!filePath.isEmpty()) {
+        emit sendLoadedImage(filePath);
+    }
+}
 
 void SpriteEditor::updateCanvas(const QImage& image, float scale, const QPointF& offset){
     // 将 QImage 转换为 QPixmap

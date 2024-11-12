@@ -62,3 +62,19 @@ void ImageTool::fillBlankWithColor(QImage &image, const QColor& color)
     }
 
 }
+
+void ImageTool::loadImage(QImage &image, const QString& imagePath){
+    QImage loadedImage(imagePath);
+
+    if(!loadedImage.isNull())
+    {
+        loadedImage = loadedImage.scaled(image.size(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
+        QPainter painter(&image);
+        painter.drawImage(0, 0, loadedImage);
+        painter.end();
+    }
+    else
+    {
+        qWarning() << " Failed to load image from the given path !! " << imagePath;
+    }
+}

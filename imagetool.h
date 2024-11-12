@@ -31,6 +31,8 @@ public:
     /// \param color: the color that we want to fill
     ///
     void static fillBlankWithColor(QImage& image, const QColor& color);
+
+    void static loadImage(QImage &image, const QString& imagePath);
 };
 
 #endif // IMAGETOOL_H

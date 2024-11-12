@@ -71,7 +71,7 @@ public slots:
     void rotateImage();
     void flipImageAlongY();
     void flipImageAlongX();
-    void loadImage(QString imagePath);
+    void loadImage(const QString& imagePath);
     void fillBlankArea(const QColor& color);
     void clearCanvas();
     //Saving

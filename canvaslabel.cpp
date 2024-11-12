@@ -12,7 +12,7 @@ CanvasLabel::CanvasLabel(QWidget *parent): QLabel("", parent){
 
 
 void CanvasLabel::paintEvent(QPaintEvent *event) {
-    QLabel::paintEvent(event);
+    //QLabel::paintEvent(event);
     QPainter painter(this);
     painter.drawPixmap(offset, this->pixmap());
 }

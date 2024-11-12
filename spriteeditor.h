@@ -49,6 +49,7 @@ public slots:
     void setBrushSize(int value);
     void showHelpMessage();
     void fillBlankArea();
+    void loadImage();
 
 signals:
     void sendSelectedFrameIndex(int index);
@@ -58,6 +59,7 @@ signals:
     void sendCloneFrame();
     void sendRemoveFrame();
     void sendFillBlankArea(const QColor& color);
+    void sendLoadedImage(const QString& imagePath);
 
 private:
     Ui::SpriteEditor *ui;

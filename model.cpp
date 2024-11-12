@@ -274,20 +274,9 @@ void Model::flipImageAlongX(){
  *
  *  Loads the image into the current frame based on the path given for the image
  */
-void Model::loadImage(QString imagePath){
-
-    QImage loadedImage(imagePath);
-
-    if(!loadedImage.isNull())
-    {
-        loadedImage = loadedImage.scaled(picSize, Qt::KeepAspectRatio, Qt::SmoothTransformation);
-        frameSequence[frameIndex] = loadedImage;
-        emit sendCanvasImage(frameSequence[frameIndex], scale, offset + initialOffset);
-    }
-    else
-    {
-        qWarning() << " Failed to load image from the given path !! " << imagePath;
-    }
+void Model::loadImage(const QString& imagePath){
+    imageTool.loadImage(frameSequence[frameIndex], imagePath);
+    emit sendCanvasImage(frameSequence[frameIndex], scale, offset + initialOffset);
 }
 
 /**
