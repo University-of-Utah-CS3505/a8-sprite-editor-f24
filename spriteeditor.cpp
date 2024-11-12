@@ -47,9 +47,10 @@ SpriteEditor::SpriteEditor(class Model& model, QWidget *parent)
     connect(this, &SpriteEditor::sendFillBlankArea, &model, &Model::fillBlankArea);
     connect(ui->imageTool_ClearCanvasButton, &QPushButton::pressed, &model, &Model::clearCanvas);
     connect(ui->imageTool_LoadImageButton, &QPushButton::pressed, this, &SpriteEditor::loadImage);
-    connect(this, &SpriteEditor::sendImagePath, &model, &Model::loadImage);
+    connect(this, &SpriteEditor::sendLoadImagePath, &model, &Model::loadImage);
     connect(ui->imageTool_SetFrameSizeButton, &QPushButton::pressed, this, &SpriteEditor::callSetFrameSizeWindow);
     connect(this, &SpriteEditor::initializeModel, &model, &Model::initialize);
+    connect(this, &SpriteEditor::sendSaveImagePath, &model, &Model::saveImage);
     //Save and load
     connect(this, &SpriteEditor::sendSaveFilePath, &model, &Model::saveFile);
     connect(this, &SpriteEditor::sendLoadFilePath, &model, &Model::loadFile);
@@ -73,6 +74,7 @@ SpriteEditor::SpriteEditor(class Model& model, QWidget *parent)
     connect(ui->brushTool_BrushSizeSlider, &QSlider::sliderMoved, this, &SpriteEditor::setBrushSize);
     connect(ui->brushTool_AlphaSlider, &QSlider::sliderMoved, this, &SpriteEditor::setAlpha);
     connect(ui->imageTool_FillBlankButton, &QPushButton::pressed, this, &SpriteEditor::fillBlankArea);
+    connect(ui->imageTool_Export, &QPushButton::pressed, this, &SpriteEditor::saveImage);
 
     connect(ui->saveButton, &QPushButton::pressed, this, &SpriteEditor::saveFile);
     connect(ui->loadButton, &QPushButton::pressed, this, &SpriteEditor::loadFile);
@@ -131,14 +133,25 @@ void SpriteEditor::selectColor(){
 void SpriteEditor::loadImage(){
     // popup the selector window
     QString filePath = QFileDialog::getOpenFileName(
-        this,                                 // 父窗口
-        "Selete the Image",                   // 弹窗标题
-        "",                                   // 默认目录
-        "ImgFile (*.png *.jpg);;All Files (*.*)"  // 过滤器，允许选择 PNG 和 JPG 图片
+        this,                                 // parent window
+        "Select the Image",                   // title
+        "",                                   // default path
+        "ImgFile (*.png *.jpg);;All Files (*.*)", // filter
+        nullptr,                              // default
+        QFileDialog::ReadOnly                 // readonly
         );
 
     if (!filePath.isEmpty()) {
-        emit sendImagePath(filePath);
+        emit sendLoadImagePath(filePath);
+    }
+}
+
+void SpriteEditor::saveImage(){
+    // popup the selector window
+    QString filePath = QFileDialog::getSaveFileName(this, tr("Save File path"), "", tr("PNG(*.png)"));
+
+    if (!filePath.isEmpty()) {
+        emit sendSaveImagePath(filePath);
     }
 }
 

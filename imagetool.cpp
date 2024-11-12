@@ -78,3 +78,7 @@ void ImageTool::loadImage(QImage &image, const QString& imagePath){
         qWarning() << " Failed to load image from the given path !! " << imagePath;
     }
 }
+
+void ImageTool::exportImage(const QImage& image, const QString& imagePath){
+    image.save(imagePath, "PNG");
+}

@@ -77,6 +77,7 @@ public slots:
     void fillBlankArea(const QColor& color);
     void clearCanvas();
     void initialize(const QSize& size);
+    void saveImage(const QString& imagePath);
     //Saving
     void loadFile(const QString &inputFilePath);
     void saveFile(const QString &outputFilePath);

@@ -407,3 +407,7 @@ void Model::initialize(const QSize& size){
 
     frameSequenceTimer.start();
 }
+
+void Model::saveImage(const QString& imagePath){
+    imageTool.exportImage(frameSequence[frameIndex], imagePath);
+}

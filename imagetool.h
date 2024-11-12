@@ -33,6 +33,8 @@ public:
     void static fillBlankWithColor(QImage& image, const QColor& color);
 
     void static loadImage(QImage &image, const QString& imagePath);
+
+    void static exportImage(const QImage &image, const QString& imagePath);
 };
 
 #endif // IMAGETOOL_H

@@ -60,6 +60,7 @@ public slots:
     void loadFile();
     void receiveAllImages(const QList<QImage>& images);
     void callSetFrameSizeWindow();
+    void saveImage();
 
 signals:
     void sendSelectedFrameIndex(int index);
@@ -69,10 +70,11 @@ signals:
     void sendCloneFrame();
     void sendRemoveFrame();
     void sendFillBlankArea(const QColor& color);
-    void sendImagePath(const QString& imagePath);
+    void sendLoadImagePath(const QString& imagePath);
     void sendSaveFilePath(const QString& filePath);
     void sendLoadFilePath(const QString& filePath);
     void initializeModel(const QSize& size);
+    void sendSaveImagePath(const QString& imagePath);
 
 private:
     Ui::SpriteEditor *ui;
