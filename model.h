@@ -40,6 +40,7 @@ class Model : public QObject
     bool leftMouseKeyDown;
     bool rightMouseKeyDown;
     int frameIndex;
+    int playerFrameIndex;
     Brush brush;
     BrushTool brushTool;
     QSize picSize;
@@ -48,6 +49,7 @@ class Model : public QObject
     QPointF mousePos;
     QPointF previousMousePos;
     QList<QImage> frameSequence;
+    QTimer frameSequenceTimer;
     MouseButton userInput;
     ImageTool imageTool;
 
@@ -62,7 +64,7 @@ public slots:
     void cloneCurrentFrame();
 
     void receiveFPS(int fps);
-
+    void sequencePlayerTimeout();
 
     //Brush tool
     void receiveBrushType(Brush brush);
@@ -74,13 +76,16 @@ public slots:
     void loadImage(const QString& imagePath);
     void fillBlankArea(const QColor& color);
     void clearCanvas();
+    void initialize(const QSize& size);
     //Saving
-    void openFile(QList<QImage> &images, const QString &inputFilePath);
-    void saveFile(const QList<QImage> &images, const QString &outputFilePath);
+    void loadFile(const QString &inputFilePath);
+    void saveFile(const QString &outputFilePath);
 
 signals:
     void sendCanvasImage(const QImage& image, float scale, const QPointF& offset);
+    void sendAllImages(const QList<QImage>& imageSequence);
     void sendSequencePlayerImage(const QImage& image);
+
 
 
 };

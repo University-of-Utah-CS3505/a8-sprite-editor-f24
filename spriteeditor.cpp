@@ -8,6 +8,7 @@
 #include <QGraphicsPixmapItem>
 #include <QColorDialog>
 #include <QFileDialog>
+#include "changesizerequestwindow.h"
 
 
 SpriteEditor::SpriteEditor(class Model& model, QWidget *parent)
@@ -46,7 +47,12 @@ SpriteEditor::SpriteEditor(class Model& model, QWidget *parent)
     connect(this, &SpriteEditor::sendFillBlankArea, &model, &Model::fillBlankArea);
     connect(ui->imageTool_ClearCanvasButton, &QPushButton::pressed, &model, &Model::clearCanvas);
     connect(ui->imageTool_LoadImageButton, &QPushButton::pressed, this, &SpriteEditor::loadImage);
-    connect(this, &SpriteEditor::sendLoadedImage, &model, &Model::loadImage);
+    connect(this, &SpriteEditor::sendImagePath, &model, &Model::loadImage);
+    connect(ui->imageTool_SetFrameSizeButton, &QPushButton::pressed, this, &SpriteEditor::callSetFrameSizeWindow);
+    connect(this, &SpriteEditor::initializeModel, &model, &Model::initialize);
+    //Save and load
+    connect(this, &SpriteEditor::sendSaveFilePath, &model, &Model::saveFile);
+    connect(this, &SpriteEditor::sendLoadFilePath, &model, &Model::loadFile);
 
 
 
@@ -66,12 +72,16 @@ SpriteEditor::SpriteEditor(class Model& model, QWidget *parent)
     connect(ui->brushTool_colorSelectorButton, &QPushButton::pressed, this, &SpriteEditor::selectColor);
     connect(ui->brushTool_BrushSizeSlider, &QSlider::sliderMoved, this, &SpriteEditor::setBrushSize);
     connect(ui->brushTool_AlphaSlider, &QSlider::sliderMoved, this, &SpriteEditor::setAlpha);
-
     connect(ui->imageTool_FillBlankButton, &QPushButton::pressed, this, &SpriteEditor::fillBlankArea);
+
+    connect(ui->saveButton, &QPushButton::pressed, this, &SpriteEditor::saveFile);
+    connect(ui->loadButton, &QPushButton::pressed, this, &SpriteEditor::loadFile);
 
 
     //Connect model signal to ui slot
     connect(&model, &Model::sendCanvasImage, this, &SpriteEditor::updateCanvas);
+    connect(&model, &Model::sendAllImages, this, &SpriteEditor::receiveAllImages);
+    connect(&model, &Model::sendSequencePlayerImage, this, &SpriteEditor::updateFrameSequence);
 
     // setup the scroll area
     frameOverviewContainer = new QWidget;
@@ -82,17 +92,13 @@ SpriteEditor::SpriteEditor(class Model& model, QWidget *parent)
     frameOverviewContainer->setLayout(frameOverviewLayout);
     ui->scrollArea->setWidget(frameOverviewContainer);
 
-    //add a frame
-    IntSignalButton *button = new IntSignalButton(0);
-    setFrameButtonSelected(button);
-    button->setFixedSize(75,75);
-    button->setIconSize(QSize(75,75));
-    frameSelectorButtonList.push_back(button);
-    frameOverviewLayout->addWidget(button);
-    connect(frameSelectorButtonList[0], &IntSignalButton::sendSelfValue, this, &SpriteEditor::selectFrame);
+    initialize(QSize(64, 64));
 
     //helpMessage
     connect(ui->showHelpDocButton, &QPushButton::clicked, this, &SpriteEditor::showHelpMessage);
+
+    //Popup window
+    connect(&setFrameSizeWindow, &changeSizeRequestWindow::sendNewSize, this, &SpriteEditor::setFrameSize);
 
 }
 
@@ -132,8 +138,39 @@ void SpriteEditor::loadImage(){
         );
 
     if (!filePath.isEmpty()) {
-        emit sendLoadedImage(filePath);
+        emit sendImagePath(filePath);
     }
+}
+
+void SpriteEditor::callSetFrameSizeWindow(){
+    setFrameSizeWindow.show();
+}
+
+void SpriteEditor::setFrameSize(const QSize& size){
+    initialize(size);
+}
+
+void SpriteEditor::initialize(const QSize& size){
+    removeAllFrame();
+
+    //add a frame
+    IntSignalButton *button = new IntSignalButton(0);
+    setFrameButtonSelected(button);
+    button->setFixedSize(75,75);
+    button->setIconSize(QSize(75,75));
+    frameSelectorButtonList.push_back(button);
+    frameOverviewLayout->addWidget(button);
+    connect(frameSelectorButtonList[0], &IntSignalButton::sendSelfValue, this, &SpriteEditor::selectFrame);
+
+    emit initializeModel(size);
+}
+
+void SpriteEditor::removeAllFrame(){
+    for(auto& button : frameSelectorButtonList){
+        frameOverviewLayout->removeWidget(button);
+        button->deleteLater();
+    }
+    frameSelectorButtonList.clear();
 }
 
 void SpriteEditor::updateCanvas(const QImage& image, float scale, const QPointF& offset){
@@ -153,6 +190,8 @@ void SpriteEditor::updateCanvas(const QImage& image, float scale, const QPointF&
 
     //update the picture at buttom list
     frameSelectorButtonList[frameIndex]->setIcon(QPixmap::fromImage(image));
+    qDebug()<<frameIndex;
+    qDebug()<<frameSelectorButtonList.size();
 }
 
 void SpriteEditor::setAlpha(int value){
@@ -317,7 +356,7 @@ void SpriteEditor::selectFrame(int newFrameIndex){
 }
 
 void SpriteEditor::updateFrameSequence(const QImage& image){
-
+    ui->animationPlayerLabel->setPixmap(QPixmap::fromImage(image));
 }
 
 void SpriteEditor::setFrameButtonSelected(IntSignalButton* button){
@@ -365,8 +404,40 @@ SpriteEditor::~SpriteEditor()
     delete ui;
 }
 
-// void SpriteEditor::on_imageTool_FillBlankButton_clicked()
-// {
 
-// }
+void SpriteEditor::saveFile(){
+    // popup the selector window
+    QString fileName = QFileDialog::getSaveFileName(this, tr("Save File path"), "", tr("spriteFile(*.sprite)"));
+    if (!fileName.isEmpty()) {
+        emit sendSaveFilePath(fileName);
+    }
+};
+void SpriteEditor::loadFile(){
+    // popup the selector window
+    QString fileName = QFileDialog::getSaveFileName(this, tr("Load File path"), "", tr("spriteFile(*.sprite)"));
+    if (!fileName.isEmpty()) {
+        emit sendLoadFilePath(fileName);
+    }
+};
+
+void SpriteEditor::receiveAllImages(const QList<QImage>& images){
+
+    removeAllFrame();
+
+
+    for(int i = 0; i < images.size(); i++){
+        IntSignalButton *button = new IntSignalButton(i);
+        button->setFixedSize(75,75);
+        button->setIconSize(QSize(75,75));
+        button->setIcon(QPixmap::fromImage(images[i]));
+        frameSelectorButtonList.push_back(button);
+        frameOverviewLayout->addWidget(button);
+    }
+    frameIndex = 0;
+    updateAllChangedFrameButton();
+    setFrameButtonSelected(frameSelectorButtonList[0]);
+    emit sendSelectedFrameIndex(0);
+
+    frameOverviewContainer->adjustSize();
+}
 

@@ -7,6 +7,7 @@
 #include <QPushButton>
 #include <QHBoxLayout>
 #include "intsignalbutton.h"
+#include "changesizerequestwindow.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -24,10 +25,15 @@ class SpriteEditor : public QMainWindow
     QWidget *frameOverviewContainer;
     QHBoxLayout *frameOverviewLayout;
     QPushButton* lastBrushButtonSelected;
+    changeSizeRequestWindow setFrameSizeWindow;
+
 
     void setFrameButtonSelected(IntSignalButton* button);
     void setFrameButtonUnselected(IntSignalButton* button);
     void updateAllChangedFrameButton();
+    void setFrameSize(const QSize& size);
+    void initialize(const QSize& size);
+    void removeAllFrame();
 public:
     SpriteEditor(Model& m, QWidget *parent = nullptr);
     ~SpriteEditor();
@@ -50,6 +56,10 @@ public slots:
     void showHelpMessage();
     void fillBlankArea();
     void loadImage();
+    void saveFile();
+    void loadFile();
+    void receiveAllImages(const QList<QImage>& images);
+    void callSetFrameSizeWindow();
 
 signals:
     void sendSelectedFrameIndex(int index);
@@ -59,7 +69,10 @@ signals:
     void sendCloneFrame();
     void sendRemoveFrame();
     void sendFillBlankArea(const QColor& color);
-    void sendLoadedImage(const QString& imagePath);
+    void sendImagePath(const QString& imagePath);
+    void sendSaveFilePath(const QString& filePath);
+    void sendLoadFilePath(const QString& filePath);
+    void initializeModel(const QSize& size);
 
 private:
     Ui::SpriteEditor *ui;

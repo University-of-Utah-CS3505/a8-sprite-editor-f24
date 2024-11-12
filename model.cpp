@@ -19,25 +19,10 @@
 Model::Model(QObject *parent)
     : QObject{parent}, userInput(MouseButton(mouseMove, QPointF(0,0), 0))
 {
-    frameIndex = 0;
-    brushTool = BrushTool();
-    scale = 5.0;
-    offset = QPointF(0,0);
-    // TODO update this
-    picSize = QSize(64,64);
-    inFrameScale = std::min(750.0 / picSize.width(), 750.0 / picSize.height());
+    frameSequenceTimer.setInterval(100);
+    initialize(QSize(64, 64));
 
-    rightMouseKeyDown = false;
-    leftMouseKeyDown = false;
-
-    initialOffset = QPointF(750.0/2 - picSize.width() / 2.0 * scale ,750.0/2 - picSize.height() / 2.0 * scale);
-    QImage img = QImage(picSize, QImage::Format_ARGB32);
-    img.fill(Qt::white);
-    frameSequence.push_back(img);
-
-    QTimer::singleShot(100, [=](){
-         emit sendCanvasImage(frameSequence[frameIndex], scale, offset + initialOffset);
-    });
+    connect(&(this->frameSequenceTimer), &QTimer::timeout, this, &Model::sequencePlayerTimeout);
 }
 
 /**
@@ -123,7 +108,7 @@ void Model::receiveCurrentFrameIndex(int frameIndex){
     if(frameIndex >= 0 && frameIndex < frameSequence.size())
     {
         this->frameIndex = frameIndex;
-        qDebug() << frameIndex;
+
         emit sendCanvasImage(frameSequence[frameIndex], scale, offset + initialOffset);
     }
 
@@ -161,7 +146,7 @@ void Model::removeCurrentFrame(){
     if(frameSequence.size() > 1)
     {
         frameSequence.removeAt(frameIndex);
-        qDebug()<<frameIndex;
+        //qDebug()<<frameIndex;
         frameIndex = std::max(--frameIndex, 0);
         emit sendCanvasImage(frameSequence[frameIndex], scale, offset + initialOffset);
     }
@@ -191,7 +176,15 @@ void Model::cloneCurrentFrame(){
  *  Gives the current fps information in debug console
  */
 void Model::receiveFPS(int fps){
-    qDebug() << "Received FPS value : " << fps;
+    if(fps==0){
+        frameSequenceTimer.stop();
+    }else{
+        if(!frameSequenceTimer.isActive()){
+            frameSequenceTimer.start();
+        }
+        frameSequenceTimer.setInterval(1000.0/fps);
+    }
+
 }
 
 void Model::receiveBrushType(Brush brush){
@@ -275,7 +268,13 @@ void Model::flipImageAlongX(){
  *  Loads the image into the current frame based on the path given for the image
  */
 void Model::loadImage(const QString& imagePath){
+
     imageTool.loadImage(frameSequence[frameIndex], imagePath);
+    picSize = frameSequence[0].size();
+    inFrameScale = std::min(750.0 / picSize.width(), 750.0 / picSize.height());
+    offset = QPointF(0,0);
+    scale = 5.0;
+    initialOffset = QPointF(750.0/2 - picSize.width() / 2.0 * scale ,750.0/2 - picSize.height() / 2.0 * scale);
     emit sendCanvasImage(frameSequence[frameIndex], scale, offset + initialOffset);
 }
 
@@ -315,11 +314,11 @@ void Model::clearCanvas(){
  * @param images All the images used in the frames to be saved
  * @param outputFilePath the path where output file should be saved at
  */
-void Model::saveFile(const QList<QImage> &images, const QString &outputFilePath) {
+void Model::saveFile(const QString &outputFilePath) {
     QJsonArray jsonArray;
 
     /// Iterates through all list of images and saves every image in PNG format in jsonArray
-    for (const QImage &image : images) {
+    for (const QImage &image : frameSequence) {
         QByteArray byteArray;
         QBuffer buffer(&byteArray);
         buffer.open(QIODevice::WriteOnly);
@@ -339,11 +338,14 @@ void Model::saveFile(const QList<QImage> &images, const QString &outputFilePath)
 }
 
 /**
- * @brief Model::openFile
+ * @brief Model::loadFile
  * @param images All the images to be loaded into the frame sequences
  * @param inputFilePath The path from where the existing sprite sequence should be opened from
  */
-void Model::openFile(QList<QImage> &images, const QString &inputFilePath) {
+void Model::loadFile(const QString &inputFilePath) {
+    frameSequenceTimer.stop();
+
+    frameSequence.clear();
     QFile file(inputFilePath);
     if (!file.open(QIODevice::ReadOnly)) {
         return;
@@ -359,6 +361,49 @@ void Model::openFile(QList<QImage> &images, const QString &inputFilePath) {
         QImage image;
         image.loadFromData(byteArray, "PNG");  // 从 Base64 编码的 QByteArray 加载 QImage
 
-        images.append(image);
+        frameSequence.append(image);
     }
+    offset = QPointF(0,0);
+    picSize = frameSequence[0].size();
+    inFrameScale = std::min(750.0 / picSize.width(), 750.0 / picSize.height());
+    initialOffset = QPointF(750.0/2 - picSize.width() / 2.0 * scale ,750.0/2 - picSize.height() / 2.0 * scale);
+
+    playerFrameIndex = 0;
+    frameSequenceTimer.start();
+    emit sendAllImages(frameSequence);
+}
+
+void Model::sequencePlayerTimeout(){
+    emit sendSequencePlayerImage(frameSequence[playerFrameIndex]);
+    playerFrameIndex = ++playerFrameIndex % frameSequence.size();
+}
+
+void Model::initialize(const QSize& size){
+    frameSequenceTimer.stop();
+    playerFrameIndex = 0;
+    frameIndex = 0;
+    brushTool = BrushTool();
+    scale = 5.0;
+    offset = QPointF(0,0);
+    picSize = size;
+    inFrameScale = std::min(750.0 / picSize.width(), 750.0 / picSize.height());
+
+    rightMouseKeyDown = false;
+    leftMouseKeyDown = false;
+
+    initialOffset = QPointF(750.0/2 - picSize.width() / 2.0 * scale ,750.0/2 - picSize.height() / 2.0 * scale);
+
+    frameSequence.clear();
+    qDebug()<<"cleand";
+
+    // Add initial image
+    QImage img = QImage(picSize, QImage::Format_ARGB32);
+    img.fill(Qt::white);
+    frameSequence.push_back(img);
+
+    QTimer::singleShot(100, [=](){
+        emit sendCanvasImage(frameSequence[frameIndex], scale, offset + initialOffset);
+    });
+
+    frameSequenceTimer.start();
 }

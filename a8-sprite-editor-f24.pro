@@ -12,6 +12,7 @@ SOURCES += \
     brush.cpp \
     brushtool.cpp \
     canvaslabel.cpp \
+    changesizerequestwindow.cpp \
     imagetool.cpp \
     intsignalbutton.cpp \
     main.cpp \
@@ -24,6 +25,7 @@ HEADERS += \
     brush.h \
     brushtool.h \
     canvaslabel.h \
+    changesizerequestwindow.h \
     imagetool.h \
     intsignalbutton.h \
     model.h \
@@ -32,6 +34,7 @@ HEADERS += \
     spriteeditor.h
 
 FORMS += \
+    changesizerequestwindow.ui \
     spriteeditor.ui
 
 # Default rules for deployment.
