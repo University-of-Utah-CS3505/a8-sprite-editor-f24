@@ -160,6 +160,7 @@ void Model::removeCurrentFrame()
         frameIndex = std::max(--frameIndex, 0);
         int size = frameSequence.size() - 1;
         playerFrameIndex = std::min(size, playerFrameIndex);
+        frameSequenceTimer.start();
         emit sendCanvasImage(frameSequence[frameIndex], scale, offset + initialOffset);
     }
     else
