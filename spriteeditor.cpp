@@ -414,7 +414,7 @@ void SpriteEditor::showHelpMessage()
 {
     QWidget *w = new QWidget(this);
     w->setWindowFlags(Qt::Popup);
-    w->setGeometry(300, 300, 350, 500);
+    w->setGeometry(300, 300, 350, 600);
     w->setAttribute(Qt::WA_DeleteOnClose);
 
     QLabel *label = new QLabel("This is the help message.\n"
@@ -423,11 +423,11 @@ void SpriteEditor::showHelpMessage()
                                "\n"
                                "2. There is a slide bar to adjust the FPS of the preview.\n"
                                "\n"
-                               "3. The next bar is main tools we can use, we can use pen tool, shape tool, erase tool and size of the pen\n"
+                               "3. The next bar is main tools we can use, we can use pen tool, shape tool, erase tool and size of the pen. Shape tool (the second one) can let users to drag shape on the canvas. If the user want to drag polygon shape, they need to hold left button, and at same time to press right mouse button to add more vertices.\n"
                                "\n"
-                               "4. Color selector can be used to select color and change alpha value\n"
+                               "4. Color selector can be used to select color and change alpha value by a slider under it\n"
                                "\n"
-                               "5. In the middle we have sub tools liking fliping the drawing - upside down, left to right, insert image, erase all staff in the drawing panel. redo the drawing\n"
+                               "5. In the middle we have sub tools like: rescale, export current frame, fill blank area with color, flip image along y, clean the canvas, import image, rotate image, flip image along x.\n"
                                "\n"
                                "6. Frame operation, we can add frame, delete frame, copy the frame to the frame list\n"
                                "\n"
@@ -436,11 +436,11 @@ void SpriteEditor::showHelpMessage()
                                "\n"
                                "8. the buttom button list is our sprite anime sequence, each button represent each frame.\n"
                                "\n"
-                               "9. The right big canvas is our drawing canvas\n",
+                               "9. The right big canvas is our drawing canvas, user can use mouse to scroll on the canvas, after the canvas is larger than the view port, user can hold right click to drag the canvas around\n",
                                w);
     label->setAlignment(Qt::AlignCenter);
     label->setWordWrap(true);
-    label->setGeometry(10, 10, 300, 500);
+    label->setGeometry(10, 10, 300, 600);
     w->show();
 }
 
