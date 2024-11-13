@@ -3,8 +3,9 @@
 
 #include <QDialog>
 
-namespace Ui {
-class changeSizeRequestWindow;
+namespace Ui
+{
+    class changeSizeRequestWindow;
 }
 
 class changeSizeRequestWindow : public QDialog

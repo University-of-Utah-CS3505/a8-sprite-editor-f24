@@ -17,24 +17,24 @@ public:
     /// \param image: The QImage to be flipped
     /// \param isVerticalFlip: check whether is vertical or horizontal.
     ///
-    void static flipImage(QImage& image, bool isVerticalFlip);
+    void static flipImage(QImage &image, bool isVerticalFlip);
 
     ///
     /// \brief rotateImage: rotate the image 90 degrees once
     /// \param image: The image that be rotated
     ///
-    void static rotateImage(QImage& image);
+    void static rotateImage(QImage &image);
 
     ///
     /// \brief fillBlankWithColor: fill the blank color for the image
     /// \param image: The image that being filled color
     /// \param color: the color that we want to fill
     ///
-    void static fillBlankWithColor(QImage& image, const QColor& color);
+    void static fillBlankWithColor(QImage &image, const QColor &color);
 
-    void static loadImage(QImage &image, const QString& imagePath);
+    void static loadImage(QImage &image, const QString &imagePath);
 
-    void static exportImage(const QImage &image, const QString& imagePath);
+    void static exportImage(const QImage &image, const QString &imagePath);
 };
 
 #endif // IMAGETOOL_H

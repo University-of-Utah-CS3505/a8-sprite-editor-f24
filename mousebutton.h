@@ -6,7 +6,8 @@
  * @brief The buttonType enum
  *        all the mouse actions can be used as enum
  */
-enum buttonType{
+enum buttonType
+{
     leftButtonUp,
     leftButtonDown,
     rightButtonDown,
@@ -25,6 +26,7 @@ class MouseButton
     buttonType buttonType;
     QPointF pos;
     int amount;
+
 public:
     /**
      * @brief MouseButton constructor of mouse button
@@ -38,7 +40,7 @@ public:
      * @brief getButtonType to get the type of button action
      * @return enum, name of the button action
      */
-    const enum buttonType& getButtonType() const;
+    const enum buttonType &getButtonType() const;
 
     /**
      * @brief getAmount, get how many times this button action done

@@ -7,6 +7,7 @@ class IntSignalButton : public QPushButton
 {
     Q_OBJECT
     int value;
+
 public:
     explicit IntSignalButton(int value, QWidget *parent = nullptr);
 

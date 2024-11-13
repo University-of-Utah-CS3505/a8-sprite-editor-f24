@@ -21,9 +21,9 @@ class BrushTool
     /// \param offset offset from center for cuttent canvas
     /// \param painter set color of painter
     ///
-    void drawShapeOnImage(const Shape& shape, const QPointF pos, QPainter& painter);
+    void drawShapeOnImage(const Shape &shape, const QPointF pos, QPainter &painter);
 
-    void dragShapeOnImage(const Shape& shape, const QPointF startPos, const QPointF endPos, QPainter& painter);
+    void dragShapeOnImage(const Shape &shape, const QPointF startPos, const QPointF endPos, QPainter &painter);
 
 public:
     BrushTool();
@@ -35,7 +35,7 @@ public:
     /// \param canvasScale current scale of canvas
     /// \param offset offset from center for cuttent canvas
     ///
-    void paint(QImage& image, const MouseButton& input, const Shape& shape, const QPointF pos);
+    void paint(QImage &image, const MouseButton &input, const Shape &shape, const QPointF pos);
     ///
     /// \brief BrushTool::paint
     /// \param image canvas image
@@ -44,7 +44,7 @@ public:
     /// \param canvasScale current scale of canvas
     /// \param offset offset from center for cuttent canvas
     ///
-    void dragShape(QImage& image, const MouseButton& input, const Shape& shape, const QPointF pos);
+    void dragShape(QImage &image, const MouseButton &input, const Shape &shape, const QPointF pos);
     ///
     /// \brief BrushTool::paint
     /// \param image canvas image
@@ -53,8 +53,7 @@ public:
     /// \param canvasScale current scale of canvas
     /// \param offset offset from center for cuttent canvas
     ///
-    void erase(QImage& image, const MouseButton& input, const Shape& shape, const QPointF pos);
-
+    void erase(QImage &image, const MouseButton &input, const Shape &shape, const QPointF pos);
 };
 
 #endif // BRUSHTOOL_H

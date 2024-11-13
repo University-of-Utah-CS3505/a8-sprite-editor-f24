@@ -16,7 +16,6 @@
 #include <QFile>
 #include <QBuffer>
 
-
 /**
  * @brief The Model class
  *
@@ -66,29 +65,26 @@ public slots:
     void receiveFPS(int fps);
     void sequencePlayerTimeout();
 
-    //Brush tool
+    // Brush tool
     void receiveBrushType(Brush brush);
     void draw();
-    //Image tool
+    // Image tool
     void rotateImage();
     void flipImageAlongY();
     void flipImageAlongX();
-    void loadImage(const QString& imagePath);
-    void fillBlankArea(const QColor& color);
+    void loadImage(const QString &imagePath);
+    void fillBlankArea(const QColor &color);
     void clearCanvas();
-    void initialize(const QSize& size);
-    void saveImage(const QString& imagePath);
-    //Saving
+    void initialize(const QSize &size);
+    void saveImage(const QString &imagePath);
+    // Saving
     void loadFile(const QString &inputFilePath);
     void saveFile(const QString &outputFilePath);
 
 signals:
-    void sendCanvasImage(const QImage& image, float scale, const QPointF& offset);
-    void sendAllImages(const QList<QImage>& imageSequence);
-    void sendSequencePlayerImage(const QImage& image);
-
-
-
+    void sendCanvasImage(const QImage &image, float scale, const QPointF &offset);
+    void sendAllImages(const QList<QImage> &imageSequence);
+    void sendSequencePlayerImage(const QImage &image);
 };
 
 #endif // MODEL_H

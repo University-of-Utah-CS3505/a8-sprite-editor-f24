@@ -17,7 +17,7 @@
  */
 
 Model::Model(QObject *parent)
-    : QObject{parent}, userInput(MouseButton(mouseMove, QPointF(0,0), 0))
+    : QObject{parent}, userInput(MouseButton(mouseMove, QPointF(0, 0), 0))
 {
     frameSequenceTimer.setInterval(100);
     initialize(QSize(64, 64));
@@ -32,20 +32,23 @@ Model::Model(QObject *parent)
  *  Gets the mouseButton and then depending on the type of mouseButton such as LeftButtonUp,RightButtonDown or MouseScrollWheel and other
  *  types of mouse events
  */
-void Model::receiveMouseEvent(MouseButton button){
+void Model::receiveMouseEvent(MouseButton button)
+{
     userInput = button;
-    switch(button.getButtonType()){
+    switch (button.getButtonType())
+    {
 
         /// If the received mouse event was mouseWheelScroll, then increases scale slightly by adding button's amount
     case middleButtonScroll:
-        //qDebug()<<button.getAmount() / 200.0;
+        // qDebug()<<button.getAmount() / 200.0;
         scale += (button.getAmount() / 200.0);
         scale = std::max(scale, 1.0f);
-        if(inFrameScale > scale){
-            offset = QPointF(0,0);
+        if (inFrameScale > scale)
+        {
+            offset = QPointF(0, 0);
         }
 
-        initialOffset = QPointF(750.0/2 - picSize.width() / 2.0 * scale ,750.0/2 - picSize.height() / 2.0 * scale);
+        initialOffset = QPointF(750.0 / 2 - picSize.width() / 2.0 * scale, 750.0 / 2 - picSize.height() / 2.0 * scale);
         emit sendCanvasImage(frameSequence[frameIndex], scale, offset + initialOffset);
         break;
 
@@ -57,17 +60,20 @@ void Model::receiveMouseEvent(MouseButton button){
 
     case mouseMove:
         mousePos = button.getPos();
-        if(rightMouseKeyDown){
-            if(inFrameScale < scale){
+        if (rightMouseKeyDown)
+        {
+            if (inFrameScale < scale)
+            {
                 offset += mousePos - previousMousePos;
             }
 
-            //qDebug() << "offset" << offset;
+            // qDebug() << "offset" << offset;
             previousMousePos = button.getPos();
             emit sendCanvasImage(frameSequence[frameIndex], scale, offset + initialOffset);
         }
 
-        if(leftMouseKeyDown){
+        if (leftMouseKeyDown)
+        {
             draw();
         }
 
@@ -84,7 +90,8 @@ void Model::receiveMouseEvent(MouseButton button){
         mousePos = button.getPos();
         rightMouseKeyDown = true;
 
-        if(leftMouseKeyDown){
+        if (leftMouseKeyDown)
+        {
             draw();
         }
 
@@ -93,7 +100,6 @@ void Model::receiveMouseEvent(MouseButton button){
     case rightButtonUp:
         rightMouseKeyDown = false;
         break;
-
     }
 }
 
@@ -103,9 +109,10 @@ void Model::receiveMouseEvent(MouseButton button){
  *
  *  Based on the given frameIndex, model changes frameIndex in current model with the frameIndex selected in the UI's form file
  */
-void Model::receiveCurrentFrameIndex(int frameIndex){
+void Model::receiveCurrentFrameIndex(int frameIndex)
+{
 
-    if(frameIndex >= 0 && frameIndex < frameSequence.size())
+    if (frameIndex >= 0 && frameIndex < frameSequence.size())
     {
         this->frameIndex = frameIndex;
 
@@ -121,9 +128,10 @@ void Model::receiveCurrentFrameIndex(int frameIndex){
  *
  *  Adds a new frame at current frame and then pushes the current frame at that index to the next index
  */
-void Model::addNewFrameAtCurrentFrame(){
+void Model::addNewFrameAtCurrentFrame()
+{
 
-    if(frameIndex >= 0 && frameIndex < frameSequence.size())
+    if (frameIndex >= 0 && frameIndex < frameSequence.size())
     {
         QImage newFrame(picSize, QImage::Format_ARGB32);
         newFrame.fill(Qt::white);
@@ -141,22 +149,23 @@ void Model::addNewFrameAtCurrentFrame(){
  *  Note : This method does not remove the last frame in the frame sequence
  */
 
-void Model::removeCurrentFrame(){
+void Model::removeCurrentFrame()
+{
 
-    if(frameSequence.size() > 1)
+    if (frameSequence.size() > 1)
     {
         frameSequenceTimer.stop();
         frameSequence.removeAt(frameIndex);
-        //qDebug()<<frameIndex;
+        // qDebug()<<frameIndex;
         frameIndex = std::max(--frameIndex, 0);
         int size = frameSequence.size() - 1;
         playerFrameIndex = std::min(size, playerFrameIndex);
         emit sendCanvasImage(frameSequence[frameIndex], scale, offset + initialOffset);
-    }else
+    }
+    else
     {
         qWarning() << " Cannot remove the last remaining frame !!";
     }
-
 }
 
 /**
@@ -164,7 +173,8 @@ void Model::removeCurrentFrame(){
  *
  *  Clones will copy frame before current frame to current frame
  */
-void Model::cloneCurrentFrame(){
+void Model::cloneCurrentFrame()
+{
 
     frameSequence[frameIndex] = frameSequence[frameIndex - 1];
     emit sendCanvasImage(frameSequence[frameIndex], scale, offset + initialOffset);
@@ -176,20 +186,25 @@ void Model::cloneCurrentFrame(){
  *
  *  Gives the current fps information in debug console
  */
-void Model::receiveFPS(int fps){
-    if(fps==0){
+void Model::receiveFPS(int fps)
+{
+    if (fps == 0)
+    {
         frameSequenceTimer.stop();
-    }else{
-        if(!frameSequenceTimer.isActive()){
+    }
+    else
+    {
+        if (!frameSequenceTimer.isActive())
+        {
             frameSequenceTimer.start();
         }
-        frameSequenceTimer.setInterval(1000.0/fps);
+        frameSequenceTimer.setInterval(1000.0 / fps);
     }
-
 }
 
-void Model::receiveBrushType(Brush brush){
-    qDebug() << "brush" <<  brush.getBrushType() <<"color" << brush.getShape().color;
+void Model::receiveBrushType(Brush brush)
+{
+    qDebug() << "brush" << brush.getBrushType() << "color" << brush.getShape().color;
     this->brush = brush;
 }
 
@@ -200,10 +215,12 @@ void Model::receiveBrushType(Brush brush){
  *  postion with their intended color if draw mode is selected and erases the images/shapes at current location is eraser is selected and draws shape
  *  if shape drawer mode is selected
  */
-void Model::draw() {
-    //calculate pos
-    QPointF pos = mousePos/scale - offset/scale;
-    switch(brush.getBrushType()){
+void Model::draw()
+{
+    // calculate pos
+    QPointF pos = mousePos / scale - offset / scale;
+    switch (brush.getBrushType())
+    {
     case drawBrush:
         brushTool.paint(frameSequence[frameIndex], userInput, brush.getShape(), pos);
         break;
@@ -214,24 +231,24 @@ void Model::draw() {
         brushTool.dragShape(frameSequence[frameIndex], userInput, brush.getShape(), pos);
     }
 
-    //qDebug() << "pos" << pos << "offset" << offset<< "scale"<<scale;
+    // qDebug() << "pos" << pos << "offset" << offset<< "scale"<<scale;
     emit sendCanvasImage(frameSequence[frameIndex], scale, offset + initialOffset);
 }
 
-
-//Image tool
+// Image tool
 
 /**
  * @brief Model::rotateImage
  *
  *  Rotates the image in the current frame if image is valid and non-null
  */
-void Model::rotateImage(){
+void Model::rotateImage()
+{
 
-    if(frameIndex >= 0 && frameIndex < frameSequence.size())
+    if (frameIndex >= 0 && frameIndex < frameSequence.size())
     {
         imageTool.rotateImage(frameSequence[frameIndex]);
-        emit sendCanvasImage(frameSequence[frameIndex],scale, initialOffset + offset);
+        emit sendCanvasImage(frameSequence[frameIndex], scale, initialOffset + offset);
     }
 }
 
@@ -239,12 +256,13 @@ void Model::rotateImage(){
  * @brief Model::flipImageAlongY
  *  Flips the image at the current frame along Y axis direction vertically if image is valid and non-null
  */
-void Model::flipImageAlongY(){
+void Model::flipImageAlongY()
+{
 
-    if(frameIndex >= 0 && frameIndex < frameSequence.size())
+    if (frameIndex >= 0 && frameIndex < frameSequence.size())
     {
         imageTool.flipImage(frameSequence[frameIndex], false);
-        emit sendCanvasImage(frameSequence[frameIndex],scale, initialOffset + offset);
+        emit sendCanvasImage(frameSequence[frameIndex], scale, initialOffset + offset);
     }
 }
 
@@ -252,14 +270,14 @@ void Model::flipImageAlongY(){
  * @brief Model::flipImageAlongX
  *  Flips the image in the current frame along X axis direction horizontally if image is valid and non-null
  */
-void Model::flipImageAlongX(){
+void Model::flipImageAlongX()
+{
 
-    if(frameIndex >= 0 && frameIndex < frameSequence.size())
+    if (frameIndex >= 0 && frameIndex < frameSequence.size())
     {
         imageTool.flipImage(frameSequence[frameIndex], true);
-        emit sendCanvasImage(frameSequence[frameIndex],scale, initialOffset + offset);
+        emit sendCanvasImage(frameSequence[frameIndex], scale, initialOffset + offset);
     }
-
 }
 
 /**
@@ -268,14 +286,15 @@ void Model::flipImageAlongX(){
  *
  *  Loads the image into the current frame based on the path given for the image
  */
-void Model::loadImage(const QString& imagePath){
+void Model::loadImage(const QString &imagePath)
+{
 
     imageTool.loadImage(frameSequence[frameIndex], imagePath);
     picSize = frameSequence[0].size();
     inFrameScale = std::min(750.0 / picSize.width(), 750.0 / picSize.height());
-    offset = QPointF(0,0);
+    offset = QPointF(0, 0);
     scale = 5.0;
-    initialOffset = QPointF(750.0/2 - picSize.width() / 2.0 * scale ,750.0/2 - picSize.height() / 2.0 * scale);
+    initialOffset = QPointF(750.0 / 2 - picSize.width() / 2.0 * scale, 750.0 / 2 - picSize.height() / 2.0 * scale);
     emit sendCanvasImage(frameSequence[frameIndex], scale, offset + initialOffset);
 }
 
@@ -284,14 +303,14 @@ void Model::loadImage(const QString& imagePath){
  *
  *  Fills the current frame with blank canvas with white color
  */
-void Model::fillBlankArea(const QColor& color){
+void Model::fillBlankArea(const QColor &color)
+{
 
-    if(frameIndex >= 0 && frameIndex < frameSequence.size())
+    if (frameIndex >= 0 && frameIndex < frameSequence.size())
     {
         imageTool.fillBlankWithColor(frameSequence[frameIndex], color);
         emit sendCanvasImage(frameSequence[frameIndex], scale, offset + initialOffset);
     }
-
 }
 
 /**
@@ -299,40 +318,44 @@ void Model::fillBlankArea(const QColor& color){
  *
  *  Clears the canvas in the current frame by making it transparent
  */
-void Model::clearCanvas(){
+void Model::clearCanvas()
+{
 
-    if(frameIndex >= 0 && frameIndex < frameSequence.size())
+    if (frameIndex >= 0 && frameIndex < frameSequence.size())
     {
         frameSequence[frameIndex].fill(Qt::transparent);
         emit sendCanvasImage(frameSequence[frameIndex], scale, offset + initialOffset);
     }
 }
 
-//Saving
+// Saving
 
 /**
  * @brief Model::saveFile
  * @param images All the images used in the frames to be saved
  * @param outputFilePath the path where output file should be saved at
  */
-void Model::saveFile(const QString &outputFilePath) {
+void Model::saveFile(const QString &outputFilePath)
+{
     QJsonArray jsonArray;
 
     /// Iterates through all list of images and saves every image in PNG format in jsonArray
-    for (const QImage &image : frameSequence) {
+    for (const QImage &image : frameSequence)
+    {
         QByteArray byteArray;
         QBuffer buffer(&byteArray);
         buffer.open(QIODevice::WriteOnly);
-        image.save(&buffer, "PNG");  // 将 QImage 保存为 PNG 格式
-        QString base64Image = QString::fromLatin1(byteArray.toBase64());  // 转为 Base64 编码字符串
+        image.save(&buffer, "PNG");                                      // 将 QImage 保存为 PNG 格式
+        QString base64Image = QString::fromLatin1(byteArray.toBase64()); // 转为 Base64 编码字符串
 
-        jsonArray.append(base64Image);  // 添加到 JSON 数组中
+        jsonArray.append(base64Image); // 添加到 JSON 数组中
     }
 
     // 将 JSON 数组保存到文件
     QJsonDocument doc(jsonArray);
     QFile file(outputFilePath);
-    if (file.open(QIODevice::WriteOnly)) {
+    if (file.open(QIODevice::WriteOnly))
+    {
         file.write(doc.toJson(QJsonDocument::Indented));
         file.close();
     }
@@ -343,12 +366,14 @@ void Model::saveFile(const QString &outputFilePath) {
  * @param images All the images to be loaded into the frame sequences
  * @param inputFilePath The path from where the existing sprite sequence should be opened from
  */
-void Model::loadFile(const QString &inputFilePath) {
+void Model::loadFile(const QString &inputFilePath)
+{
     frameSequenceTimer.stop();
 
     frameSequence.clear();
     QFile file(inputFilePath);
-    if (!file.open(QIODevice::ReadOnly)) {
+    if (!file.open(QIODevice::ReadOnly))
+    {
         return;
     }
 
@@ -357,58 +382,61 @@ void Model::loadFile(const QString &inputFilePath) {
 
     QJsonArray jsonArray = doc.array();
 
-    for (const QJsonValue &value : jsonArray) {
+    for (const QJsonValue &value : jsonArray)
+    {
         QByteArray byteArray = QByteArray::fromBase64(value.toString().toLatin1());
         QImage image;
-        image.loadFromData(byteArray, "PNG");  // 从 Base64 编码的 QByteArray 加载 QImage
+        image.loadFromData(byteArray, "PNG"); // 从 Base64 编码的 QByteArray 加载 QImage
 
         frameSequence.append(image);
     }
-    offset = QPointF(0,0);
+    offset = QPointF(0, 0);
     picSize = frameSequence[0].size();
     inFrameScale = std::min(750.0 / picSize.width(), 750.0 / picSize.height());
-    initialOffset = QPointF(750.0/2 - picSize.width() / 2.0 * scale ,750.0/2 - picSize.height() / 2.0 * scale);
+    initialOffset = QPointF(750.0 / 2 - picSize.width() / 2.0 * scale, 750.0 / 2 - picSize.height() / 2.0 * scale);
 
     playerFrameIndex = 0;
     frameSequenceTimer.start();
     emit sendAllImages(frameSequence);
 }
 
-void Model::sequencePlayerTimeout(){
+void Model::sequencePlayerTimeout()
+{
     emit sendSequencePlayerImage(frameSequence[playerFrameIndex]);
     playerFrameIndex = ++playerFrameIndex % frameSequence.size();
 }
 
-void Model::initialize(const QSize& size){
+void Model::initialize(const QSize &size)
+{
     frameSequenceTimer.stop();
     playerFrameIndex = 0;
     frameIndex = 0;
     brushTool = BrushTool();
     scale = 5.0;
-    offset = QPointF(0,0);
+    offset = QPointF(0, 0);
     picSize = size;
     inFrameScale = std::min(750.0 / picSize.width(), 750.0 / picSize.height());
 
     rightMouseKeyDown = false;
     leftMouseKeyDown = false;
 
-    initialOffset = QPointF(750.0/2 - picSize.width() / 2.0 * scale ,750.0/2 - picSize.height() / 2.0 * scale);
+    initialOffset = QPointF(750.0 / 2 - picSize.width() / 2.0 * scale, 750.0 / 2 - picSize.height() / 2.0 * scale);
 
     frameSequence.clear();
-    qDebug()<<"cleand";
+    qDebug() << "cleand";
 
     // Add initial image
     QImage img = QImage(picSize, QImage::Format_ARGB32);
     img.fill(Qt::white);
     frameSequence.push_back(img);
 
-    QTimer::singleShot(100, [=](){
-        emit sendCanvasImage(frameSequence[frameIndex], scale, offset + initialOffset);
-    });
+    QTimer::singleShot(100, [=]()
+                       { emit sendCanvasImage(frameSequence[frameIndex], scale, offset + initialOffset); });
 
     frameSequenceTimer.start();
 }
 
-void Model::saveImage(const QString& imagePath){
+void Model::saveImage(const QString &imagePath)
+{
     imageTool.exportImage(frameSequence[frameIndex], imagePath);
 }

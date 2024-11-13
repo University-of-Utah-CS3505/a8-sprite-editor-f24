@@ -2,7 +2,8 @@
 #define SHAPE_H
 #include <QColor>
 
-enum shapeType{
+enum shapeType
+{
     line,
     rect,
     roundedRect,
