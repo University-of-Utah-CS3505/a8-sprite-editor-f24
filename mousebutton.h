@@ -3,6 +3,19 @@
 #include <QMouseEvent>
 
 /**
+ *  Team Name : Sam's Club
+ *
+ *  Team Members : Rohith Veeramachaneni, Shu Chen, Bingkun Han and PING-HSUN HSIEH
+ *
+ *  Contributor's Names of mouseButton.h :
+ *
+ *  Date Modified : November 10, 2024
+ *
+ *  Header class for mouse button
+ */
+
+
+/**
  * @brief The buttonType enum
  *        all the mouse actions can be used as enum
  */

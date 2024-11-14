@@ -1,6 +1,19 @@
 #include "changesizerequestwindow.h"
 #include "ui_changesizerequestwindow.h"
 
+/**
+ *  Team Name : Sam's Club
+ *
+ *  Team Members : Rohith Veeramachaneni, Shu Chen, Bingkun Han and PING-HSUN HSIEH
+ *
+ *  Contributor's Names of changeSizeRequestWindow.h :
+ *
+ *  Date Modified : November 10, 2024
+ *
+ *  changeSizeRequestWindow class contains methods such as changeSize, doNotChangeSize to allow user to change
+ *  canvas frame size
+ */
+
 changeSizeRequestWindow::changeSizeRequestWindow(QWidget *parent)
     : QDialog(parent), ui(new Ui::changeSizeRequestWindow)
 {
@@ -20,6 +33,7 @@ void changeSizeRequestWindow::donotChangeSize()
     this->close();
 }
 
+// Destructor
 changeSizeRequestWindow::~changeSizeRequestWindow()
 {
     delete ui;

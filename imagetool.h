@@ -4,6 +4,20 @@
 #include <QImage>
 #include <qcolor.h>
 
+/**
+ *
+ *  Team Name : Sam's Club
+ *
+ *  Team Members : Rohith Veeramachaneni, Shu Chen, Bingkun Han and PING-HSUN HSIEH
+ *
+ *  Contributor's Names of canvasLabel.h : TO BE UPDATED
+ *
+ *  Date Modified : November 10, 2024
+ *
+ *  Header class for ImageTool.h
+
+*/
+
 class ImageTool
 {
 public:
