@@ -8,7 +8,19 @@
 #include <QHBoxLayout>
 #include "intsignalbutton.h"
 #include "changesizerequestwindow.h"
+/**
+ *
+ *  Team Name : Sam's Club
+ *
+ *  Team Members : Rohith Veeramachaneni, Shu Chen, Bingkun Han and PING-HSUN HSIEH
+ *
+ *  Contributor's Names of canvasLabel.h : Shu Chen
+ *
+ *  Date Modified : November 10, 2024
+ *
+ *  Header class for ImageTool.h
 
+*/
 QT_BEGIN_NAMESPACE
 namespace Ui
 {

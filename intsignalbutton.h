@@ -10,7 +10,7 @@
  *
  *  Team Members : Rohith Veeramachaneni, Shu Chen, Bingkun Han and PING-HSUN HSIEH
  *
- *  Contributor's Names of intSignalButton.h : TO BE UPDATED
+ *  Contributor's Names of intSignalButton.h : Shu Chen
  *
  *  Date Modified : November 10, 2024
  *

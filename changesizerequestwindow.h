@@ -13,7 +13,7 @@ namespace Ui
  *
  *  Team Members : Rohith Veeramachaneni, Shu Chen, Bingkun Han and PING-HSUN HSIEH
  *
- *  Contributor's Names of changeSizeRequestWindow.h :
+ *  Contributor's Names of changeSizeRequestWindow.h : Shu Chen, Bingkun Han and PING-HSUN HSIEH
  *
  *  Date Modified : November 10, 2024
  *

@@ -9,6 +9,19 @@
 #include <QColorDialog>
 #include <QFileDialog>
 #include "changesizerequestwindow.h"
+/**
+ *
+ *  Team Name : Sam's Club
+ *
+ *  Team Members : Rohith Veeramachaneni, Shu Chen, Bingkun Han and PING-HSUN HSIEH
+ *
+ *  Contributor's Names of canvasLabel.h : Shu Chen, Bingkun Han
+ *
+ *  Date Modified : November 10, 2024
+ *
+ *  Header class for ImageTool.h
+
+*/
 
 SpriteEditor::SpriteEditor(class Model &model, QWidget *parent)
     : QMainWindow(parent), ui(new Ui::SpriteEditor)
