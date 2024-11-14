@@ -9,6 +9,22 @@ enum BrushType
     shapeBrush
 };
 
+/**
+ * @brief The Brush class
+ *
+ * Team Name : Sam's Club
+ *
+ *  Team Members : Rohith Veeramachaneni, Shu Chen, Bingkun Han and PING-HSUN HSIEH
+ *
+ *  Contributor's Names of Brush.h : TO BE UPDATED
+ *
+ *  Date Modified : November 10, 2024
+ *
+ *  Header file for Brush class containing method declarations
+ *
+ */
+
+
 class Brush
 {
     BrushType brushType;

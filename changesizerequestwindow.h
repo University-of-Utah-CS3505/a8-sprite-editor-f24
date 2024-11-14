@@ -8,6 +8,18 @@ namespace Ui
     class changeSizeRequestWindow;
 }
 
+/**
+ *  Team Name : Sam's Club
+ *
+ *  Team Members : Rohith Veeramachaneni, Shu Chen, Bingkun Han and PING-HSUN HSIEH
+ *
+ *  Contributor's Names of changeSizeRequestWindow.h :
+ *
+ *  Date Modified : November 10, 2024
+ *
+ *  Header class for changeSizeRequestWindow
+ */
+
 class changeSizeRequestWindow : public QDialog
 {
     Q_OBJECT

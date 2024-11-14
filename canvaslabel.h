@@ -6,6 +6,19 @@
 #include <QObject>
 #include "mousebutton.h"
 
+/**
+ * @brief The CanvasLabel class
+ *
+ *  Team Name : Sam's Club
+ *
+ *  Team Members : Rohith Veeramachaneni, Shu Chen, Bingkun Han and PING-HSUN HSIEH
+ *
+ *  Contributor's Names of canvasLabel.h : TO BE UPDATED
+ *
+ *  Date Modified : November 10, 2024
+
+ *  Header class for canvas Label class
+ */
 class CanvasLabel : public QLabel
 {
     Q_OBJECT

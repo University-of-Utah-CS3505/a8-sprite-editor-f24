@@ -6,6 +6,20 @@
 #include "mousebutton.h"
 #include "shape.h"
 
+/**
+ * @brief The BrushTool class
+ *
+ * Team Name : Sam's Club
+ *
+ * Team Members : Rohith Veeramachaneni, Shu Chen, Bingkun Han and PING-HSUN HSIEH
+ *
+ * Contributor's Names of BrushTool.h : TO BE UPDATED
+ *
+ * Date Modified : November 10, 2024
+ *
+ *  Header class for BrushTool class
+ */
+
 class BrushTool
 {
     QImage buffer;

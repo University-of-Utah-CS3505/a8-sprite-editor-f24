@@ -2,6 +2,18 @@
 #define SHAPE_H
 #include <QColor>
 
+/**
+ *  Team Name : Sam's Club
+ *
+ *  Team Members : Rohith Veeramachaneni, Shu Chen, Bingkun Han and PING-HSUN HSIEH
+ *
+ *  Contributor's Names of shape.h :
+ *
+ *  Date Modified : November 10, 2024
+ *
+ *  Header class for shape class
+ */
+
 enum shapeType
 {
     line,

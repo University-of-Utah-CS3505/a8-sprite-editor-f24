@@ -95,6 +95,12 @@ SpriteEditor::SpriteEditor(class Model &model, QWidget *parent)
     connect(&setFrameSizeWindow, &changeSizeRequestWindow::sendNewSize, this, &SpriteEditor::setFrameSize);
 }
 
+/**
+ * @brief SpriteEditor::
+ *
+ *  The slot select color allows the users to select the color with which they want to draw shapes or fill the canvas with
+ *
+ */
 void SpriteEditor::selectColor()
 {
     QColor color = QColorDialog::getColor(brush.getShape().color, this, "Select Color");
@@ -121,6 +127,11 @@ void SpriteEditor::selectColor()
     emit sendBrushType(brush);
 }
 
+/**
+ * @brief SpriteEditor::loadImage
+ *
+ *  LoadImage slot which loads the image from the selected path
+ */
 void SpriteEditor::loadImage()
 {
     // popup the selector window
@@ -139,6 +150,11 @@ void SpriteEditor::loadImage()
     }
 }
 
+/**
+ * @brief SpriteEditor::saveImage
+ *
+ *   saveImage slot which saves the image at the selected path
+ */
 void SpriteEditor::saveImage()
 {
     // popup the selector window
@@ -150,16 +166,33 @@ void SpriteEditor::saveImage()
     }
 }
 
+/**
+ * @brief SpriteEditor::callSetFrameSizeWindow
+ *
+ *  Displays the popup window to set frame size
+ */
 void SpriteEditor::callSetFrameSizeWindow()
 {
     setFrameSizeWindow.show();
 }
 
+/**
+ * @brief SpriteEditor::setFrameSize
+ * @param size the user desired canvas size
+ *
+ *  Lets the user set the canvas frame size to desired size
+ */
 void SpriteEditor::setFrameSize(const QSize &size)
 {
     initialize(size);
 }
 
+/**
+ * @brief SpriteEditor::initialize
+ * @param size the size with which the canvas frame is to be initialised with
+ *
+ *  Clears the canvas frame and then resizes the canvas to user desired size
+ */
 void SpriteEditor::initialize(const QSize &size)
 {
     removeAllFrame();
@@ -177,6 +210,11 @@ void SpriteEditor::initialize(const QSize &size)
     emit initializeModel(size);
 }
 
+/**
+ * @brief SpriteEditor::removeAllFrame
+ *
+ *   Clears all the frames in the current project
+ */
 void SpriteEditor::removeAllFrame()
 {
     for (auto &button : frameSelectorButtonList)
@@ -187,20 +225,27 @@ void SpriteEditor::removeAllFrame()
     frameSelectorButtonList.clear();
 }
 
+/**
+ * @brief SpriteEditor::updateCanvas
+ * @param image Reference to the image object which has to be updateds
+ * @param scale The size by which canvas has to be scaled to be updated
+ * @param offset new offset for the canvas after resizing
+ */
 void SpriteEditor::updateCanvas(const QImage &image, float scale, const QPointF &offset)
 {
-    // 将 QImage 转换为 QPixmap
+    // stores the current canvas in a pixmap object
     QPixmap pixmap = QPixmap::fromImage(image);
 
-    // 获取缩放后的尺寸
+    // stores width and height properties of the current canvas frame scaled by the scaling factor
     int width = pixmap.width() * scale;
     int height = pixmap.height() * scale;
 
-    // 按指定比例缩放图片
+    // stores the new pixMap which is scaled version of existing pixMap
     QPixmap scaledPixmap = pixmap.scaled(width, height, Qt::KeepAspectRatio, Qt::FastTransformation);
 
     ui->canvasLabel->setOffset(offset);
-    // 设置缩放后的图片到 QLabel 上
+
+    // sets current canvas frame's pixmap to be sclaedPixmap object
     ui->canvasLabel->setPixmap(scaledPixmap);
 
     // update the picture at buttom list
@@ -209,6 +254,12 @@ void SpriteEditor::updateCanvas(const QImage &image, float scale, const QPointF 
     qDebug() << frameSelectorButtonList.size();
 }
 
+/**
+ * @brief SpriteEditor::setAlpha
+ * @param value the value to be which alpha value is to be set to
+ *
+ *  Sets the alpha value(opacity) with which drawings will be drawn with
+ */
 void SpriteEditor::setAlpha(int value)
 {
     const Shape &s = brush.getShape();
@@ -225,7 +276,7 @@ void SpriteEditor::setAlpha(int value)
     // get text color(inverse)
     QColor textColor = QColor(255 - color.red(), 255 - color.green(), 255 - color.blue());
 
-    // 将颜色应用到按钮背景和文字
+    /// changes the color select button to be the same color selected from the color wheel
     ui->brushTool_colorSelectorButton->setStyleSheet(QString("background-color: %1; color: %2;")
                                                          .arg(colorWithAlpha)
                                                          .arg(textColor.name()));
@@ -234,6 +285,12 @@ void SpriteEditor::setAlpha(int value)
     emit sendBrushType(brush);
 }
 
+/**
+ * @brief SpriteEditor::setBrushSize
+ * @param size the size to which set the brush size has to be set to
+ *
+ *  Sets the brush size to desired brush size
+ */
 void SpriteEditor::setBrushSize(int size)
 {
     const Shape &s = brush.getShape();
@@ -242,12 +299,24 @@ void SpriteEditor::setBrushSize(int size)
     emit sendBrushType(brush);
 }
 
+/**
+ * @brief SpriteEditor::setFPS
+ * @param fps the new fps value at which sequence of frames has to be played at
+ *
+ *  The frame speec with which sequence of frames will be played at
+ */
 void SpriteEditor::setFPS(int fps)
 {
     ui->textLabel_FPSData->setText(QString::number(fps));
     emit sendFPS(fps);
 }
 
+/**
+ * @brief SpriteEditor::selectShape
+ * @param shapeID the shapeID to recognise the type of shape
+ *
+ *  Selects shape to be drawn recognising from the shapeID received
+ */
 void SpriteEditor::selectShape(int shapeID)
 {
     switch (shapeID)
@@ -274,6 +343,11 @@ void SpriteEditor::selectShape(int shapeID)
     emit sendBrushType(brush);
 }
 
+/**
+ * @brief SpriteEditor::selectDrawBrush
+ *
+ *  This slot is connected to select the draw brush to draw with on canvas
+ */
 void SpriteEditor::selectDrawBrush()
 {
     lastBrushButtonSelected->setEnabled(true);
@@ -282,6 +356,12 @@ void SpriteEditor::selectDrawBrush()
     brush.setBrushType(drawBrush);
     emit sendBrushType(brush);
 }
+
+/**
+ * @brief SpriteEditor::selectEraseBrush
+ *
+ * This slot is connected to select the erase brush to erase the drawings/shapes on canvas
+ */
 
 void SpriteEditor::selectEraseBrush()
 {
@@ -292,6 +372,12 @@ void SpriteEditor::selectEraseBrush()
     emit sendBrushType(brush);
 }
 
+/**
+ * @brief SpriteEditor::selectShapeBrush
+ *
+ *  This slot is connected to select the shape drawing brush to draw shapes on canvas
+ */
+
 void SpriteEditor::selectShapeBrush()
 {
     lastBrushButtonSelected->setEnabled(true);
@@ -301,6 +387,11 @@ void SpriteEditor::selectShapeBrush()
     emit sendBrushType(brush);
 }
 
+/**
+ * @brief SpriteEditor::addFrame
+ *
+ *  Slot called to add a new frame to the current project
+ */
 void SpriteEditor::addFrame()
 {
     // select
@@ -332,6 +423,11 @@ void SpriteEditor::addFrame()
     // emit sendSelectedFrameIndex(frameIndex);
 }
 
+/**
+ * @brief SpriteEditor::removeFrame
+ *
+ *  Slot called to remove the current selected frame
+ */
 void SpriteEditor::removeFrame()
 {
 
@@ -354,11 +450,21 @@ void SpriteEditor::removeFrame()
     emit sendSelectedFrameIndex(frameIndex);
 }
 
+/**
+ * @brief SpriteEditor::fillBlankArea
+ *
+ *  This slot emits the signal to fill the current frame canvas area with the current color selection
+ */
 void SpriteEditor::fillBlankArea()
 {
     emit sendFillBlankArea(brush.getShape().color);
 }
 
+/**
+ * @brief SpriteEditor::cloneFrame
+ *
+ *  Slot clones and adds the currently selected frame
+ */
 void SpriteEditor::cloneFrame()
 {
     addFrame();
@@ -367,6 +473,11 @@ void SpriteEditor::cloneFrame()
     // emit sendSelectedFrameIndex(frameIndex);
 }
 
+/**
+ * @brief SpriteEditor::updateAllChangedFrameButton
+ *
+ *  Updates all the frames with value of current frame selected
+ */
 void SpriteEditor::updateAllChangedFrameButton()
 {
     for (int i = frameIndex; i < frameSelectorButtonList.size(); i++)
@@ -376,6 +487,12 @@ void SpriteEditor::updateAllChangedFrameButton()
     }
 }
 
+/**
+ * @brief SpriteEditor::selectFrame
+ * @param newFrameIndex the new frame to be selected amongst the list of frames
+ *
+ *  sets active frame to be the newFrameIndex received
+ */
 void SpriteEditor::selectFrame(int newFrameIndex)
 {
     setFrameButtonUnselected(frameSelectorButtonList[this->frameIndex]);
@@ -385,6 +502,12 @@ void SpriteEditor::selectFrame(int newFrameIndex)
     emit sendSelectedFrameIndex(newFrameIndex);
 }
 
+/**
+ * @brief SpriteEditor::updateFrameSequence
+ * @param image Reference of the image objects
+ *
+ *  Updates the sequence player with the new drawings on the current frame and plays the updated frames
+ */
 void SpriteEditor::updateFrameSequence(const QImage &image)
 {
     QPixmap img = QPixmap::fromImage(image);
@@ -410,6 +533,12 @@ void SpriteEditor::setFrameButtonUnselected(IntSignalButton *button)
     button->setEnabled(true);
 }
 
+/**
+ * @brief SpriteEditor::showHelpMessage
+ *
+ *  Slot called when help button is clicked in the UI. It displays all the options available for the sprite editor
+ *  alongwith how each of them can be used by the user
+ */
 void SpriteEditor::showHelpMessage()
 {
     QWidget *w = new QWidget(this);
@@ -444,11 +573,17 @@ void SpriteEditor::showHelpMessage()
     w->show();
 }
 
+/// Destructor
 SpriteEditor::~SpriteEditor()
 {
     delete ui;
 }
 
+/**
+ * @brief SpriteEditor::saveFile
+ *
+ *  Slot connected to when save file button is clicked by user
+ */
 void SpriteEditor::saveFile()
 {
     // popup the selector window
@@ -458,6 +593,11 @@ void SpriteEditor::saveFile()
         emit sendSaveFilePath(fileName);
     }
 };
+
+/**
+ * @brief SpriteEditor::loadFile
+ *  Slot connected to when load file button is clicked by user
+ */
 void SpriteEditor::loadFile()
 {
     QString fileName = QFileDialog::getOpenFileName(
@@ -474,6 +614,7 @@ void SpriteEditor::loadFile()
         emit sendLoadFilePath(fileName);
     }
 };
+
 
 void SpriteEditor::receiveAllImages(const QList<QImage> &images)
 {
